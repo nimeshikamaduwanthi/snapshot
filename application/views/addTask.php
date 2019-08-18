@@ -9,7 +9,7 @@
 ?>
 <?php
 $user = $this->session->userdata('user');
-extract($user);
+// extract($user);
 ?>
 
 <title>ADD TASKS</title>
@@ -63,15 +63,15 @@ extract($user);
         ModoEdicion(n)&&(IterarCamposEdit(i,function(t){
             var n=t.find("div").html();t.html(n)}),FijModoNormal(t))
             }
-    function rowEdit(t){
-        var n=$(t).parents("tr"),
-            i=n.find("td");
-        ModoEdicion(n)||(IterarCamposEdit(i,function(t)
-        {
-            var n=t.html(),
-                i='<div style="display: none;">'+n+"</div>",o='<input class="form-control input-sm" value="'+n+'">';
-            t.html(i+o)}),FijModoEdit(t))
-        }
+    // function rowEdit(t){
+    //     var n=$(t).parents("tr"),
+    //         i=n.find("td");
+    //     ModoEdicion(n)||(IterarCamposEdit(i,function(t)
+    //     {
+    //         var n=t.html(),
+    //             i='<div style="display: none;">'+n+"</div>",o='<input class="form-control input-sm" value="'+n+'">';
+    //         t.html(i+o)}),FijModoEdit(t))
+    //     }
     function rowElim(t){
         $(t).parents("tr").remove(),params.onDelete()
     }
@@ -136,7 +136,7 @@ extract($user);
 
     .topnav {
         /*overflow: hidden;*/
-        background-color: #333;
+        background-color: #5DADE2;
         padding:5px;
 
     }
@@ -156,7 +156,7 @@ extract($user);
         margin-top: -35px;
     }
     .topnav .topnav-right a {
-        padding53px;
+        /* padding: 53px; */
         font-size: 15px;
         background:forestgreen;
         color: #fff;
@@ -294,7 +294,7 @@ extract($user);
         <div class="topnav">
             <h3>ADD TASKS</h3>
             <div class="topnav-right">
-                <h6><?php echo $name; ?></h6>
+                <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
 
             </div>
@@ -304,13 +304,14 @@ extract($user);
         <button a href="#back">Back</a></button>
         <br><br><br>
         <table id="week" style="width:70%; margin: auto; height: 20%;">
-
             <th> <h4>Select the Week</h4>
+            <!-- <form action="<?php echo base_url(); ?>index.php/user/addTask" method='POST'> -->
                 <label class="start" for="start">Start date</label>
-                <input type="date" name="start">
+                <input type="date" name='week_start'>
 
                 <label class="end" for="end">End date</label>
-                <input type="date" name="end">
+                <input type="date" name='week_end'>
+            <!-- </form> -->
             </th>
         </table>
     </div>
@@ -337,8 +338,8 @@ extract($user);
                 <th colspan="2" class="text-center">Sun</th>
                 <th rowspan="3" class="text-center">Total Planned hrs</th>
                 <th rowspan="3" class="text-center">Total Actual hrs</th>
-                <th rowspan="2" class="text-center">options</th>
-                <th> <button id="but_add">ADD</button></th>
+                <!-- <th rowspan="2" class="text-center">options</th> -->
+                <!-- <th> <button id="but_add">ADD</button></th> -->
             </tr>
 
             <tr>
@@ -362,16 +363,21 @@ extract($user);
             </thead>
             <tbody>
 
+            <form action="<?php echo base_url(); ?>index.php/user/addTask" method='POST'>
             <tr >
-                <td> <select name="projects" id="projects"> </select>
-                <select>
+            
+                <td>
+                    <input type="text" name="project">
+                 <!-- <select name="projects" id="projects"> </select> -->
+                <!-- <select>
                     <option value="selectProject">select project</option>
-                </select>
-                </td>
+                </select> -->
+                </td> 
+            
 
-                <td ></td>
-                <td ></td>
-                <td ></td>
+                <td > <input type="text" class="form-control input-sm" name="task"></td>
+                <td > <input type="text" class="form-control input-sm" name="pe"></td>
+                <td > </td>
                 <td ></td>
                 <td ></td>
                 <td ></td>
@@ -390,7 +396,7 @@ extract($user);
                 <td ></td>
 
             </tr>
-
+        </form>
             </tbody>
         </table>
     </div>
@@ -398,9 +404,9 @@ extract($user);
         <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn--success">Submit</a>
         </div>
     </div>
-    <script>
+    <!-- <script>
         $('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-    </script>
+    </script> -->
 
 
 

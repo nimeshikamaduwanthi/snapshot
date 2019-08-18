@@ -47,7 +47,7 @@ extract($user);
 
     .topnav {
         /*overflow: hidden;*/
-        background-color: #333;
+        background-color:#5DADE2;
         padding:5px;
 
     }
@@ -110,7 +110,7 @@ extract($user);
         <div class="topnav">
             <h3>VIEW TASKS</h3>
             <div class="topnav-right">
-                <h6><?php echo $name; ?></h6>
+                <h6><?php echo $first_name; ?></h6>
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
 
             </div>

@@ -23,7 +23,6 @@ class User extends CI_Controller {
 	}
 
 	public function signup() {
-		print_r($_POST);
 		$firstName = $_POST['firstName'];
 		$lastName = $_POST['lastName'];
 		$email = $_POST['email'];
@@ -31,17 +30,21 @@ class User extends CI_Controller {
 
 		$this->users_model->signup($firstName, $lastName, $email, $password);
 		header('location:'.base_url().$this->index());
+
 	}
 
 	public function login(){
 		//load session library
-		$this->load->library('session');
+		// $this->load->library('session');
+		// $this->form_validation->set_rules('email', 'Email', 'required');
+		// $this->form_validation->set_rules('password', 'Password', 'required');
+
 
 		$email = $_POST['email'];
 		$password = $_POST['password']; 
 
 		$data = $this->users_model->login($email, $password);
-
+		
 		if($email=='email' && $password=='password'){
 			$this->session->set_userdata('user', $data);
 //			redirect('dashboard_HR');
@@ -71,25 +74,23 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function logout(){
+	public function logout(){ 
 		//load session library
 		$this->load->library('session');
 		$this->session->unset_userdata('user');
 		redirect('/');
 	}
 
-    /**
-     *
-     */
-    public function addTask(){
+   
+	public function addTask(){
+		// $weekS = $_POST['week_start'];
+		//  $weekE = $_POST['week_end'];
 
-			 $this->load->library('session');
-       $data['projects']=$this->users_model->fetch_projects();
+		// $project = $_POST['project'];
 
-        // $fetch_projects=$this->queries->fetch_projects();
-
-	    // $this->load->view('addTask',['fetch_projects'->$fetch_projects]);
-    }
+		// $this->users_model->addTask($project);
+		$this->load->view('addTask');
+	}
 
     public function viewTask(){
         $this->load->library('session');
