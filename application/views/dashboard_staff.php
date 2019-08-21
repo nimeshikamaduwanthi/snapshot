@@ -133,23 +133,23 @@ extract($user);
             <h6><?php echo $first_name; ?></h6>
         </div>
         <div class="topnav-rightL">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right"> Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right; background:#1F618D;"> Logout</a>
         </div>
     </div>
 
 
     <div class="sidenav">
         <a href="#Dashboard">Dashboard</a>
-        <a href="#Tasks">Tasks</a>
-        <a href="#Projects">Projects</a>
+        <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">Tasks</a>
+        <a href="<?php echo base_url(); ?>index.php/user/ViewWeekly">Projects</a>
         <a href="#Profile">Profile</a>
     </div>
 
 </div>
 
-<div class="direct-links">
-    <a href="<?php echo base_url(); ?>index.php/user/addTask" >Add Snapshot</a>
-    <a href="<?php echo base_url(); ?>index.php/user/ViewTask">View Snapshot</a>
-</div>
+<!-- <div class="direct-links">
+    <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex" >Add Snapshot</a>
+    <a href="<?php echo base_url(); ?>index.php/user/viewTasks">View Snapshot</a>
+</div> -->
 </body>
 </html>

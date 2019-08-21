@@ -25,23 +25,31 @@
 			$this->db->insert('users', $userData);
 		}
 		
-		public function addtask() {
-
-			// $addtaskProject = array(
-			// 	'project_name'=>$project
-			// );
-			// $this->db->insert('projects', $addtaskData);
+		public function saveWeeks($data) {
+			$this->db->insert('weeks', $data);
+			return $this->db->insert_id();
 		}
 
-		// function fetch_projects()
-    //     {
+		public function saveProject($data) {
+			$this->db->insert('projects', $data);
+			return $this->db->insert_id();
+		}
 
-    //         // $this->db->order_by('Pname','ASC');
-    //         $query = $this->db->get('projects');
-    //         if ($query->num_rows() > 0) {
-    //             return $query->result();
-    //         }
-    //     }
+		public function saveTask($data) {
+			$this->db->insert('tasks', $data);
+			return $this->db->insert_id();
+		}
 
+		public function viewTasks() {
+			$query = $this->db->get('tasks');
+			return $query->result_array();
+
+			$query = $this->db->get('weeks');
+			return $query->result_array();
+			// $query = $this->db->get('project_name');
+			// return $query->result_array();
+		}
+
+		
 	}
 ?>

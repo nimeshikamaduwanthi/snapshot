@@ -15,7 +15,8 @@ class User extends CI_Controller {
 
 		//restrict users to go back to login if session has been set
 		if($this->session->userdata('user')){
-			redirect('home');
+			// redirect('addTask');
+			$this->load->view('addTask');
 		}
 		else{
 			$this->load->view('login_page');
@@ -34,12 +35,6 @@ class User extends CI_Controller {
 	}
 
 	public function login(){
-		//load session library
-		// $this->load->library('session');
-		// $this->form_validation->set_rules('email', 'Email', 'required');
-		// $this->form_validation->set_rules('password', 'Password', 'required');
-
-
 		$email = $_POST['email'];
 		$password = $_POST['password']; 
 
@@ -81,31 +76,85 @@ class User extends CI_Controller {
 		redirect('/');
 	}
 
-   
+	
+
 	public function addTask(){
-		// $weekS = $_POST['week_start'];
-		//  $weekE = $_POST['week_end'];
+		$weeks = array(
+			'week_start' => $this->input->post('weekStart'),
+			'week_end' => $this->input->post('weekEnd')
+		);
+
+		$this->users_model->saveWeeks($weeks);
+
+		// $project =  array(
+		// 	'project_name' => $this->input->post('project'),
+		// 	'archive' => false
+		// );
+		// $savedProjectId = $this->users_model->saveProject($project);
+
+		$task = array(
+			'task' => $this->input->post('tasks'),
+			'planned_effort' => $this->input->post('planned_effort'),
+			'planned_start_date' => $this->input->post('planned_start_date'),
+			'planned_end_date' => $this->input->post('planned_end_date'),
+			'mon_p' => $this->input->post('mon_p'),
+			'mon_a' => $this->input->post('mon_a'),
+			'tue_p' => $this->input->post('tue_p'),
+			'tue_a' => $this->input->post('tue_a'),
+			'wen_p' => $this->input->post('wen_p'),
+			'wen_a' => $this->input->post('wen_a'),
+			'thu_p' => $this->input->post('thu_p'),
+			'thu_a' => $this->input->post('thu_a'),
+			'fri_p' => $this->input->post('fri_p'),
+			'fri_a' => $this->input->post('fri_a'),
+			'sat_p' => $this->input->post('sat_p'),
+			'sat_a' => $this->input->post('sat_a'),
+			'sun_p' => $this->input->post('sun_p'),
+			'sun_a' => $this->input->post('sun_a'),
+			'project_id' => $this->input->post('project'),
+		);
 		
+		$data['$tasks'] = $this->users_model->viewTasks();
+		$this->users_model->saveTask($task);
 
-		// $project = $_POST['project'];
+		$this->load->view('addTask');
+	
+	}
 
-		// $this->users_model->addTask($project);
+	public function addTaskIndex() {
 		$this->load->view('addTask');
 	}
 
-    public function viewTask(){
-        $this->load->library('session');
-        $this->load->view('viewTask');
-    }
+	public function fetchProjects(){
+		$data['tasks'] = $this->users_model->fetchProjects();
+		$this->load->view('viewTask', $data);
+	}
 
-    public function viewWeekly(){
-        $this->load->library('session');
-        $this->load->view('viewWeekly');
-    }
+	public function project(){
+		$project = array(
+			'code' => $this->input->post('code'),
+			'project_name' => $this->input->post('project_name'),
+			'start_date' => $this->input->post('start_date'),
+			'end_date' => $this->input->post('end_date')
+		);
+		$this->users_model->saveProject($project);
+		$this->load->view('ViewWeekly');
+	}
 
-//    public function fetch_projects(){
-//
-//        $this->load->view();
-//    }
+	public function viewTasks(){
+		
+		//$this->load->view('viewTask', $data);
+		
+		// $data['project_name'] = $this->users_model->viewTasks();
+		$this->load->view('viewTask', $data);
+	}
 
+	public function dropdown() {
+		$this->loda->view('addTask');
+	}
+
+	public function viewWeekly(){
+		$this->load->library('session');
+		$this->load->view('viewWeekly');
+	}
 }

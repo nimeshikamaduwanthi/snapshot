@@ -5,7 +5,7 @@
 	<title>SNAPSHOT - SL ROBOTICS</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css">
 </head> 
-<body style="background: #E6E6FA;">
+<body style="background:#FBFCFC">
 
 
 <div class="container" style="float:left; width:50%; margin-top: 100px;" >

@@ -111,14 +111,13 @@ extract($user);
             <h3>VIEW TASKS</h3>
             <div class="topnav-right">
                 <h6><?php echo $first_name; ?></h6>
-                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
-
+                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;" >Logout</a>
             </div>
         </div>
     </div>
 
     <div class="back">
-        <button a href="#back">Back</a></button>
+        <button a href="#back" style="background:#1F618D;">Back</a></button>
     </div>
 
 
@@ -128,11 +127,12 @@ extract($user);
     <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;" >
         <thead>
         <tr>
-            <th rowspan="3" class="text-center">Week</th>
-            <th rowspan="3" class="text-center">Project</th>
+            <!-- <th rowspan="3" class="text-center">Week</th> -->
+            <th rowspan="3" class="text-center">Project</th> 
             <th rowspan="3" class="text-center">Tasks</th>
             <th rowspan="3" class="text-center">Planned Effort</th>
-            <th rowspan="3" class="text-center">Planned End</th>
+            <th rowspan="3" class="text-center">Planned start date</th>
+            <th rowspan="3" class="text-center">Planned end date</th>
             <th colspan="2" class="text-center">Mon </th>
             <th colspan="2" class="text-center">Tue</th>
             <th colspan="2" class="text-center">Wen</th>
@@ -142,8 +142,8 @@ extract($user);
             <th colspan="2" class="text-center">Sun</th>
             <th rowspan="3" class="text-center">Total Planned hrs</th>
             <th rowspan="3" class="text-center">Total Actual hrs</th>
-            <th rowspan="2" class="text-center">options</th>
-<!--            <th> <span style="float:right"><button id="but_add">ADD</button></span></th>-->
+            <!-- <th rowspan="2" class="text-center">options</th>
+           <th> <span style="float:right"><button id="but_add">ADD</button></span></th> -->
         </tr>
 
         <tr>
@@ -166,42 +166,34 @@ extract($user);
 
         </thead>
         <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-
-
-
-
-        </tr>
-
-
+				 <!-- <?php foreach ($tasks as $task): ?>
+					<tr>
+						<td><?php echo $task['project_name']; ?></td>
+						<td><?php echo $task['task']; ?></td>
+						<td><?php echo $task['planned_effort']; ?></td>
+						<td><?php echo $task['planned_start_date']; ?></td>
+						<td><?php echo $task['planned_end_date']; ?></td>
+						<td><?php echo $task['mon_p']; ?></td>
+						<td><?php echo $task['mon_a']; ?></td>
+						<td><?php echo $task['tue_p']; ?></td>
+						<td><?php echo $task['tue_a']; ?></td>
+						<td><?php echo $task['wen_p']; ?></td>
+						<td><?php echo $task['wen_a']; ?></td>
+						<td><?php echo $task['thu_p']; ?></td>
+						<td><?php echo $task['thu_a']; ?></td>
+						<td><?php echo $task['fri_p']; ?></td>
+						<td><?php echo $task['fri_a']; ?></td>
+						<td><?php echo $task['sat_p']; ?></td>
+						<td><?php echo $task['sat_a']; ?></td>
+						<td><?php echo $task['sun_p']; ?></td>
+						<td><?php echo $task['sun_a']; ?></td>
+					</tr> -->
+				<?php endforeach ?> -->
         </tbody>
     </table>
 </div>
 
-<script>
+<!-- <script>
     $('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-</script>
-
-
+</script> -->
+                  
