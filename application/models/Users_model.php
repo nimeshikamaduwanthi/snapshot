@@ -44,8 +44,8 @@
 			$query = $this->db->get('tasks');
 			return $query->result_array();
 
-			$query = $this->db->get('weeks');
-			return $query->result_array();
+			// $query = $this->db->get('weeks');
+			// return $query->result_array();
 			// $query = $this->db->get('project_name');
 			// return $query->result_array();
 		}

@@ -79,18 +79,12 @@ class User extends CI_Controller {
 	
 
 	public function addTask(){
-		$weeks = array(
-			'week_start' => $this->input->post('weekStart'),
-			'week_end' => $this->input->post('weekEnd')
-		);
-
-		$this->users_model->saveWeeks($weeks);
-
-		// $project =  array(
-		// 	'project_name' => $this->input->post('project'),
-		// 	'archive' => false
+		// $weeks = array(
+		// 	'week_start' => $this->input->post('weekStart'),
+		// 	'week_end' => $this->input->post('weekEnd')
 		// );
-		// $savedProjectId = $this->users_model->saveProject($project);
+
+		// $this->users_model->saveWeeks($weeks);
 
 		$task = array(
 			'task' => $this->input->post('tasks'),
@@ -114,17 +108,25 @@ class User extends CI_Controller {
 			'project_id' => $this->input->post('project'),
 		);
 		
-		$data['$tasks'] = $this->users_model->viewTasks();
+		// $data['$tasks'] = $this->users_model->viewTasks();
 		$this->users_model->saveTask($task);
 
-		$this->load->view('addTask');
+		$data['tasks'] = $this->users_model->viewTasks();
+		$this->load->view('addTask', $data);
+	}
+
+	public function addTaskIndex() {		
+		$data['tasks'] = $this->users_model->viewTasks();
+		$this->load->view('addTask', $data);
+	}
+
+	// public function viewTasks(){
+	// 	//$this->load->view('viewTask', $data);
+		
+	// 	$data['tasks'] = $this->users_model->viewTasks();
+	// 	$this->load->view('addTask', $data);
+	// }
 	
-	}
-
-	public function addTaskIndex() {
-		$this->load->view('addTask');
-	}
-
 	public function fetchProjects(){
 		$data['tasks'] = $this->users_model->fetchProjects();
 		$this->load->view('viewTask', $data);
@@ -139,14 +141,6 @@ class User extends CI_Controller {
 		);
 		$this->users_model->saveProject($project);
 		$this->load->view('ViewWeekly');
-	}
-
-	public function viewTasks(){
-		
-		//$this->load->view('viewTask', $data);
-		
-		// $data['project_name'] = $this->users_model->viewTasks();
-		$this->load->view('viewTask', $data);
 	}
 
 	public function dropdown() {

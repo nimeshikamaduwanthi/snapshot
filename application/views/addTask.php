@@ -281,118 +281,110 @@ $user = $this->session->userdata('user');
         color:#000;
 
     }
-
 </style>
 
 <body>
-
-
-
 <div class="card">
-
-    <div class="navbar">
-        <div class="topnav">
-            <h3>TASKS</h3>
-            <div class="topnav-right">
-                <h6><?php echo $first_name; ?></h6>
-                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;">Logout</a>
-
-            </div>
-    </div>
+	<div class="navbar">
+		<div class="topnav">
+				<h3>TASKS</h3>
+				<div class="topnav-right">
+					<h6><?php echo $first_name; ?></h6>
+					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;">Logout</a>
+				</div>
+		</div>
 
     <div class="cal">
-				<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#1F618D;" >Back</a></button>
-        <br><br><br>
+			<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#1F618D;" >Back</a></button>
+			<br><br><br>
 		<form action="addTask" method='POST'>
-        <table id="week" style="width:70%; margin: auto; height: 20%;">
-            <th> <h4>Select the Week</h4>
-                <label class="start" for="start">Start date</label>
-                <input type="date" name="weekStart">
+			<table id="week" style="width:70%; margin: auto; height: 20%;">
+				<th> <h4>Select the Week</h4>
+					<label class="start" for="start">Start date</label>
+					<input type="date" name="weekStart">
 
-                <label class="end" for="end">End date</label>
-                <input type="date" name="weekEnd">
-            </th>
-        </table>
+					<label class="end" for="end">End date</label>
+					<input type="date" name="weekEnd">
+				</th>
+			</table>
     </div>
-
-
 
     <br><br><br>
     <div style="width:90%; margin: auto;">
     <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;" >
-					<thead>
-					<tr>
-						<th rowspan="3" class="text-center">Project</th>
-						<th rowspan="3" class="text-center">Task</th>
-						<th rowspan="3" class="text-center">Planned Effort</th>
-						<th rowspan="3" class="text-center">Planned start date</th>
-						<th rowspan="3" class="text-center">Planned end date</th>
-						<th colspan="2" class="text-center">Mon </th>
-						<th colspan="2" class="text-center">Tue</th>
-						<th colspan="2" class="text-center">Wen</th>
-						<th colspan="2" class="text-center">Thu </th>
-						<th colspan="2" class="text-center">Fri</th>
-						<th colspan="2" class="text-center">Sat</th>
-						<th colspan="2" class="text-center">Sun</th>
-						<th rowspan="3" class="text-center">Total Planned hrs</th>
-						<th rowspan="3" class="text-center">Total Actual hrs</th>
-						<td><button id="but_add">ADD</button></td>
-						<!-- <th rowspan="2" class="text-center">options</th> -->
-						<!-- <th> <button id="but_add">ADD</button></th> -->
-					</tr>
+			<thead>
+				<tr>
+					<th rowspan="3" class="text-center">Project</th>
+					<th rowspan="3" class="text-center">Task</th>
+					<th rowspan="3" class="text-center">Planned Effort</th>
+					<th rowspan="3" class="text-center">Planned start date</th>
+					<th rowspan="3" class="text-center">Planned end date</th>
+					<th colspan="2" class="text-center">Mon </th>
+					<th colspan="2" class="text-center">Tue</th>
+					<th colspan="2" class="text-center">Wen</th>
+					<th colspan="2" class="text-center">Thu </th>
+					<th colspan="2" class="text-center">Fri</th>
+					<th colspan="2" class="text-center">Sat</th>
+					<th colspan="2" class="text-center">Sun</th>
+					<th rowspan="3" class="text-center">Total Planned hrs</th>
+					<th rowspan="3" class="text-center">Total Actual hrs</th>
+					<td><button id="but_add">ADD</button></td>
+					<!-- <th rowspan="2" class="text-center">options</th> -->
+					<!-- <th> <button id="but_add">ADD</button></th> -->
+				</tr>
 
-					<tr>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-						<th>P</th>
-						<th>A</th>
-					</tr>
-					</thead>
+				<tr>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+				</tr>
+			</thead>
 
 			<tbody>
-					<tr >
-            <td >
-              <select name="project" id="projects">
-								<option value="1">pro 1</option>
-								<option value="2">pro 2</option>
-								<option value="3">pro 3</option>
-              </select>
-            </td>
-						<td><input type="text" name="tasks" class="form-control input-sm"></td> 
-						<td><input type="text" name="planned_effort"  class="form-control input-sm"></td> 
-						<td><input type="text" name="planned_start_date"  class="form-control input-sm"></td> 
-						<td><input type="text" name="planned_end_date"  class="form-control input-sm"></td> 
-						<td><input type="text" name="mon_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="mon_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="tue_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="tue_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="wen_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="wen_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="thu_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="thu_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="fri_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="fri_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="sat_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="sat_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="sun_p"  class="form-control input-sm"></td> 
-						<td><input type="text" name="sun_a"  class="form-control input-sm"></td> 
-						<td><input type="text" name="total_planned"  class="form-control input-sm"></td> 
-            <td><input type="text" name="tatal_actual"  class="form-control input-sm"></td> 
-					</tr>
-				
+				<tr >
+					<td >
+						<select name="project" id="projects">
+							<option value="1">pro 1</option>
+							<option value="2">pro 2</option>
+							<option value="3">pro 3</option>
+						</select>
+					</td>
+					<td><input type="text" name="tasks" class="form-control input-sm"></td> 
+					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td> 
+					<td><input type="text" name="planned_start_date"  class="form-control input-sm"></td> 
+					<td><input type="text" name="planned_end_date"  class="form-control input-sm"></td> 
+					<td><input type="text" name="mon_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="mon_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="tue_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="tue_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="wen_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="wen_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="thu_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="thu_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="fri_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="fri_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="sat_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="sat_a"  class="form-control input-sm"></td> 
+					<td><input type="text" name="sun_p"  class="form-control input-sm"></td> 
+					<td><input type="text" name="sun_a"  class="form-control input-sm"></td> 
+					<!-- <td><input type="text" name="total_planned"  class="form-control input-sm"></td> 
+					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td>  -->
+				</tr>
+			
+				<?php foreach ($tasks as $task): ?>
 					<tr>
-					<?php foreach ($tasks as $task): ?>
-						<td><?php echo $task['project_name']; ?></td>
+						<td><?php echo $task['project_id']; ?></td>
 						<td><?php echo $task['task']; ?></td>
 						<td><?php echo $task['planned_effort']; ?></td>
 						<td><?php echo $task['planned_start_date']; ?></td>
@@ -411,20 +403,18 @@ $user = $this->session->userdata('user');
 						<td><?php echo $task['sat_a']; ?></td>
 						<td><?php echo $task['sun_p']; ?></td>
 						<td><?php echo $task['sun_a']; ?></td>
-					<?php endforeach ?> 
-				</tr>
-                        
-					
-			</tbody> 
-           
-		</table>
-					<div class = "savebtn">
-						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  float: right;" >
-					</div>
-	</form>
+					</tr>		
+				<?php endforeach ?> 							
+		</tbody> 
+	</table>
 
-    <script>
-        $('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-    </script>
+	<div class = "savebtn">
+		<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  float: right;" >
+	</div>
+</form>
+
+<script>
+	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
+</script>
 
  

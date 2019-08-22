@@ -182,7 +182,7 @@ $user = $this->session->userdata('user');
         margin-left: 30px;
         font-size: 20px;
     }
-    .cal table{
+    /* .cal table{
         border-color: #0b0c0f;
         border: 2px solid black;
         margin-top: 40px;
@@ -190,7 +190,7 @@ $user = $this->session->userdata('user');
 
 
         /*border-collapse: collapse;*/
-    }
+    /* } */ 
     .cal th  .start{
         margin-top:50px ;
         color: #000;
@@ -231,7 +231,7 @@ $user = $this->session->userdata('user');
         color:#000;
 
     }
-    .submit a{
+    /* .submit a{
         padding:10px;
         font-size: 15px;
         background:forestgreen;
@@ -243,7 +243,7 @@ $user = $this->session->userdata('user');
         margin-right: 160px;
 
 
-    }
+    } */
 
     .submit a:hover{
         background: #d58512;
@@ -275,26 +275,21 @@ $user = $this->session->userdata('user');
 </style>
 
 <body>
-
-
-
 <div class="card">
-
-    <div class="navbar">
+<div class="navbar">
         <div class="topnav">
             <h3>PROJECTS</h3>
             <div class="topnav-right">
                 <h6><?php echo $first_name; ?></h6>
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;">Logout</a>
-
             </div>
-    </div>
+    		</div>
 
     <div class="cal">
 				<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#1F618D;" >Back</a></button>
         <br><br><br>
 				<form action="ViewWeekly" method='POST'>
-        <table class="table table-bordered" id="makeEditable" style=" width:70% " >
+        <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
             <th rowspan="3" class="text-center">Code</th> 
@@ -314,9 +309,12 @@ $user = $this->session->userdata('user');
         </tr>   
 				</tbody>
 				</table>
-				<div class = "savebtn">
-						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  " >
-					</div>
+				<div style="padding-right: 100px;">
+						<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  " >
+				</div>
+		</div>
+	</div>
+	</div>
 			</form>
 		<script>
     	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
