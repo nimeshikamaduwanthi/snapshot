@@ -20,8 +20,8 @@ extract($user);
 
     .topnav {
         overflow: hidden;
-        background-color:  #5DADE2;
-        background-color:;
+        background-color:  #333;
+        
         padding:5px;
     }
 
@@ -133,17 +133,22 @@ extract($user);
             <h6><?php echo $first_name; ?></h6>
         </div>
         <div class="topnav-rightL">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right; background:#1F618D;"> Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right; background:#D68910;"> Logout</a>
         </div>
     </div>
 
 
-    <div class="sidenav">
-        <a href="#Dashboard">Dashboard</a>
-        <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">Tasks</a>
-        <a href="<?php echo base_url(); ?>index.php/user/ViewWeekly">Projects</a>
-        <a href="#Profile">Profile</a>
-    </div>
+			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
+					<li><a href="#Profile">Profile</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">Tasks</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/projectsIndex">Projects</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/dashboard_staff">Dashboard</a></li>
+			</div>
+
+			<div class="container2">
+				<img src="./sl.png" width="50%">
+			</div>
+    
 
 </div>
 

@@ -9,7 +9,7 @@
 ?>
 <?php
 $user = $this->session->userdata('user');
-    extract($user);
+extract($user);
 ?>
 
 <title>ADD TASKS</title>
@@ -136,7 +136,7 @@ $user = $this->session->userdata('user');
 
     .topnav {
         /*overflow: hidden;*/
-        background-color: #5DADE2;
+        background-color: #333;
         padding:5px;
 
     }
@@ -290,12 +290,12 @@ $user = $this->session->userdata('user');
 				<h3>TASKS</h3>
 				<div class="topnav-right">
 					<h6><?php echo $first_name; ?></h6>
-					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;">Logout</a>
+					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
 				</div>
 		</div>
 
     <div class="cal">
-			<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#1F618D;" >Back</a></button>
+			<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#D68910;" >Back</a></button>
 			<br><br><br>
 		<form action="addTask" method='POST'>
 			<table id="week" style="width:70%; margin: auto; height: 20%;">
@@ -328,7 +328,9 @@ $user = $this->session->userdata('user');
 					<th colspan="2" class="text-center">Sun</th>
 					<th rowspan="3" class="text-center">Total Planned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th>
-					<td><button id="but_add">ADD</button></td>
+					<div class = "savebtn">
+						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;" >
+					</div>
 					<!-- <th rowspan="2" class="text-center">options</th> -->
 					<!-- <th> <button id="but_add">ADD</button></th> -->
 				</tr>
@@ -360,28 +362,28 @@ $user = $this->session->userdata('user');
 							<option value="3">pro 3</option>
 						</select>
 					</td>
-					<td><input type="text" name="tasks" class="form-control input-sm"></td> 
-					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td> 
-					<td><input type="text" name="planned_start_date"  class="form-control input-sm"></td> 
-					<td><input type="text" name="planned_end_date"  class="form-control input-sm"></td> 
-					<td><input type="text" name="mon_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="mon_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="tue_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="tue_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="wen_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="wen_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="thu_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="thu_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="fri_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="fri_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="sat_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="sat_a"  class="form-control input-sm"></td> 
-					<td><input type="text" name="sun_p"  class="form-control input-sm"></td> 
-					<td><input type="text" name="sun_a"  class="form-control input-sm"></td> 
-					<!-- <td><input type="text" name="total_planned"  class="form-control input-sm"></td> 
+					<td><input type="text" name="tasks" class="form-control input-sm"></td>
+					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
+					<td><input type="text" name="planned_start_date"  class="form-control input-sm"></td>
+					<td><input type="text" name="planned_end_date"  class="form-control input-sm"></td>
+					<td><input type="text" name="mon_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="mon_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="tue_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="tue_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="wen_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="wen_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="thu_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="thu_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="fri_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="fri_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="sat_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="sat_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="sun_p"  class="form-control input-sm"></td>
+					<td><input type="text" name="sun_a"  class="form-control input-sm"></td>
+					<!-- <td><input type="text" name="total_planned"  class="form-control input-sm"></td>
 					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td>  -->
 				</tr>
-			
+
 				<?php foreach ($tasks as $task): ?>
 					<tr>
 						<td><?php echo $task['project_id']; ?></td>
@@ -403,18 +405,15 @@ $user = $this->session->userdata('user');
 						<td><?php echo $task['sat_a']; ?></td>
 						<td><?php echo $task['sun_p']; ?></td>
 						<td><?php echo $task['sun_a']; ?></td>
-					</tr>		
-				<?php endforeach ?> 							
-		</tbody> 
+					</tr>
+				<?php endforeach?>
+		</tbody>
 	</table>
 
-	<div class = "savebtn">
-		<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  float: right;" >
-	</div>
+
 </form>
 
 <script>
 	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
 </script>
 
- 

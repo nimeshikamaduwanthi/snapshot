@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-    extract($user);
+extract($user);
 ?>
 
 <title>PROJECT</title>
@@ -126,12 +126,12 @@ $user = $this->session->userdata('user');
 
     .topnav {
         /*overflow: hidden;*/
-        background-color: #5DADE2;
+        background-color: #333;
         padding:5px;
 
     }
     .topnav h3{
-        color: #fff;
+        color:#fff;
         text-align: center;
         padding-top: 10px;
     }
@@ -190,7 +190,7 @@ $user = $this->session->userdata('user');
 
 
         /*border-collapse: collapse;*/
-    /* } */ 
+    /* } */
     .cal th  .start{
         margin-top:50px ;
         color: #000;
@@ -281,22 +281,22 @@ $user = $this->session->userdata('user');
             <h3>PROJECTS</h3>
             <div class="topnav-right">
                 <h6><?php echo $first_name; ?></h6>
-                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#1F618D;">Logout</a>
+                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
             </div>
     		</div>
 
     <div class="cal">
-				<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#1F618D;" >Back</a></button>
+				<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#D68910;" >Back</a></button>
         <br><br><br>
-				<form action="ViewWeekly" method='POST'>
+				<form action="addProject" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
-            <th rowspan="3" class="text-center">Code</th> 
+            <th rowspan="3" class="text-center">Code</th>
             <th rowspan="3" class="text-center">Project Name</th>
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th>
-						<!-- <th> <button id="but_add">ADD</button></th> -->
+
         </tr>
         </thead>
         <tbody>
@@ -305,17 +305,25 @@ $user = $this->session->userdata('user');
 						<td><input type="text" name="project_name" class="form-control input-sm"></td>
 						<td><input type="text" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text" name="end_date" class="form-control input-sm"></td>
-						<th><button id="but_add">ADD</button></th>
-        </tr>   
+						<div style="padding-right: 100px;">
+							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
+						</div>
+        </tr>
+				<?php foreach ($projects as $project): ?>
+					<tr>
+						<td><?php echo $project['code']; ?></td>
+						<td><?php echo $project['project_name']; ?></td>
+						<td><?php echo $project['start_date']; ?></td>
+						<td><?php echo $project['end_date']; ?></td>
+						</tr>
+				<?php endforeach?>
 				</tbody>
 				</table>
-				<div style="padding-right: 100px;">
-						<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#1F618D; color: #fff; border-radius: 5px; border: none;  " >
-				</div>
+		</div>
 		</div>
 	</div>
-	</div>
 			</form>
+
 		<script>
     	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
 		</script>
