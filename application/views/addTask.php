@@ -357,9 +357,13 @@ extract($user);
 				<tr >
 					<td >
 						<select name="project" id="projects">
-							<option value="1">pro 1</option>
-							<option value="2">pro 2</option>
-							<option value="3">pro 3</option>
+							<option value=''>Select Project</option>
+
+							<?php foreach ($projects as $project): ?>
+								<option value=<?php echo $project['id']; ?>>
+									<?php echo $project['project_name']; ?>
+								</option>
+							<?php endforeach?>
 						</select>
 					</td>
 					<td><input type="text" name="tasks" class="form-control input-sm"></td>
@@ -386,7 +390,7 @@ extract($user);
 
 				<?php foreach ($tasks as $task): ?>
 					<tr>
-						<td><?php echo $task['project_id']; ?></td>
+						<td><?php echo $task['project_name']; ?></td>
 						<td><?php echo $task['task']; ?></td>
 						<td><?php echo $task['planned_effort']; ?></td>
 						<td><?php echo $task['planned_start_date']; ?></td>

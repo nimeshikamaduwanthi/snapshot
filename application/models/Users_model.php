@@ -49,12 +49,27 @@ class Users_model extends CI_Model
 
     public function viewTasks()
     {
-        $query = $this->db->get('tasks');
+        $query = $this->db->query(
+            'SELECT T.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
+						T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
+						T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a, P.project_name
+						FROM tasks T LEFT JOIN projects P
+						ON T.project_id = P.id'
+        );
         return $query->result_array();
     }
+
     public function getProjects()
     {
         $query = $this->db->get('projects');
+        return $query->result_array();
+    }
+
+    public function getProjectNames()
+    {
+        $this->db->select('id, project_name');
+        $this->db->from('projects');
+        $query = $this->db->get();
         return $query->result_array();
     }
 }

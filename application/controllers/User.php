@@ -81,6 +81,7 @@ class User extends CI_Controller
 
     public function addTaskIndex()
     {
+        $data['projects'] = $this->users_model->getProjectNames();
         $data['tasks'] = $this->users_model->viewTasks();
         $this->load->view('addTask', $data);
     }
@@ -118,6 +119,7 @@ class User extends CI_Controller
 
         $this->users_model->saveTask($task);
 
+        $data['projects'] = $this->users_model->getProjectNames();
         $data['tasks'] = $this->users_model->viewTasks();
         $this->load->view('addTask', $data);
     }
