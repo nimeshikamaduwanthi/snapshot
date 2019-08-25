@@ -119,9 +119,7 @@ class User extends CI_Controller
 
         $this->users_model->saveTask($task);
 
-        $data['projects'] = $this->users_model->getProjectNames();
-        $data['tasks'] = $this->users_model->viewTasks();
-        $this->load->view('addTask', $data);
+        redirect('user/addTaskIndex');
     }
 
     public function projectsIndex()
@@ -145,8 +143,8 @@ class User extends CI_Controller
         $this->load->view('ViewWeekly', $data);
     }
 
-    public function dropdown()
-    {
-        $this->loda->view('addTask');
-    }
+    // public function dropdown()
+    // {
+    //     $this->loda->view('addTask');
+    // }
 }

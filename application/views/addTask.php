@@ -357,8 +357,6 @@ extract($user);
 				<tr >
 					<td >
 						<select name="project" id="projects">
-							<option value=''>Select Project</option>
-
 							<?php foreach ($projects as $project): ?>
 								<option value=<?php echo $project['id']; ?>>
 									<?php echo $project['project_name']; ?>
