@@ -9,6 +9,9 @@ extract($user);
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
@@ -272,58 +275,35 @@ extract($user);
 
     }
 
+
+
 </style>
 
 <body>
 <div class="card">
 <div class="navbar">
         <div class="topnav">
-            <h3>PROJECTS</h3>
+            <h3>PROFILE</h3>
             <div class="topnav-right">
-                <h6><?php echo $first_name; ?></h6>
+                <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
             </div>
-    		</div>
+        </div>
 
-    <div class="cal">
-				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
-        <br><br><br>
-				<form action="addProject" method='POST'>
-        <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
-        <thead>
-        <tr>
-            <th rowspan="3" class="text-center">Code</th>
-            <th rowspan="3" class="text-center">Project Name</th>
-            <th rowspan="3" class="text-center">Start Date</th>
-						<th rowspan="3" class="text-center">End Date</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-						<td><input type="text" name="code" class="form-control input-sm"></td>
-						<td><input type="text" name="project_name" class="form-control input-sm"></td>
-						<td><input type="text" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" name="end_date" class="form-control input-sm"></td>
-						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
-						</div>
-        </tr>
-				<?php foreach ($projects as $project): ?>
-					<tr>
-						<td><?php echo $project['code']; ?></td>
-						<td><?php echo $project['project_name']; ?></td>
-						<td><?php echo $project['start_date']; ?></td>
-						<td><?php echo $project['end_date']; ?></td>
-						</tr>
-				<?php endforeach?>
-				</tbody>
-				</table>
-		</div>
-		</div>
-	</div>
-			</form>
-
-		<script>
-    	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-		</script>
+      <div class="cal">
+			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
+      <br><br><br>
+      </div>
+											<div class="container" style="text-align:center; float: center; width:50%;" >
+												<div class="col-md-8">
+                           <ul class="list-group">
+                              <li class="list-group-item"><i class="fas fa-user"></i><?php echo $first_name." ".$last_name;  ?></li>
+                              <li class="list-group-item"><i class="fa fa-envelope"></i> <?php echo $email; ?></li>
+															<li class="list-group-item"><input  placeholder="Department"></li>
+                              <li class="list-group-item"><input placeholder="Phone Number"></li>
+                           </ul>
+                        </div>
+											</div>
+                     
+        	    				<button type="submit" class="btn btn-primary" style="float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;">Update</button>
+        	

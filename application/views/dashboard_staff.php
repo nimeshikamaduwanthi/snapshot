@@ -139,15 +139,12 @@ extract($user);
 
 
 			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
-					<li><a href="#Profile">Profile</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">Tasks</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">addSnapshot</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/user/projectsIndex">Projects</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/user/dashboard_staff">Dashboard</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/taskIndex">Task</a></li>
 			</div>
 
-			<div class="container2">
-				<img src="./sl.png" width="50%">
-			</div>
     
 
 </div>

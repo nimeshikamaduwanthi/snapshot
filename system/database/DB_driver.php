@@ -209,7 +209,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Queries list
 	 *
-	 * @see	CI_DB_driver::$save_queries
+	 * @see	CI_::$save_queries
 	 * @var	string[]
 	 */
 	public $queries			= array();
@@ -347,7 +347,7 @@ abstract class CI_DB_driver {
 	/**
 	 * COUNT string
 	 *
-	 * @used-by	CI_DB_driver::count_all()
+	 * @used-by	CI_::count_all()
 	 * @used-by	CI_DB_query_builder::count_all_results()
 	 *
 	 * @var	string

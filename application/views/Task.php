@@ -3,7 +3,7 @@ $user = $this->session->userdata('user');
 extract($user);
 ?>
 
-<title>PROJECT</title>
+<title>TASK</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 
@@ -278,7 +278,7 @@ extract($user);
 <div class="card">
 <div class="navbar">
         <div class="topnav">
-            <h3>PROJECTS</h3>
+            <h3>TASK</h3>
             <div class="topnav-right">
                 <h6><?php echo $first_name; ?></h6>
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
@@ -288,12 +288,12 @@ extract($user);
     <div class="cal">
 				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
         <br><br><br>
-				<form action="addProject" method='POST'>
+				<form action="addNewTask" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
-            <th rowspan="3" class="text-center">Code</th>
             <th rowspan="3" class="text-center">Project Name</th>
+            <th rowspan="3" class="text-center">Task Name</th>
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th>
 
@@ -301,20 +301,28 @@ extract($user);
         </thead>
         <tbody>
         <tr>
-						<td><input type="text" name="code" class="form-control input-sm"></td>
-						<td><input type="text" name="project_name" class="form-control input-sm"></td>
+        <td >
+						<select name="project" id="projects">
+							<?php foreach ($projects as $project): ?>
+								<option value=<?php echo $project['id']; ?>>
+									<?php echo $project['project_name']; ?>
+								</option>
+							<?php endforeach?>
+						</select>
+					</td>
+						<td><input type="text" name="task_name" class="form-control input-sm"></td>
 						<td><input type="text" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text" name="end_date" class="form-control input-sm"></td>
 						<div style="padding-right: 100px;">
 							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>
         </tr>
-				<?php foreach ($projects as $project): ?>
+				<?php foreach ($task_names as $newTask): ?>
 					<tr>
-						<td><?php echo $project['code']; ?></td>
-						<td><?php echo $project['project_name']; ?></td>
-						<td><?php echo $project['start_date']; ?></td>
-						<td><?php echo $project['end_date']; ?></td>
+            <td><?php echo $newTask['project_name']; ?></td>
+						<td><?php echo $newTask['task_name']; ?></td>
+						<td><?php echo $newTask['start_date']; ?></td>
+						<td><?php echo $newTask['end_date']; ?></td>
 						</tr>
 				<?php endforeach?>
 				</tbody>

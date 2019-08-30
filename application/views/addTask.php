@@ -12,7 +12,7 @@ $user = $this->session->userdata('user');
 extract($user);
 ?>
 
-<title>ADD TASKS</title>
+<title>ADD SNAPSHOT</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 
@@ -287,7 +287,7 @@ extract($user);
 <div class="card">
 	<div class="navbar">
 		<div class="topnav">
-				<h3>TASKS</h3>
+				<h3>ADD SNAPSHOT</h3>
 				<div class="topnav-right">
 					<h6><?php echo $first_name; ?></h6>
 					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
@@ -295,7 +295,7 @@ extract($user);
 		</div>
 
     <div class="cal">
-			<button a href="<?php echo base_url(); ?>index.php/user/dashboard_staff" style="background:#D68910;" >Back</a></button>
+			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
 			<br><br><br>
 		<form action="addTask" method='POST'>
 			<table id="week" style="width:70%; margin: auto; height: 20%;">
@@ -326,8 +326,8 @@ extract($user);
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<th rowspan="3" class="text-center">Total Planned hrs</th>
-					<th rowspan="3" class="text-center">Total Actual hrs</th>
+					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
+					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
 					<div class = "savebtn">
 						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;" >
 					</div>
@@ -364,7 +364,15 @@ extract($user);
 							<?php endforeach?>
 						</select>
 					</td>
-					<td><input type="text" name="tasks" class="form-control input-sm"></td>
+					<td >
+						<select name="task_name" id="task_names">
+							<?php foreach ($task_names as $task_name): ?>
+								<option value=<?php echo $task_name['id']; ?>>
+									<?php echo $task_name['task_name']; ?>
+								</option>
+							<?php endforeach?>
+						</select>
+					</td>
 					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
 					<td><input type="text" name="planned_start_date"  class="form-control input-sm"></td>
 					<td><input type="text" name="planned_end_date"  class="form-control input-sm"></td>
@@ -389,7 +397,7 @@ extract($user);
 				<?php foreach ($tasks as $task): ?>
 					<tr>
 						<td><?php echo $task['project_name']; ?></td>
-						<td><?php echo $task['task']; ?></td>
+						<td><?php echo $task['task_name']; ?></td>
 						<td><?php echo $task['planned_effort']; ?></td>
 						<td><?php echo $task['planned_start_date']; ?></td>
 						<td><?php echo $task['planned_end_date']; ?></td>

@@ -1,4 +1,4 @@
-<?php
+ <?php
 $user = $this->session->userdata('user');
 extract($user);
 ?>
@@ -151,4 +151,4 @@ extract($user);
     <a href="#View_Monthly_Snapshot">View Monthly Snapshot</a>
 </div>
 </body>
-</html>
+</html> 

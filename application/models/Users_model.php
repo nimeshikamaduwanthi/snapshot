@@ -29,11 +29,11 @@ class Users_model extends CI_Model
         $this->db->insert('users', $userData);
     }
 
-    public function saveWeeks($data)
-    {
-        $this->db->insert('weeks', $data);
-        return $this->db->insert_id();
-    }
+    // public function saveWeeks($data)
+    // {
+    //     $this->db->insert('weeks', $data);
+    //     return $this->db->insert_id();
+    // }
 
     public function saveProject($data)
     {
@@ -47,14 +47,22 @@ class Users_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function saveAddTask($data)
+    {
+        $this->db->insert('task_names', $data);
+        return $this->db->insert_id();
+    }
+
     public function viewTasks()
     {
+
         $query = $this->db->query(
-            'SELECT T.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
+            'SELECT P.project_name, TN.task_name, T.planned_effort, T.planned_start_date, T.planned_end_date,
 						T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
-						T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a, P.project_name
-						FROM tasks T LEFT JOIN projects P
-						ON T.project_id = P.id'
+						T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
+						FROM projects P, tasks T, task_names TN
+						WHERE P.id = T.project_id
+						AND TN.id = T.task_name_id'
         );
         return $query->result_array();
     }
@@ -71,5 +79,24 @@ class Users_model extends CI_Model
         $this->db->from('projects');
         $query = $this->db->get();
         return $query->result_array();
+    } 
+
+    public function getTask()
+    {
+        $query = $this->db->query(
+					'SELECT P.project_name, TN.task_name, TN.start_date, TN.end_date 
+					FROM projects P, task_names TN 
+					WHERE TN.project_id = P.id'
+				);
+        return $query->result_array();
     }
+		
+    public function getTaskNames()
+    {
+        $this->db->select('id, task_name');
+        $this->db->from('task_names');
+        $query = $this->db->get();
+        return $query->result_array();
+    } 
+
 }

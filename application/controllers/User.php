@@ -37,14 +37,14 @@ class User extends CI_Controller
 
     }
 
-    public function login()
+    public function login() 
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         $data = $this->users_model->login($email, $password);
-
-        if ($email == 'email' && $password == 'password') {
+				
+        if ($email == 'email' && $encripted_pass == 'password') {
             $this->session->set_userdata('user', $data);
 //            redirect('dashboard_HR');
             $this->load->view('dashboard_HR');
@@ -82,21 +82,22 @@ class User extends CI_Controller
     public function addTaskIndex()
     {
         $data['projects'] = $this->users_model->getProjectNames();
+        $data['task_names'] = $this->users_model->getTaskNames();
         $data['tasks'] = $this->users_model->viewTasks();
         $this->load->view('addTask', $data);
     }
 
     public function addTask()
     {
-        $weeks = array(
-            'week_start' => $this->input->post('weekStart'),
-            'week_end' => $this->input->post('weekEnd'),
-        );
+        // $weeks = array(
+        //     'week_start' => $this->input->post('weekStart'),
+        //     'week_end' => $this->input->post('weekEnd'),
+        // );
 
-        $this->users_model->saveWeeks($weeks);
+        // $this->users_model->saveWeeks($weeks);
 
         $task = array(
-            'task' => $this->input->post('tasks'),
+            'task_name_id' => $this->input->post('task_name'),
             'planned_effort' => $this->input->post('planned_effort'),
             'planned_start_date' => $this->input->post('planned_start_date'),
             'planned_end_date' => $this->input->post('planned_end_date'),
@@ -143,8 +144,34 @@ class User extends CI_Controller
         $this->load->view('ViewWeekly', $data);
     }
 
-    // public function dropdown()
-    // {
-    //     $this->loda->view('addTask');
-    // }
+    public function dashboardIndex()
+    {
+        $this->load->view('dashboard_staff');
+    }
+
+    public function profileIndex() 
+    {
+        $this->load->view('profile');
+    }
+
+    public function taskIndex() 
+    {
+        $data['projects'] = $this->users_model->getProjectNames();
+        $data['task_names'] = $this->users_model->getTask();
+        $this->load->view('Task', $data);
+    }
+
+    public function addNewTask()
+    {
+        $newTask = array(
+            'task_name' => $this->input->post('task_name'),
+            'start_date' => $this->input->post('start_date'),
+            'end_date' => $this->input->post('end_date'),
+            'project_id' => $this->input->post('project'),
+        );
+
+        $this->users_model->saveAddTask($newTask);
+
+        redirect('user/taskIndex');
+    }
 }
