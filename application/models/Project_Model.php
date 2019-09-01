@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 class Project_Model extends CI_Model
 {
   public function __construct()
@@ -27,4 +27,4 @@ class Project_Model extends CI_Model
     return $query->result_array();
   } 
 } 
-?> -->
+?> 

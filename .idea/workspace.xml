@@ -14,7 +14,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/addTask.php">
+        <entry file="file://$PROJECT_DIR$/application/views/snapshot.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
               <caret line="364" column="17" selection-start-line="364" selection-start-column="17" selection-end-line="364" selection-end-column="17" />
@@ -103,7 +103,7 @@
         <option value="$PROJECT_DIR$/application/views/viewTask.php" />
         <option value="$PROJECT_DIR$/application/views/home.php" />
         <option value="$PROJECT_DIR$/application/views/login_page.php" />
-        <option value="$PROJECT_DIR$/application/views/addTask.php" />
+        <option value="$PROJECT_DIR$/application/views/snapshot.php" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/models/Users_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/User.php" />
@@ -294,7 +294,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/addTask.php">
+    <entry file="file://$PROJECT_DIR$/application/views/snapshot.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="364" column="17" selection-start-line="364" selection-start-column="17" selection-end-line="364" selection-end-column="17" />

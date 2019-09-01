@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: lakshitha
- * Date: 5/21/2019
- * Time: 10:52 AM
- */
 
-?>
 <?php
 $user = $this->session->userdata('user');
 extract($user);
@@ -297,7 +289,7 @@ extract($user);
     <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
 			<br><br><br>
-		<form action="addTask" method='POST'>
+		<form action="addSnapshot" method='POST'>
 			<table id="week" style="width:70%; margin: auto; height: 20%;">
 				<th> <h4>Select the Week</h4>
 					<label class="start" for="start">Start date</label>
