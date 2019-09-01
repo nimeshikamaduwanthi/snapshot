@@ -8,7 +8,7 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('users_model');
+        $this->load->model('User_Model');
     }
 
     public function index()
@@ -32,7 +32,7 @@ class User extends CI_Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $this->users_model->signup($firstName, $lastName, $email, $password);
+        $this->User_Model->signup($firstName, $lastName, $email, $password);
         header('location:' . base_url() . $this->index());
 
     }
@@ -42,7 +42,7 @@ class User extends CI_Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $data = $this->users_model->login($email, $password);
+        $data = $this->User_Model->login($email, $password);
 				
         if ($email == 'email' && $encripted_pass == 'password') {
             $this->session->set_userdata('user', $data);
@@ -81,22 +81,24 @@ class User extends CI_Controller
 
     public function addTaskIndex()
     {
-        $data['projects'] = $this->users_model->getProjectNames();
-        $data['task_names'] = $this->users_model->getTaskNames();
-        $data['tasks'] = $this->users_model->viewTasks();
+        $data['projects'] = $this->User_Model->getProjectNames();
+        $data['task_names'] = $this->User_Model->getTaskNames();
+        // $date['weeks'] = $this->User_Model->getWeeks();
+        $data['tasks'] = $this->User_Model->viewTasks();
         $this->load->view('addTask', $data);
     }
 
     public function addTask()
     {
         // $weeks = array(
-        //     'week_start' => $this->input->post('weekStart'),
-        //     'week_end' => $this->input->post('weekEnd'),
+        //     'start_date' => $this->input->post('weekStart'),
+        //     'end_date' => $this->input->post('weekEnd'),
         // );
 
-        // $this->users_model->saveWeeks($weeks);
+        // $this->User_Model->saveWeeks($weeks);
 
         $task = array(
+            // 'weeks_id' => $this->input->post('start_date'),
             'task_name_id' => $this->input->post('task_name'),
             'planned_effort' => $this->input->post('planned_effort'),
             'planned_start_date' => $this->input->post('planned_start_date'),
@@ -118,30 +120,9 @@ class User extends CI_Controller
             'project_id' => $this->input->post('project'),
         );
 
-        $this->users_model->saveTask($task);
+        $this->User_Model->saveTask($task);
 
         redirect('user/addTaskIndex');
-    }
-
-    public function projectsIndex()
-    {
-        $data['projects'] = $this->users_model->getProjects();
-        $this->load->view('ViewWeekly', $data);
-    }
-
-    public function addProject()
-    {
-        $project = array(
-            'code' => $this->input->post('code'),
-            'project_name' => $this->input->post('project_name'),
-            'start_date' => $this->input->post('start_date'),
-            'end_date' => $this->input->post('end_date'),
-        );
-
-        $this->users_model->saveProject($project);
-
-        $data['projects'] = $this->users_model->getProjects();
-        $this->load->view('ViewWeekly', $data);
     }
 
     public function dashboardIndex()
@@ -156,8 +137,8 @@ class User extends CI_Controller
 
     public function taskIndex() 
     {
-        $data['projects'] = $this->users_model->getProjectNames();
-        $data['task_names'] = $this->users_model->getTask();
+        $data['projects'] = $this->User_Model->getProjectNames();
+        $data['task_names'] = $this->User_Model->getTask();
         $this->load->view('Task', $data);
     }
 
@@ -170,7 +151,7 @@ class User extends CI_Controller
             'project_id' => $this->input->post('project'),
         );
 
-        $this->users_model->saveAddTask($newTask);
+        $this->User_Model->saveAddTask($newTask);
 
         redirect('user/taskIndex');
     }

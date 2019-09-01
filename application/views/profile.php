@@ -288,7 +288,7 @@ extract($user);
                 <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
             </div>
-        </div>
+        </div> 
 
       <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>

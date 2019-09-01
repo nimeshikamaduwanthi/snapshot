@@ -124,6 +124,7 @@ extract($user);
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
 
     }
+    
 </style>
 <body>
 <div class="wrapper">
@@ -141,7 +142,7 @@ extract($user);
 			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
 					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/user/addTaskIndex">addSnapshot</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/user/projectsIndex">Projects</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/user/taskIndex">Task</a></li>
 			</div>
 

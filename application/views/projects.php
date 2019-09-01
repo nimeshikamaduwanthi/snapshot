@@ -80,38 +80,38 @@ extract($user);
         i.each(function(){"buttons"==$(this).attr("name")||$(this).html("")
         })}}
 
-    function TableToCSV(t){
-        var n="",i="";
-        return $tab_en_edic.find("tbody tr").each(function(){
-            ModoEdicion($(this))&&$(this).find("#bAcep").click();
-            var o=$(this).find("td");
-            n="",o.each(function()
-            {
-                "buttons"==$(this).attr("name")||(n=n+$(this).html()+t)}),""!=n&&(n=n.substr(0,n.length-t.length)),i=i+n+"\n"}),i
-    }
-    var $tab_en_edic=null,params=null,colsEdi=null,newColHtml='<div class="btn-group pull-right">' +
-        '<button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">' +
-               '<span class="glyphicon glyphicon-pencil" > </span></button>' +
-        '<button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);">' +
-             '<span class="glyphicon glyphicon-trash" > </span></button>' +
-        '<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);">' +
-              '<span class="glyphicon glyphicon-ok" > </span></button>' +
-        '<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);">' +
-             '<span class="glyphicon glyphicon-remove" > </span></button></div>',colEdicHtml='' +
-        '<td name="buttons">'+newColHtml+"</td>";
-    $.fn.SetEditable=function(t){var n={columnsEd:null,$addButton:null,onEdit:function(){},
-        onDelete:function(){},onAdd:function(){}};
-    params=$.extend(n,t),
-        this.find("thead tr").append('<th name="buttons"></th>'),
-        this.find("tbody tr").append(colEdicHtml),
-        $tab_en_edic=this,null!=params.$addButton&&params.$addButton.click(function()
-    {
-            rowAgreg()
-    }),
-    null!=params.columnsEd&&(colsEdi=params.columnsEd.split(","))
-    };
+//     function TableToCSV(t){
+//         var n="",i="";
+//         return $tab_en_edic.find("tbody tr").each(function(){
+//             ModoEdicion($(this))&&$(this).find("#bAcep").click();
+//             var o=$(this).find("td");
+//             n="",o.each(function()
+//             {
+//                 "buttons"==$(this).attr("name")||(n=n+$(this).html()+t)}),""!=n&&(n=n.substr(0,n.length-t.length)),i=i+n+"\n"}),i
+//     }
+//     var $tab_en_edic=null,params=null,colsEdi=null,newColHtml='<div class="btn-group pull-right">' +
+//         '<button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">' +
+//                '<span class="glyphicon glyphicon-pencil" > </span></button>' +
+//         '<button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);">' +
+//              '<span class="glyphicon glyphicon-trash" > </span></button>' +
+//         '<button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);">' +
+//               '<span class="glyphicon glyphicon-ok" > </span></button>' +
+//         '<button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);">' +
+//              '<span class="glyphicon glyphicon-remove" > </span></button></div>',colEdicHtml='' +
+//         '<td name="buttons">'+newColHtml+"</td>";
+//     $.fn.SetEditable=function(t){var n={columnsEd:null,$addButton:null,onEdit:function(){},
+//         onDelete:function(){},onAdd:function(){}};
+//     params=$.extend(n,t),
+//         this.find("thead tr").append('<th name="buttons"></th>'),
+//         this.find("tbody tr").append(colEdicHtml),
+//         $tab_en_edic=this,null!=params.$addButton&&params.$addButton.click(function()
+//     {
+//             rowAgreg()
+//     }),
+//     null!=params.columnsEd&&(colsEdi=params.columnsEd.split(","))
+//     };
 
-</script>
+// </script>
 
 <style>
     .pt-3-half {
@@ -294,6 +294,7 @@ extract($user);
         <tr>
             <th rowspan="3" class="text-center">Code</th>
             <th rowspan="3" class="text-center">Project Name</th>
+            <th rowspan="3" class="text-center">Project Description</th>
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th>
 
@@ -303,6 +304,7 @@ extract($user);
         <tr>
 						<td><input type="text" name="code" class="form-control input-sm"></td>
 						<td><input type="text" name="project_name" class="form-control input-sm"></td>
+						<td><input type="text" name="project_description" class="form-control input-sm"></td>
 						<td><input type="text" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text" name="end_date" class="form-control input-sm"></td>
 						<div style="padding-right: 100px;">
@@ -313,6 +315,7 @@ extract($user);
 					<tr>
 						<td><?php echo $project['code']; ?></td>
 						<td><?php echo $project['project_name']; ?></td>
+						<td><?php echo $project['project_description']; ?></td>
 						<td><?php echo $project['start_date']; ?></td>
 						<td><?php echo $project['end_date']; ?></td>
 						</tr>
