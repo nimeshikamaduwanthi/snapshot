@@ -1,6 +1,6 @@
  <?php
 $user = $this->session->userdata('user');
-extract($user);
+// extract($user);
 ?>
 
 <!doctype html>
@@ -128,7 +128,8 @@ extract($user);
     <div class="topnav">
         <div class="main"></div>
         <div class="topnav-right">
-            <h6><?php echo $name; ?></h6>
+            <!-- <h6><?php echo $name; ?></h6> -->
+        <h1>HR DASHBOARD</h1>
              <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
 
 
@@ -136,19 +137,19 @@ extract($user);
     </div>
 
 
-    <div class="sidenav">
+    <!-- <div class="sidenav">
         <a href="#Dashboard">Dashboard</a>
         <a href="#Tasks">Tasks</a>
         <a href="#Projects">Projects</a>
         <a href="#Profile">Profile</a>
-    </div>
+    </div> -->
 
 
 </div>
 
-<div class="direct-links">
+<!-- <div class="direct-links">
     <a href="<?php echo base_url(); ?>index.php/user/viewWeekly" >View Weekly Snapshot</a>
     <a href="#View_Monthly_Snapshot">View Monthly Snapshot</a>
-</div>
+</div> -->
 </body>
 </html> 

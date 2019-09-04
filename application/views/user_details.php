@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-// extract($user);
+extract($user);
 ?>
 
 <!doctype html>
@@ -20,8 +20,7 @@ $user = $this->session->userdata('user');
 
     .topnav {
         overflow: hidden;
-        background-color:  #333;
-        
+        background-color: #333;
         padding:5px;
     }
 
@@ -33,16 +32,18 @@ $user = $this->session->userdata('user');
         text-decoration: none;
         font-size: 17px;
     }
+
     .topnav h6{
         color: #fff;
         margin-top: -20px;
         float: right;
-        margin-right: 250px;
+        margin-right: 120px;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
         font-size:20px;
         margin-top: -2px;
     }
-    .topnav .topnav-rightL a {
+    
+    .topnav .topnav-right a {
         padding:8px;
         font-size: 15px;
         background:forestgreen;
@@ -51,29 +52,17 @@ $user = $this->session->userdata('user');
         border: none;
         float: right;
         margin-top: -6px;
-        margin-right: -250px;
+        margin-right: -155px;
     }
 
-    /*.topnav button:hover{*/
-
-    /*color: #000;*/
-
-    /*}*/
     .topnav a:hover {
         background-color: #aa0000;
         color: #fff;
     }
 
-    /*.topnav a.active {*/
-    /*background-color: #4CAF50;*/
-    /*color: white;*/
-    /*}*/
-
     .topnav-right {
         float: right;
     }
-
-
 
     .sidenav {
         height: 100%;
@@ -82,8 +71,7 @@ $user = $this->session->userdata('user');
         z-index: 1;
         top: 0;
         left: 0;
-        background-color:  #5DADE2;
-        background-color: 
+        background-color: #333;
         overflow-x: hidden;
         /*padding-top: 20px;*/
         padding-top: 140px;
@@ -93,16 +81,12 @@ $user = $this->session->userdata('user');
         /*padding: 85px 8px 0px 16px;*/
         text-decoration: none;
         font-size: 25px;
-        color: #fff;
+        color: #818181;
         display: block;
         /*padding-top: 80px;*/
         margin-top: 30px;
         margin-left: 25px;
     }
-
-    /*.sidenav a:hover {*/
-    /*color: #f1f1f1;*/
-    /*}*/
 
     .main {
         margin-left: 160px;
@@ -117,41 +101,39 @@ $user = $this->session->userdata('user');
     }
 
     .direct-links a{
-        padding-left: 520px;
+        padding-left: 600px;
         padding-top: 100px;
         display:block;
         text-transform: uppercase;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
 
     }
-    
 </style>
 <body>
 <div class="wrapper">
     <div class="topnav">
         <div class="main"></div>
-        <div class="topnav-right"> 
-            <!-- <h6><?php echo $first_name; ?></h6> -->
-        </div>
-        <div class="topnav-rightL">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right; background:#D68910;"> Logout</a>
+        <div class="topnav-right">
+             <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
+
+             <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
+        <thead>
+        <tr>
+            <th rowspan="3" class="text-center">User Name</th>
+            <th rowspan="3" class="text-center">User Email</th>
+            <th rowspan="3" class="text-center"></th>
+						<th rowspan="3" class="text-center"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr>
+        </tbody>
+				</table>
         </div>
     </div>
-<h1>Staff</h1>
-			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
-					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
-			</div>
-
-    
-
-</div>
-
-<!-- <div class="direct-links">
-    <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex" >Add Snapshot</a>
-    <a href="<?php echo base_url(); ?>index.php/user/viewTasks">View Snapshot</a>
-</div> -->
-</body>
-</html>

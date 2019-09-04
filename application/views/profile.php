@@ -160,11 +160,6 @@ extract($user);
         margin-right: 25px;
     }
 
-    /*.topnav button:hover{*/
-
-    /*color: #000;*/
-
-    /*}*/
     .topnav a:hover {
         background-color: #aa0000;
         color: #fff;
@@ -185,15 +180,7 @@ extract($user);
         margin-left: 30px;
         font-size: 20px;
     }
-    /* .cal table{
-        border-color: #0b0c0f;
-        border: 2px solid black;
-        margin-top: 40px;
-        margin-left: 30px;
-
-
-        /*border-collapse: collapse;*/
-    /* } */
+    
     .cal th  .start{
         margin-top:50px ;
         color: #000;
@@ -234,25 +221,13 @@ extract($user);
         color:#000;
 
     }
-    /* .submit a{
-        padding:10px;
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: 5px;
-        margin-right: 160px;
-
-
-    } */
 
     .submit a:hover{
         background: #d58512;
         color: #fff;
 
     }
+
     .topnav-right {
         float: right;
     }
@@ -274,8 +249,6 @@ extract($user);
         color:#000;
 
     }
-
-
 
 </style>
 

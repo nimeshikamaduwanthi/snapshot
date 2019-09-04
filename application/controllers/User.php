@@ -9,14 +9,13 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('User_Model');
-        $this->load->model('Project_Model');
+        
     }
 
     public function index()
     {
         $this->load->library('session');
 
-        //restrict users to go back to login if session has been set
         if ($this->session->userdata('user')) {
             $this->load->view('snapshot');
         } else {
@@ -42,16 +41,14 @@ class User extends CI_Controller
         $password = $_POST['password'];
 
         $data = $this->User_Model->login($email, $password);
-				
-        if ($email == 'email' && $encripted_pass == 'password') {
-            $this->session->set_userdata('user', $data);
-//            redirect('dashboard_HR');
-            $this->load->view('dashboard_HR');
-        } elseif ($data) {
-            $this->session->set_userdata('user', $data);
-            $this->load->view('dashboard_staff');
 
-        } else {
+        if ($data && $data['user_type_id'] == 1) {
+            $this->load->view('dashboard_HR');
+        } 
+        else if ($data && $data['user_type_id'] == 2) {
+            $this->load->view('dashboard_staff');
+        }
+        else {
             header('location:' . base_url() . $this->index());
             $this->session->set_flashdata('error', 'Invalid login. User not found');
         }
