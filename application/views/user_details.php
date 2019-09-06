@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-extract($user);
+// extract($user);
 ?>
 
 <!doctype html>
@@ -115,25 +115,31 @@ extract($user);
         <div class="main"></div>
         <div class="topnav-right">
              <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
-
-             <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
+				</div>
+    		</div>
+				<br><br>
+				<form action="" method='POST'></form>
+				<table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
             <th rowspan="3" class="text-center">User Name</th>
             <th rowspan="3" class="text-center">User Email</th>
-            <th rowspan="3" class="text-center"></th>
-						<th rowspan="3" class="text-center"></th>
+            <!-- <th rowspan="3" class="text-center"></th>
+						<th rowspan="3" class="text-center"></th> -->
 
         </tr>
         </thead>
         <tbody>
           <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <?php foreach ($users as $user): ?>
+					<tr>
+						<td><?php echo $user['first_name']; ?></td>
+						<td><?php echo $user['email']; ?></td>
+						<td></td>
+						<td></td>
+						</tr>
+				<?php endforeach?>
           </tr>
         </tbody>
 				</table>
-        </div>
-    </div>
+      

@@ -13,7 +13,7 @@ class User_Model extends CI_Model
 
         $sql = "SELECT id, first_name, last_name, email, user_type_id
          FROM users WHERE email='$email'
-         AND password='$password'
+         AND password='$password' 
          AND active_status=1";  
 
         $query = $this->db->query($sql);
@@ -35,5 +35,13 @@ class User_Model extends CI_Model
 
         $this->db->insert('users', $userData);
     }
+
+    public function getUserDetails()
+    {
+        $this->db->select('id, first_name, email');
+        $this->db->from('users');
+        $query = $this->db->get();
+        return $query->result_array();
+    } 
 
 }

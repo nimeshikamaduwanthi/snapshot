@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-extract($user);
+// extract($user);
 ?>
 
 <title>PROJECT</title>
@@ -280,7 +280,7 @@ extract($user);
         <div class="topnav">
             <h3>PROJECTS</h3>
             <div class="topnav-right">
-                <h6><?php echo $first_name; ?></h6>
+                <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
             </div>
     		</div>
@@ -305,8 +305,8 @@ extract($user);
 						<td><input type="text" name="code" class="form-control input-sm"></td>
 						<td><input type="text" name="project_name" class="form-control input-sm"></td>
 						<td><input type="text" name="project_description" class="form-control input-sm"></td>
-						<td><input type="text" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" name="end_date" class="form-control input-sm"></td>
+						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
+						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
 						<div style="padding-right: 100px;">
 							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>

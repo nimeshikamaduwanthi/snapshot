@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-extract($user);
+// extract($user);
 ?>
 
 <title>TASK</title>
@@ -280,13 +280,14 @@ extract($user);
         <div class="topnav">
             <h3>TASK</h3>
             <div class="topnav-right">
-                <h6><?php echo $first_name; ?></h6>
+                <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
             </div>
     		</div>
 
     <div class="cal">
 				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+				<!-- if(isadmin) dashbordhrindex -->
         <br><br><br>
 				<form action="addNewTask" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
@@ -311,8 +312,8 @@ extract($user);
 						</select>
 					</td>
 						<td><input type="text" name="task_name" class="form-control input-sm"></td>
-						<td><input type="text" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" name="end_date" class="form-control input-sm"></td>
+						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
+						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
 						<div style="padding-right: 100px;">
 							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>

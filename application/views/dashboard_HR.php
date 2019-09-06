@@ -11,6 +11,15 @@ $user = $this->session->userdata('user');
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DASHBOARD - SL ROBOTICS </title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+		<script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+	
 </head>
 <style>
     body {
@@ -41,6 +50,7 @@ $user = $this->session->userdata('user');
         font-size:20px;
         margin-top: -2px;
     }
+
     .topnav .topnav-right a {
         padding:8px;
         font-size: 15px;
@@ -53,26 +63,14 @@ $user = $this->session->userdata('user');
         margin-right: -155px;
     }
 
-    /*.topnav button:hover{*/
-
-        /*color: #000;*/
-
-    /*}*/
     .topnav a:hover {
         background-color: #aa0000;
         color: #fff;
     }
 
-    /*.topnav a.active {*/
-        /*background-color: #4CAF50;*/
-        /*color: white;*/
-    /*}*/
-
     .topnav-right {
         float: right;
     }
-
-
 
     .sidenav {
         height: 100%;
@@ -98,9 +96,7 @@ $user = $this->session->userdata('user');
         margin-left: 25px;
     }
 
-    /*.sidenav a:hover {*/
-    /*color: #f1f1f1;*/
-    /*}*/
+    
 
     .main {
         margin-left: 160px;
@@ -128,28 +124,20 @@ $user = $this->session->userdata('user');
     <div class="topnav">
         <div class="main"></div>
         <div class="topnav-right">
-            <!-- <h6><?php echo $name; ?></h6> -->
-        <h1>HR DASHBOARD</h1>
-             <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
-
-
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
         </div>
     </div>
 
 
-    <!-- <div class="sidenav">
-        <a href="#Dashboard">Dashboard</a>
-        <a href="#Tasks">Tasks</a>
-        <a href="#Projects">Projects</a>
-        <a href="#Profile">Profile</a>
-    </div> -->
+    
+        <li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/snapshot/viewSnapshotIndex">View Snapshot</a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+       	<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+        <li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
+   
 
 
 </div>
-
-<!-- <div class="direct-links">
-    <a href="<?php echo base_url(); ?>index.php/user/viewWeekly" >View Weekly Snapshot</a>
-    <a href="#View_Monthly_Snapshot">View Monthly Snapshot</a>
-</div> -->
 </body>
 </html> 

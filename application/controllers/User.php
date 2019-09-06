@@ -60,6 +60,8 @@ class User extends CI_Controller
         $this->load->library('session');
         $this->session->unset_userdata('user');
         redirect('/');
+        $this->session->unset_userdata('admin');
+        redirect('/');
     }
     
     public function dashboardIndex()
@@ -70,6 +72,17 @@ class User extends CI_Controller
     public function profileIndex() 
     {
         $this->load->view('profile');
+    }
+
+    public function dashboardHrIndex()
+		{
+			$this->load->model('dashboard_HR');
+		}
+
+    public function userDetails()
+    {
+        $data['users'] = $this->User_Model->getUserDetails();
+        $this->load->view('user_details', $data);
     }
 
 }

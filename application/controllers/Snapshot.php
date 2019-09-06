@@ -8,6 +8,7 @@ class Snapshot extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('User_Model');
         $this->load->model('Task_Model');
         $this->load->model('Project_Model');
         $this->load->model('Snapshot_Model');
@@ -77,5 +78,12 @@ class Snapshot extends CI_Controller
 		// 	$this->db->from('weeks');
 		// 	$query = $this->db->get();
 		// 	return $query->result_array();
-		// }
+        // }
+        
+        public function viewSnapshotIndex()
+        {
+            $data['users'] = $this->User_Model->getUserDetails();
+            $data['tasks'] = $this->Snapshot_Model->viewTasks();
+            $this->load->view('view_snapshot', $data);
+        }
     }
