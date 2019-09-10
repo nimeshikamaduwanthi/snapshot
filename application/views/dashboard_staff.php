@@ -133,11 +133,11 @@ $user = $this->session->userdata('user');
         <div class="topnav-right"> 
             <!-- <h6><?php echo $first_name; ?></h6> -->
         </div>
-        <div class="topnav-rightL">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="text-align: right; background:#D68910;"> Logout</a>
+        <div class="topnav-right">
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;"> Logout</a>
         </div>
     </div>
-<h1>Staff</h1>
+
 			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
 					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>

@@ -105,19 +105,33 @@
     }
 </style>
 <body>
-
+<div class="card">
+<div class="wrapper">
+    <div class="topnav">
+			<h3 style="color: white;">View Snapshots</h3>
+        <div class="main">
+        <div class="topnav-right">
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;"> Logout</a>
+        </div>
+    </div> 
+    </div>
+    </div>
+		</div>
+		<div class="cal">
+				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+		
       <div style="width:90%; margin: auto;">
-    <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;" >
+    <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;">
 			<thead>
 				<tr>
 					<!-- <th rowspan="3" class="text-center">Week</th> -->
-					<!-- <th rowspan="3" class="text-center">User Name</th> -->
+					<th rowspan="3" class="text-center">User Name</th>
 					<th rowspan="3" class="text-center">Project</th>
 					<th rowspan="3" class="text-center">Task</th>
 					<th rowspan="3" class="text-center">Planned Effort</th>
 					<th rowspan="3" class="text-center">Planned start date</th>
 					<th rowspan="3" class="text-center">Planned end date</th>
-					<th colspan="2" class="text-center">Mon </th>
+					<th colspan="2" class="text-center">Mon</th>
 					<th colspan="2" class="text-center">Tue</th>
 					<th colspan="2" class="text-center">Wen</th>
 					<th colspan="2" class="text-center">Thu </th>
@@ -139,38 +153,40 @@
 					<th>P</th>
 					<th>A</th>
 					<th>P</th>
-					<th>A</th>
-					<th>P</th>
+					<th>A</th> 
+					<th>P</th> 
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
 				</tr>
 			</thead>
       <tbody>
-        
-      <?php foreach ($tasks as $task): ?>
+
+      <?php foreach ($snapshots as $snapshot): ?>
 					<tr>
-						<!-- <td><?php echo $task['start_date']; ?></td> -->
-						<td><?php echo $task['project_name']; ?></td>
-						<td><?php echo $task['task_name']; ?></td>
-						<td><?php echo $task['planned_effort']; ?></td>
-						<td><?php echo $task['planned_start_date']; ?></td>
-						<td><?php echo $task['planned_end_date']; ?></td>
-						<td><?php echo $task['mon_p']; ?></td>
-						<td><?php echo $task['mon_a']; ?></td>
-						<td><?php echo $task['tue_p']; ?></td>
-						<td><?php echo $task['tue_a']; ?></td>
-						<td><?php echo $task['wen_p']; ?></td>
-						<td><?php echo $task['wen_a']; ?></td>
-						<td><?php echo $task['thu_p']; ?></td>
-						<td><?php echo $task['thu_a']; ?></td>
-						<td><?php echo $task['fri_p']; ?></td>
-						<td><?php echo $task['fri_a']; ?></td>
-						<td><?php echo $task['sat_p']; ?></td>
-						<td><?php echo $task['sat_a']; ?></td>
-						<td><?php echo $task['sun_p']; ?></td>
-						<td><?php echo $task['sun_a']; ?></td>
+						<!-- <td><?php echo $snapshot['start_date']; ?></td> -->
+						<td><?php echo $snapshot['first_name']; ?></td>
+						<td><?php echo $snapshot['project_name']; ?></td>
+						<td><?php echo $snapshot['task']; ?></td>
+						<td><?php echo $snapshot['planned_effort']; ?></td>
+						<td><?php echo $snapshot['planned_start_date']; ?></td>
+						<td><?php echo $snapshot['planned_end_date']; ?></td>
+						<td><?php echo $snapshot['mon_p']; ?></td>
+						<td><?php echo $snapshot['mon_a']; ?></td>
+						<td><?php echo $snapshot['tue_p']; ?></td>
+						<td><?php echo $snapshot['tue_a']; ?></td>
+						<td><?php echo $snapshot['wen_p']; ?></td>
+						<td><?php echo $snapshot['wen_a']; ?></td>
+						<td><?php echo $snapshot['thu_p']; ?></td>
+						<td><?php echo $snapshot['thu_a']; ?></td>
+						<td><?php echo $snapshot['fri_p']; ?></td>
+						<td><?php echo $snapshot['fri_a']; ?></td>
+						<td><?php echo $snapshot['sat_p']; ?></td>
+						<td><?php echo $snapshot['sat_a']; ?></td>
+						<td><?php echo $snapshot['sun_p']; ?></td>
+						<td><?php echo $snapshot['sun_a']; ?></td>
 					</tr>
 				<?php endforeach?>
 		</tbody>
 	</table>
+	</div>

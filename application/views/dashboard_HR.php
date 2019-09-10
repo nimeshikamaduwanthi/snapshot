@@ -6,19 +6,17 @@ $user = $this->session->userdata('user');
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>DASHBOARD - SL ROBOTICS </title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-		<script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+<script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+
 	
 </head>
 <style>
@@ -120,24 +118,25 @@ $user = $this->session->userdata('user');
     }
 </style>
 <body>
+<nav>
 <div class="wrapper">
     <div class="topnav">
-        <div class="main"></div>
+			<h3 style="color: white;">Welcome Snapshot</h3>
+        <div class="main">
         <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; "> Logout</a>
         </div>
+    </div> 
+    </div>
     </div>
 
+				<div>
+					<li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+				</div>
+                </nav>
 
-    
-        <li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
-        <li><a href="<?php echo base_url(); ?>index.php/snapshot/viewSnapshotIndex">View Snapshot</a></li>
-        <li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
-       	<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
-        <li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
-   
-
-
-</div>
 </body>
 </html> 

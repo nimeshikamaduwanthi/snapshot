@@ -7,26 +7,26 @@ class Task_Model extends CI_Model
         $this->load->database(); 
     } 
     
-    public function saveAddTask($data)
+    public function saveTask($data)
     {
-        $this->db->insert('task_names', $data);
+        $this->db->insert('tasks', $data);
         return $this->db->insert_id();
     }
 
     public function getTask()
     {
         $query = $this->db->query(
-					'SELECT P.project_name, TN.task_name, TN.start_date, TN.end_date 
-					FROM projects P, task_names TN 
-					WHERE TN.project_id = P.id'
+					'SELECT P.project_name, T.task, T.start_date, T.end_date 
+					FROM projects P, tasks T 
+					WHERE T.project_id = P.id'
 				);
         return $query->result_array();
     }
 		
     public function getTaskNames()
     {
-        $this->db->select('id, task_name');
-        $this->db->from('task_names');
+        $this->db->select('id, task');
+        $this->db->from('tasks');
         $query = $this->db->get();
         return $query->result_array();
     } 

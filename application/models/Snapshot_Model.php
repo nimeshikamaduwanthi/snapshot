@@ -7,24 +7,24 @@ class Snapshot_Model extends CI_Model
         $this->load->database(); 
     } 
 
-    public function saveTask($data)
+    public function saveSnapshot($data)
     {
-        $this->db->insert('tasks', $data);
+        $this->db->insert('snapshots', $data);
         return $this->db->insert_id();
+        
     }
 
-    public function viewTasks()
-    {
-
+    public function mySnapshots()
+    { 
         $query = $this->db->query(
-					'SELECT P.project_name, TN.task_name, T.planned_effort, T.planned_start_date, T.planned_end_date,
+					'SELECT P.project_name, TN.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
 					T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
-					T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
-					FROM projects P, tasks T, task_names TN
+					T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a 
+					FROM projects P, snapshots T, tasks TN
 					WHERE P.id = T.project_id
-					AND TN.id = T.task_name_id'
-					
-            // 'SELECT W.start_date, P.project_name, TN.task_name, T.planned_effort, T.planned_start_date, T.planned_end_date,
+					AND TN.id = T.task_id'
+
+          // 'SELECT W.start_date, P.project_name, TN.task_name, T.planned_effort, T.planned_start_date, T.planned_end_date,
 						// T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
 						// T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
 						// FROM weeks W, projects P, tasks T, task_names TN
@@ -33,5 +33,20 @@ class Snapshot_Model extends CI_Model
 						// AND W.id = T.weeks_id'
         );
         return $query->result_array();
-		}
+    }
+    
+    public function getAllSnapshots()
+    {
+        $query = $this->db->query(
+					'SELECT U.first_name, P.project_name, TN.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
+					T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
+					T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
+					FROM projects P, snapshots T, tasks TN , users U
+					WHERE P.id = T.project_id
+          AND TN.id = T.task_id
+          AND U.id = T.user_id'
+          
+          );
+          return $query->result_array();
+      }
   }		

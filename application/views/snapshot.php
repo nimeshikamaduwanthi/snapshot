@@ -169,13 +169,6 @@ $user = $this->session->userdata('user');
         color: #fff;
     }
 
-
-
-    }
-    @media screen and (max-height: 650px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-    }
     .cal th h4{
         margin-top:5px ;
         color: #000;
@@ -184,21 +177,21 @@ $user = $this->session->userdata('user');
         margin-left: 30px;
         font-size: 20px;
     }
+
     .cal table{
         border-color: #0b0c0f;
         border: 2px solid black;
         margin-top: 40px;
         margin-left: 330px;
-
-
-        /*border-collapse: collapse;*/
     }
+
     .cal th  .start{
         margin-top:50px ;
         color: #000;
         float: left;
         margin-left: -75px;
     }
+
     .cal th .end{
         margin-top:50px ;
         color: #000;
@@ -233,6 +226,7 @@ $user = $this->session->userdata('user');
         color:#000;
 
     }
+
     .submit a{
         padding:10px;
         font-size: 15px;
@@ -252,6 +246,7 @@ $user = $this->session->userdata('user');
         color: #fff;
 
     }
+		
     .topnav-right {
         float: right;
     }
@@ -319,8 +314,8 @@ $user = $this->session->userdata('user');
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
-					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
+					<th rowspan="3" class="text-center">Total Planned hrs</th>
+					<th rowspan="3" class="text-center">Total Actual hrs</th>
 					<div class = "savebtn">
 						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;" >
 					</div>
@@ -358,15 +353,15 @@ $user = $this->session->userdata('user');
 							<?php endforeach?>
 						</select>
 					</td>
-					<td >
+					<td>
 						<select name="task_name" id="task_names">
 							<?php foreach ($task_names as $task_name): ?>
 								<option value=<?php echo $task_name['id']; ?>>
-									<?php echo $task_name['task_name']; ?>
+									<?php echo $task_name['task']; ?>
 								</option>
 							<?php endforeach?>
 						</select>
-					</td> 
+					</td>  
 					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
 					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
 					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
@@ -384,32 +379,32 @@ $user = $this->session->userdata('user');
 					<td><input type="text" name="sat_a"  class="form-control input-sm"></td>
 					<td><input type="text" name="sun_p"  class="form-control input-sm"></td>
 					<td><input type="text" name="sun_a"  class="form-control input-sm"></td>
-					<!-- <td><input type="text" name="total_planned"  class="form-control input-sm"></td>
-					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td>  -->
+					<td><input type="text" name="total_planned"  class="form-control input-sm"></td>
+					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td> 
 				</tr>
 
-				<?php foreach ($tasks as $task): ?>
+				<?php foreach ($snapshots as $snapshot): ?>
 					<tr>
 						<!-- <td><?php echo $task['start_date']; ?></td> -->
-						<td><?php echo $task['project_name']; ?></td>
-						<td><?php echo $task['task_name']; ?></td>
-						<td><?php echo $task['planned_effort']; ?></td>
-						<td><?php echo $task['planned_start_date']; ?></td>
-						<td><?php echo $task['planned_end_date']; ?></td>
-						<td><?php echo $task['mon_p']; ?></td>
-						<td><?php echo $task['mon_a']; ?></td>
-						<td><?php echo $task['tue_p']; ?></td>
-						<td><?php echo $task['tue_a']; ?></td>
-						<td><?php echo $task['wen_p']; ?></td>
-						<td><?php echo $task['wen_a']; ?></td>
-						<td><?php echo $task['thu_p']; ?></td>
-						<td><?php echo $task['thu_a']; ?></td>
-						<td><?php echo $task['fri_p']; ?></td>
-						<td><?php echo $task['fri_a']; ?></td>
-						<td><?php echo $task['sat_p']; ?></td>
-						<td><?php echo $task['sat_a']; ?></td>
-						<td><?php echo $task['sun_p']; ?></td>
-						<td><?php echo $task['sun_a']; ?></td>
+						<td><?php echo $snapshot['project_name']; ?></td>
+						<td><?php echo $snapshot['task']; ?></td>
+						<td><?php echo $snapshot['planned_effort']; ?></td>
+						<td><?php echo $snapshot['planned_start_date']; ?></td>
+						<td><?php echo $snapshot['planned_end_date']; ?></td>
+						<td><?php echo $snapshot['mon_p']; ?></td>
+						<td><?php echo $snapshot['mon_a']; ?></td>
+						<td><?php echo $snapshot['tue_p']; ?></td>
+						<td><?php echo $snapshot['tue_a']; ?></td>
+						<td><?php echo $snapshot['wen_p']; ?></td>
+						<td><?php echo $snapshot['wen_a']; ?></td>
+						<td><?php echo $snapshot['thu_p']; ?></td>
+						<td><?php echo $snapshot['thu_a']; ?></td>
+						<td><?php echo $snapshot['fri_p']; ?></td>
+						<td><?php echo $snapshot['fri_a']; ?></td>
+						<td><?php echo $snapshot['sat_p']; ?></td>
+						<td><?php echo $snapshot['sat_a']; ?></td>
+						<td><?php echo $snapshot['sun_p']; ?></td>
+						<td><?php echo $snapshot['sun_a']; ?></td>
 					</tr>
 				<?php endforeach?>
 		</tbody>

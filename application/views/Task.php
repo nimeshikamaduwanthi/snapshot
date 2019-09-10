@@ -286,10 +286,10 @@ $user = $this->session->userdata('user');
     		</div>
 
     <div class="cal">
-				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+				<button style="background:#D68910;"> <a href="" >back</a></button>
 				<!-- if(isadmin) dashbordhrindex -->
         <br><br><br>
-				<form action="addNewTask" method='POST'>
+				<form action="addTask" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
@@ -321,7 +321,7 @@ $user = $this->session->userdata('user');
 				<?php foreach ($task_names as $newTask): ?>
 					<tr>
             <td><?php echo $newTask['project_name']; ?></td>
-						<td><?php echo $newTask['task_name']; ?></td>
+						<td><?php echo $newTask['task']; ?></td>
 						<td><?php echo $newTask['start_date']; ?></td>
 						<td><?php echo $newTask['end_date']; ?></td>
 						</tr>

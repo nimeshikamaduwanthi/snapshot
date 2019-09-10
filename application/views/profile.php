@@ -1,6 +1,6 @@
 <?php
 $user = $this->session->userdata('user');
-//extract($user);
+// extract($user);
 ?>
 
 <title>PROJECT</title>
@@ -270,10 +270,11 @@ $user = $this->session->userdata('user');
 											<div class="container" style="text-align:center; float: center; width:50%;" >
 												<div class="col-md-8">
                            <ul class="list-group">
-                              <li class="list-group-item"><i class="fas fa-user"></i><?php echo $first_name." ".$last_name;  ?></li>
-                              <li class="list-group-item"><i class="fa fa-envelope"></i> <?php echo $email; ?></li>
+													 <li class="list-group-item"><i class="fas fa-user"></i><?php echo $first_name." ".$last_name;  ?></li>
+                              <li class="list-group-item"><i class="fa fa-envelope"></i> <?php echo $email; ?> </li>
 															<li class="list-group-item"><input  placeholder="Department"></li>
                               <li class="list-group-item"><input placeholder="Phone Number"></li>
+															</tr>
                            </ul>
                         </div>
 											</div>

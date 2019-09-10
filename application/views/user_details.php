@@ -110,14 +110,22 @@ $user = $this->session->userdata('user');
     }
 </style>
 <body>
+<div class="card">
 <div class="wrapper">
     <div class="topnav">
-        <div class="main"></div>
+			<h3 style="color: white;">User's Details</h3>
+        <div class="main">
         <div class="topnav-right">
-             <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger">Logout</a>
-				</div>
-    		</div>
-				<br><br>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right;"> Logout</a>
+        </div>
+    </div> 
+    </div>
+    </div>
+		</div>
+		<div class="cal">
+				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+		
+				<br><br><br>
 				<form action="" method='POST'></form>
 				<table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
@@ -133,7 +141,7 @@ $user = $this->session->userdata('user');
           <tr>
           <?php foreach ($users as $user): ?>
 					<tr>
-						<td><?php echo $user['first_name']; ?></td>
+						<td><?php echo '<a href="profileindex">'.$user['first_name'].'</a>' ?></td>
 						<td><?php echo $user['email']; ?></td>
 						<td></td>
 						<td></td>

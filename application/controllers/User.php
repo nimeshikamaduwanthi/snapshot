@@ -7,9 +7,9 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
         $this->load->helper('url');
         $this->load->model('User_Model');
-        
     }
 
     public function index()
@@ -43,9 +43,23 @@ class User extends CI_Controller
         $data = $this->User_Model->login($email, $password);
 
         if ($data && $data['user_type_id'] == 1) {
+            $userData = array(
+                'user_id'  =>  $data['id'],
+                'first_name'  =>  $data['first_name'], 
+                'user_type_id'  =>  $data['user_type_id'], 
+            );
+            $this->session->set_userdata($userData);
+
             $this->load->view('dashboard_HR');
         } 
         else if ($data && $data['user_type_id'] == 2) {
+            $userData = array(
+                'user_id'  =>  $data['id'],
+                'first_name'  =>  $data['first_name'], 
+                'user_type_id'  =>  $data['user_type_id'], 
+            );
+            $this->session->set_userdata($userData);
+
             $this->load->view('dashboard_staff');
         }
         else {
@@ -60,7 +74,7 @@ class User extends CI_Controller
         $this->load->library('session');
         $this->session->unset_userdata('user');
         redirect('/');
-        $this->session->unset_userdata('admin');
+        // $this->session->unset_userdata('admin');
         redirect('/');
     }
     
