@@ -56,6 +56,8 @@ class User extends CI_Controller
             $userData = array(
                 'user_id'  =>  $data['id'],
                 'first_name'  =>  $data['first_name'], 
+                'last_name'  =>  $data['last_name'], 
+                'email'  =>  $data['email'], 
                 'user_type_id'  =>  $data['user_type_id'], 
             );
             $this->session->set_userdata($userData);
@@ -70,7 +72,7 @@ class User extends CI_Controller
 
     public function logout()
     {
-        //load session library
+        //load session library 
         $this->load->library('session');
         $this->session->unset_userdata('user');
         redirect('/');
@@ -85,12 +87,15 @@ class User extends CI_Controller
 
     public function profileIndex() 
     {
-        $this->load->view('profile');
+        $data['first_name'] = $this->session->userdata('first_name');
+        $data['last_name'] = $this->session->userdata('last_name');
+        $data['email'] = $this->session->userdata('email');
+        $this->load->view('profile', $data);
     }
 
     public function dashboardHrIndex()
 		{
-			$this->load->model('dashboard_HR');
+			$this->load->view('dashboard_HR');
 		}
 
     public function userDetails()

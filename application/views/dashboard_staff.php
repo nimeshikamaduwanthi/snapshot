@@ -124,6 +124,26 @@ $user = $this->session->userdata('user');
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
 
     }
+
+		ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+    li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+	li a:hover {
+    background-color: #111;
+  }
     
 </style>
 <body>
@@ -136,19 +156,20 @@ $user = $this->session->userdata('user');
         <div class="topnav-right">
         <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;"> Logout</a>
         </div>
-    </div>
-
-			<div class="container" style="width: 50%; text-decoration: none; font-size: 25px;color: #fff; display: block; margin-top: 30px; margin-left: 25px;">
-					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
+					<ul>
+        	<li><a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Home</a></li>
+        	<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
-			</div>
+					</ul>
+    </div>
+
+		
 
     
 
 </div>
-
 <!-- <div class="direct-links">
     <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex" >Add Snapshot</a>
     <a href="<?php echo base_url(); ?>index.php/user/viewTasks">View Snapshot</a>

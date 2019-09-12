@@ -55,9 +55,9 @@
         color: #fff;
     }
 
-    .topnav-right {
+    /* .topnav-right {
         float: right;
-    }
+    } */
 
     .sidenav {
         height: 100%;
@@ -102,29 +102,46 @@
         text-transform: uppercase;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
 
-    }
+    } 
+
+    table{
+  			border-collapse: collapse;
+		}
+
+		table, th, td {
+  			border: 1px solid black;
+		}
 </style>
 <body>
-<div class="card">
+<nav>
+<div class="navtop" style="overflow: hidden; background-color: #333; padding:0px;">
+<h3 style="color: white; text-align: center;">View Snapshots</h3>
+<div class="topnav-right">
+<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+</div>
+</div>
+</nav>
+
+<!-- <div class="card">
 <div class="wrapper">
     <div class="topnav">
 			<h3 style="color: white;">View Snapshots</h3>
         <div class="main">
         <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;"> Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;   text-align: center;"> Logout</a>
         </div>
     </div> 
     </div>
     </div>
-		</div>
+		</div> -->
 		<div class="cal">
-				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+				<button style="background:#D68910; padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
 		
       <div style="width:90%; margin: auto;">
-    <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;">
+    <table>
 			<thead>
 				<tr>
-					<!-- <th rowspan="3" class="text-center">Week</th> -->
+					<th rowspan="3" class="text-center">Week Start Date</th>
 					<th rowspan="3" class="text-center">User Name</th>
 					<th rowspan="3" class="text-center">Project</th>
 					<th rowspan="3" class="text-center">Task</th>
@@ -138,8 +155,8 @@
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
-					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
+					<th colspan="2" class="text-center">Total Plnned hrs</th>
+					<th colspan="2" class="text-center">Total Actual hrs</th>
 					
 				</tr>
 
@@ -158,13 +175,15 @@
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
       <tbody>
 
       <?php foreach ($snapshots as $snapshot): ?>
 					<tr>
-						<!-- <td><?php echo $snapshot['start_date']; ?></td> -->
+						<td><?php echo $snapshot['start_date']; ?></td>
 						<td><?php echo $snapshot['first_name']; ?></td>
 						<td><?php echo $snapshot['project_name']; ?></td>
 						<td><?php echo $snapshot['task']; ?></td>
@@ -185,6 +204,8 @@
 						<td><?php echo $snapshot['sat_a']; ?></td>
 						<td><?php echo $snapshot['sun_p']; ?></td>
 						<td><?php echo $snapshot['sun_a']; ?></td>
+            <td><?php echo $snapshot['total_planned']; ?></td>
+						<td><?php echo $snapshot['total_actual']; ?></td>
 					</tr>
 				<?php endforeach?>
 		</tbody>

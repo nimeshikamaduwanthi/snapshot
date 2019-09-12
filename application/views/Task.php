@@ -286,7 +286,7 @@ $user = $this->session->userdata('user');
     		</div>
 
     <div class="cal">
-				<button style="background:#D68910;"> <a href="" >back</a></button>
+				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" >back</a></button>
 				<!-- if(isadmin) dashbordhrindex -->
         <br><br><br>
 				<form action="addTask" method='POST'>

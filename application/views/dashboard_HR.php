@@ -1,5 +1,5 @@
  <?php
-$user = $this->session->userdata('user');
+// $user = $this->session->userdata('userData');
 // extract($user);
 ?>
 
@@ -28,10 +28,10 @@ $user = $this->session->userdata('user');
     .topnav {
         overflow: hidden;
         background-color: #333;
-        padding:5px;
-    }
+				/* padding: 0px; */
+				}
 
-    .topnav a {
+		.topnav a {
         float: left;
         color: #f2f2f2;
         text-align: center;
@@ -66,7 +66,7 @@ $user = $this->session->userdata('user');
         color: #fff;
     }
 
-    .topnav-right {
+   .topnav-right {
         float: right;
     }
 
@@ -114,29 +114,49 @@ $user = $this->session->userdata('user');
         display:block;
         text-transform: uppercase;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
-
     }
+    
+		ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #333; */
+  }
+
+    li a {
+		list-style-type: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+	li {
+		float: left;
+	}
+
+	li a:hover {
+    background-color: #111;
+  }
 </style>
 <body>
-<nav>
-<div class="wrapper">
-    <div class="topnav">
-			<h3 style="color: white;">Welcome Snapshot</h3>
-        <div class="main">
-        <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; "> Logout</a>
-        </div>
-    </div> 
-    </div>
-    </div>
 
-				<div>
+
+        <div class="topnav">
+				<ul>
 					<li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
-				</div>
-                </nav>
+				</ul>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+        </div>
+        
+
+				
+                
 
 </body>
 </html> 

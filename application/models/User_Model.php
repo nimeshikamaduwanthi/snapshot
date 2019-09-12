@@ -29,7 +29,7 @@ class User_Model extends CI_Model
             'last_name' => $lastName,
             'email' => $email,
             'password' => $password,
-            'user_type_id' => '2',
+            'user_type_id' => '2', 
             'active_status' => true
         );
 

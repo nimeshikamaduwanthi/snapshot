@@ -256,7 +256,7 @@ $user = $this->session->userdata('user');
 <div class="card">
 <div class="navbar">
         <div class="topnav">
-            <h3>PROFILE</h3>
+            <h3><?php echo $first_name." ".$last_name ?></h3>
             <div class="topnav-right">
                 <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
@@ -267,17 +267,17 @@ $user = $this->session->userdata('user');
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
       <br><br><br>
       </div>
-											<div class="container" style="text-align:center; float: center; width:50%;" >
-												<div class="col-md-8">
-                           <ul class="list-group">
-													 <li class="list-group-item"><i class="fas fa-user"></i><?php echo $first_name." ".$last_name;  ?></li>
-                              <li class="list-group-item"><i class="fa fa-envelope"></i> <?php echo $email; ?> </li>
-															<li class="list-group-item"><input  placeholder="Department"></li>
-                              <li class="list-group-item"><input placeholder="Phone Number"></li>
-															</tr>
-                           </ul>
-                        </div>
-											</div>
-                     
-        	    				<button type="submit" class="btn btn-primary" style="float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;">Update</button>
+			<div class="container" style="text-align:center; float: center; width:50%;" >
+				<div class="col-md-8">
+						<ul class="list-group">
+						<li class="list-group-item"><i class="fas fa-user"></i>  <?php echo $first_name." ".$last_name;  ?></li>
+							<li class="list-group-item"><i class="fa fa-envelope"></i>  <?php echo $email; ?> </li>
+							<li class="list-group-item"><input  placeholder="Department"></li>
+							<li class="list-group-item"><input placeholder="Phone Number"></li>
+							</tr>
+						</ul>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn btn-primary" style="float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;">Update</button>
         	

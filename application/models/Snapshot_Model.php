@@ -12,25 +12,18 @@ class Snapshot_Model extends CI_Model
         $this->db->insert('snapshots', $data);
         return $this->db->insert_id();
         
-    }
-
-    public function mySnapshots()
+		}
+		
+    public function mySnapshots($user_id) 
     { 
         $query = $this->db->query(
-					'SELECT P.project_name, TN.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
-					T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
-					T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a 
-					FROM projects P, snapshots T, tasks TN
-					WHERE P.id = T.project_id
-					AND TN.id = T.task_id'
-
-          // 'SELECT W.start_date, P.project_name, TN.task_name, T.planned_effort, T.planned_start_date, T.planned_end_date,
-						// T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
-						// T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
-						// FROM weeks W, projects P, tasks T, task_names TN
-						// WHERE P.id = T.project_id
-						// AND TN.id = T.task_name_id
-						// AND W.id = T.weeks_id'
+					"SELECT S.start_date, P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+					S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
+					S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+					FROM projects P, snapshots S, tasks TN
+					WHERE P.id = S.project_id
+          AND TN.id = S.task_id
+          AND S.user_id='$user_id'"
         );
         return $query->result_array();
     }
@@ -38,13 +31,13 @@ class Snapshot_Model extends CI_Model
     public function getAllSnapshots()
     {
         $query = $this->db->query(
-					'SELECT U.first_name, P.project_name, TN.task, T.planned_effort, T.planned_start_date, T.planned_end_date,
-					T.mon_p, T.mon_a, T.tue_p, T.tue_a, T.wen_p, T.wen_a, T.thu_p, T.thu_a, T.fri_p,
-					T.fri_a, T.sat_p, T.sat_a, T.sun_p, T.sun_a
-					FROM projects P, snapshots T, tasks TN , users U
-					WHERE P.id = T.project_id
-          AND TN.id = T.task_id
-          AND U.id = T.user_id'
+					'SELECT U.first_name, S.start_date, P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+					S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
+					S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+					FROM projects P, snapshots S, tasks TN , users U
+					WHERE P.id = S.project_id
+          AND TN.id = S.task_id
+          AND U.id = S.user_id'
           
           );
           return $query->result_array();

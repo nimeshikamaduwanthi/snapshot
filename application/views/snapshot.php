@@ -201,7 +201,7 @@ $user = $this->session->userdata('user');
     }
 
     .cal th input{
-        margin-top:45px ;
+        margin-top:45px ; 
         color: #000;
         float: left;
         margin-left: 20px;
@@ -283,25 +283,25 @@ $user = $this->session->userdata('user');
 
     <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
-			<br><br><br>
+			
 		<form action="addSnapshot" method='POST'>
-			<table id="week" style="width:70%; margin: auto; height: 20%;">
+			<!-- <table id="week" style="width:30%; margin: auto; height: 20%;">
 				<th> <h4>Select the Week</h4>
 					<label class="start" for="start">Start date</label>
-					<input type="date" name="weekStart">
+					<input type="date" name="start_date">
 
-					<label class="end" for="end">End date</label>
+					 <label class="end" for="end">End date</label>
 					<input type="date" name="weekEnd">
-				</th>
-			</table>
+				</th> 
+			</table> -->
     </div>
 
     <br><br><br>
-    <div style="width:90%; margin: auto;">
-    <table class="table table-bordered" id="makeEditable" style=" float: left;margin-left: 15px;" >
+    <div style="width:96.5%;">
+    <table class="table table-bordered" id="makeEditable" style=" float: left; margin-left: 15px; margin-top: 1px;" >
 			<thead>
 				<tr>
-					<!-- <th rowspan="3" class="text-center">Week</th> -->
+					<th rowspan="3" class="text-center">Week Start Date</th>
 					<th rowspan="3" class="text-center">Project</th>
 					<th rowspan="3" class="text-center">Task</th>
 					<th rowspan="3" class="text-center">Planned Effort</th>
@@ -317,10 +317,8 @@ $user = $this->session->userdata('user');
 					<th rowspan="3" class="text-center">Total Planned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th>
 					<div class = "savebtn">
-						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;" >
+						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
 					</div>
-					<!-- <th rowspan="2" class="text-center">options</th> -->
-					<!-- <th> <button id="but_add">ADD</button></th> -->
 				</tr>
 
 				<tr>
@@ -343,7 +341,7 @@ $user = $this->session->userdata('user');
 
 			<tbody>
 				<tr >
-					<!-- <td><input type="text" name="start_date"  class="form-control input-sm"></td> -->
+					<td><input type="text" placeholder="YYYY-MM-DD" name="start_date"  class="form-control input-sm"></td>
 					<td >
 						<select name="project" id="projects">
 							<?php foreach ($projects as $project): ?>
@@ -385,7 +383,7 @@ $user = $this->session->userdata('user');
 
 				<?php foreach ($snapshots as $snapshot): ?>
 					<tr>
-						<!-- <td><?php echo $task['start_date']; ?></td> -->
+						<td><?php echo $snapshot['start_date']; ?></td>
 						<td><?php echo $snapshot['project_name']; ?></td>
 						<td><?php echo $snapshot['task']; ?></td>
 						<td><?php echo $snapshot['planned_effort']; ?></td>
@@ -405,6 +403,8 @@ $user = $this->session->userdata('user');
 						<td><?php echo $snapshot['sat_a']; ?></td>
 						<td><?php echo $snapshot['sun_p']; ?></td>
 						<td><?php echo $snapshot['sun_a']; ?></td>
+						<td><?php echo $snapshot['total_planned']; ?></td>
+						<td><?php echo $snapshot['total_actual']; ?></td>
 					</tr>
 				<?php endforeach?>
 		</tbody>

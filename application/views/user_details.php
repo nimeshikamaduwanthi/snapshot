@@ -18,10 +18,10 @@ $user = $this->session->userdata('user');
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    .topnav {
+    nav {
         overflow: hidden;
         background-color: #333;
-        padding:5px;
+       
     }
 
     .topnav a {
@@ -46,7 +46,7 @@ $user = $this->session->userdata('user');
     .topnav .topnav-right a {
         padding:8px;
         font-size: 15px;
-        background:forestgreen;
+        background:;
         color: #fff;
         border-radius: 5px;
         border: none;
@@ -106,11 +106,32 @@ $user = $this->session->userdata('user');
         display:block;
         text-transform: uppercase;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
-
     }
+
+    table{
+  			border-collapse: collapse;
+		}
+
+		table, th, td {
+  			border: 1px solid black;
+		}
+
+		th {
+  		text-align: center;
+		}
+
 </style>
 <body>
-<div class="card">
+<nav>
+<div class="navtop">
+<h3 style="color: white; text-align: center;">User's Details</h3>
+<div class="topnav-right">
+<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+</div>
+</div>
+</nav>
+
+<!-- <div class="card">
 <div class="wrapper">
     <div class="topnav">
 			<h3 style="color: white;">User's Details</h3>
@@ -121,13 +142,12 @@ $user = $this->session->userdata('user');
     </div> 
     </div>
     </div>
-		</div>
-		<div class="cal">
-				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+		</div> -->
+		<!-- <div class="cal"> -->
+				<button style="background:#D68910;  padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
 		
 				<br><br><br>
-				<form action="" method='POST'></form>
-				<table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
+				<table style="width:50%; margin-left:auto; margin-right:auto;" >
         <thead>
         <tr>
             <th rowspan="3" class="text-center">User Name</th>
@@ -141,10 +161,9 @@ $user = $this->session->userdata('user');
           <tr>
           <?php foreach ($users as $user): ?>
 					<tr>
-						<td><?php echo '<a href="profileindex">'.$user['first_name'].'</a>' ?></td>
-						<td><?php echo $user['email']; ?></td>
-						<td></td>
-						<td></td>
+						<td ><?php echo '<a href="profileindex">'.$user['first_name'].'</a>' ?></td>
+						<td ><?php echo $user['email']; ?></td>
+						
 						</tr>
 				<?php endforeach?>
           </tr>
