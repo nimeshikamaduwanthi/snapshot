@@ -28,17 +28,19 @@
     .topnav {
         overflow: hidden;
         background-color: #333;
-				/* padding: 0px; */
+        /* padding: 0px; */
+        height:8rem;
+
 				}
 
-		.topnav a {
+		/* .topnav a {
         float: left;
         color: #f2f2f2;
         text-align: center;
-        padding: 14px 16px;
+        /* padding: 14px 16px; */
         text-decoration: none;
         font-size: 17px;
-    }
+    } */
     .topnav h6{
         color: #fff;
         margin-top: -20px;
@@ -49,7 +51,7 @@
         margin-top: -2px;
     }
 
-    .topnav .topnav-right a {
+    /* .topnav .topnav-right a {
         padding:8px;
         font-size: 15px;
         background:forestgreen;
@@ -68,7 +70,7 @@
 
    .topnav-right {
         float: right;
-    }
+    } */
 
     .sidenav {
         height: 100%;
@@ -116,12 +118,18 @@
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
     }
     
-		ul {
+		/* ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     /* background-color: #333; */
+  } */
+
+  ul {
+    list-style-type: none;
+    text-decoration: none;
+    float: left;
   }
 
     li a {
@@ -129,7 +137,8 @@
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
+    padding-top: 30px;
     text-decoration: none;
   }
 
@@ -138,24 +147,26 @@
 	}
 
 	li a:hover {
-    background-color: #111;
+    background-color: orange;
+    height: 8rem;
+    color: white;
+    text-decoration: none;
   }
 </style>
-<body>
+<body >
 
 
         <div class="topnav">
-				<ul>
+				<ul style="list-style-type: none;">
 					<li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
 				</ul>
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border:none; border-radius: 5px; text-decoration: none; margin-top: 10px; margin-right: 20px;"> Logout</a>
         </div>
         
-
-				
+    <img src="<?php echo base_url();?>assets/img/sll.jpg" style="width:100%; background-size: cover;">
                 
 
 </body>

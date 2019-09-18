@@ -26,24 +26,9 @@ class Snapshot extends CI_Controller
         $this->load->view('snapshot', $data);
     }
 
-    // public function saveWeeks($data)
-    // {
-    //     $this->db->insert('weeks', $data);
-    //     return $this->db->insert_id();
-		// }
-		
-		
-		
     public function addSnapshot()
     {
-        // $weeks = array(
-        //     'start_date' => $this->input->post('weekStart'),
-        //     'end_date' => $this->input->post('weekEnd'),
-        // );
-
-        // $this->User_Model->saveWeeks($weeks);
-
-        
+      
         $user_id =  $_SESSION['user_id'];
 
         $total_planned_hours = 0;

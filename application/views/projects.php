@@ -274,7 +274,7 @@ $user = $this->session->userdata('user');
 
 </style>
 
-<body>
+<body style="background: #FEF9E7;">
 <div class="card">
 <div class="navbar">
         <div class="topnav">
@@ -286,7 +286,7 @@ $user = $this->session->userdata('user');
     		</div>
 
     <div class="cal">
-				<button style="background:#D68910;"> <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Back</a></button>
+				<button style="background:#D68910;"><a href="javascript:window.history.go(-1);" style="color: #fff; text-decoration: none;">Back</a></button>
         <br><br><br>
 				<form action="addProject" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >

@@ -24,80 +24,9 @@ $user = $this->session->userdata('user');
        
     }
 
-    .topnav a {
-        float: left;
-        color: #f2f2f2;
+		h3{
+        color:#fff;
         text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    .topnav h6{
-        color: #fff;
-        margin-top: -20px;
-        float: right;
-        margin-right: 120px;
-        font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
-        font-size:20px;
-        margin-top: -2px;
-    }
-    
-    .topnav .topnav-right a {
-        padding:8px;
-        font-size: 15px;
-        background:;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: -6px;
-        margin-right: -155px;
-    }
-
-    .topnav a:hover {
-        background-color: #aa0000;
-        color: #fff;
-    }
-
-    .topnav-right {
-        float: right;
-    }
-
-    .sidenav {
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #333;
-        overflow-x: hidden;
-        /*padding-top: 20px;*/
-        padding-top: 140px;
-    }
-
-    .sidenav a {
-        /*padding: 85px 8px 0px 16px;*/
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        /*padding-top: 80px;*/
-        margin-top: 30px;
-        margin-left: 25px;
-    }
-
-    .main {
-        margin-left: 160px;
-        font-size: 28px;
-        width: 50px;
-        height: 20px;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
     }
 
     .direct-links a{
@@ -121,29 +50,16 @@ $user = $this->session->userdata('user');
 		}
 
 </style>
-<body>
-<nav>
+<body style="background: #FEF9E7;">
+<nav style="height:5rem;">
 <div class="navtop">
-<h3 style="color: white; text-align: center;">User's Details</h3>
-<div class="topnav-right">
-<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+<h3 style="color: white; text-align: center; padding-top:15px;">All Users</h3>
+<!-- <div class="topnav-right"> -->
+<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; margin-top: -40px; margin-right: 20px;"> Logout</a>
 </div>
 </div>
 </nav>
 
-<!-- <div class="card">
-<div class="wrapper">
-    <div class="topnav">
-			<h3 style="color: white;">User's Details</h3>
-        <div class="main">
-        <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right;"> Logout</a>
-        </div>
-    </div> 
-    </div>
-    </div>
-		</div> -->
-		<!-- <div class="cal"> -->
 				<button style="background:#D68910;  padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
 		
 				<br><br><br>
@@ -152,8 +68,6 @@ $user = $this->session->userdata('user');
         <tr>
             <th rowspan="3" class="text-center">User Name</th>
             <th rowspan="3" class="text-center">User Email</th>
-            <!-- <th rowspan="3" class="text-center"></th>
-						<th rowspan="3" class="text-center"></th> -->
 
         </tr>
         </thead>

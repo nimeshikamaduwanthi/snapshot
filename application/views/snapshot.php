@@ -268,9 +268,16 @@ $user = $this->session->userdata('user');
         color:#000;
 
     }
+    table{
+  			border-collapse: collapse;
+		}
+
+		table, th, td {
+  			border: 1px solid black;
+		}
 </style>
 
-<body>
+<body style="background: #FEF9E7;">
 <div class="card">
 	<div class="navbar">
 		<div class="topnav">
@@ -282,7 +289,7 @@ $user = $this->session->userdata('user');
 		</div>
 
     <div class="cal">
-			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
+			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
 			
 		<form action="addSnapshot" method='POST'>
 			<!-- <table id="week" style="width:30%; margin: auto; height: 20%;">

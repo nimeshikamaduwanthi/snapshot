@@ -5,9 +5,9 @@
 	<title>SNAPSHOT - SL ROBOTICS</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css">
 </head> 
-<body style="background:#FBFCFC">
+<body style="background: #FEF9E7;"> 
 
-
+<div class="wrapper"> 
 <div class="container" style="float:left; width:50%; margin-top: 100px;" >
 	<div class="row">
 		<div class="col-md-6 col-sm-offset-4">
@@ -85,7 +85,7 @@
 </div>
 </div>
 			
-		
+</div>	
 
 </body>
 </html>

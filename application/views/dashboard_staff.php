@@ -16,22 +16,24 @@ $user = $this->session->userdata('user');
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
+				
     }
 
     .topnav {
         overflow: hidden;
         background-color:  #333;
-        
-        padding:5px;
+        height: 5rem;
+       
     }
 
     .topnav a {
         float: left;
         color: #f2f2f2;
         text-align: center;
-        padding: 14px 16px;
+        /* padding: 14px 16px; */
         text-decoration: none;
-        font-size: 17px;
+				font-size: 17px;
+				padding-top: 30px;
     }
     .topnav h6{
         color: #fff;
@@ -60,8 +62,8 @@ $user = $this->session->userdata('user');
 
     /*}*/
     .topnav a:hover {
-        background-color: #aa0000;
-        color: #fff;
+        background-color: orange;
+				color: #fff;
     }
 
     /*.topnav a.active {*/
@@ -130,7 +132,8 @@ $user = $this->session->userdata('user');
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+		background-color: #333;
+		
   }
 
     li a {
@@ -138,41 +141,33 @@ $user = $this->session->userdata('user');
     color: white;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
+		text-decoration: none;
+		
   }
 
 	li a:hover {
-    background-color: #111;
+    background-color:  #111;
+    height: 5rem;
   }
     
 </style>
-<body>
-<div class="wrapper">
+<body >
     <div class="topnav">
-        <div class="main"></div>
         <div class="topnav-right"> 
             <!-- <h6><?php echo $first_name; ?></h6> -->
         </div>
         <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;"> Logout</a>
+        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: 20px; margin-right:30px; "> Logout</a>
         </div>
 					<ul>
-        	<li><a href="<?php echo base_url(); ?>index.php/user/dashboardIndex">Home</a></li>
-        	<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
 					</ul>
     </div>
-
-		
-
-    
-
+	
 </div>
-<!-- <div class="direct-links">
-    <a href="<?php echo base_url(); ?>index.php/user/addTaskIndex" >Add Snapshot</a>
-    <a href="<?php echo base_url(); ?>index.php/user/viewTasks">View Snapshot</a>
-</div> -->
+<img src="<?php echo base_url();?>assets/img/sll.jpg" style="width:100%;">
 </body>
 </html>

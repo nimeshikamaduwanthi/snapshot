@@ -252,7 +252,7 @@ $user = $this->session->userdata('user');
 
 </style>
 
-<body>
+<body style="background: #FEF9E7;">
 <div class="card">
 <div class="navbar">
         <div class="topnav">
@@ -264,16 +264,18 @@ $user = $this->session->userdata('user');
         </div> 
 
       <div class="cal">
-			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex"> Back</a></button>
+			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
       <br><br><br>
       </div>
-			<div class="container" style="text-align:center; float: center; width:50%;" >
+			<div class="container" style="text-align:center; float: center; width:40%; " >
 				<div class="col-md-8">
 						<ul class="list-group">
 						<li class="list-group-item"><i class="fas fa-user"></i>  <?php echo $first_name." ".$last_name;  ?></li>
 							<li class="list-group-item"><i class="fa fa-envelope"></i>  <?php echo $email; ?> </li>
-							<li class="list-group-item"><input  placeholder="Department"></li>
-							<li class="list-group-item"><input placeholder="Phone Number"></li>
+							<form action="" method="post">
+							<li class="list-group-item"><input  ></li>
+							<li class="list-group-item"><input ></li>
+							</form>
 							</tr>
 						</ul>
 				</div>

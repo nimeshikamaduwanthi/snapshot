@@ -16,7 +16,7 @@
     .topnav {
         overflow: hidden;
         background-color: #333;
-        padding:5px;
+        padding:0px;
     }
 
     .topnav a {
@@ -112,28 +112,15 @@
   			border: 1px solid black;
 		}
 </style>
-<body>
+<body style="background: #FEF9E7;">
 <nav>
-<div class="navtop" style="overflow: hidden; background-color: #333; padding:0px;">
-<h3 style="color: white; text-align: center;">View Snapshots</h3>
+<div class="navtop" style="overflow: hidden; background-color: #333; padding:0px; height:5rem;">
+<h3 style="color: white; text-align: center; padding-top:15px;">View Snapshots</h3>
 <div class="topnav-right">
-<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; "> Logout</a>
+<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: -40px; margin-right: 20px; "> Logout</a>
 </div>
 </div>
 </nav>
-
-<!-- <div class="card">
-<div class="wrapper">
-    <div class="topnav">
-			<h3 style="color: white;">View Snapshots</h3>
-        <div class="main">
-        <div class="topnav-right">
-        <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;   text-align: center;"> Logout</a>
-        </div>
-    </div> 
-    </div>
-    </div>
-		</div> -->
 		<div class="cal">
 				<button style="background:#D68910; padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
 		
@@ -155,8 +142,8 @@
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<th colspan="2" class="text-center">Total Plnned hrs</th>
-					<th colspan="2" class="text-center">Total Actual hrs</th>
+					<th rowspan="3" class="text-center">Total Plnned hrs</th>
+					<th rowspan="3" class="text-center">Total Actual hrs</th>
 					
 				</tr>
 
@@ -175,8 +162,7 @@
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
-					<th></th>
-					<th></th>
+					
 				</tr>
 			</thead>
       <tbody>
