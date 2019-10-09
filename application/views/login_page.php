@@ -32,14 +32,22 @@
 					</div>
 			</div>
 			<?php
-				if($this->session->flashdata('error')){
-					?>
-					<div class="alert alert-danger text-center" style="margin-top:20px;">
-						<?php echo $this->session->flashdata('error'); ?>
-					</div>
-					<?php
-				}
+					if($this->session->flashdata('error')){
+						?>
+						<div class="alert alert-danger text-center" style="margin-top:20px;">
+							<?php echo $this->session->flashdata('error'); ?>
+						</div>
+						<?php
+					}
+					
+					if($error && $error !=''){
 			?>
+			<div class="alert alert-danger text-center" style="margin-top:20px;">
+						<?php echo $error; ?>
+					</div>
+			<?php
+				}
+				?>
 			</div>
 					
 </div>

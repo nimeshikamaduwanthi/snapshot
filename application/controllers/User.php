@@ -19,7 +19,8 @@ class User extends CI_Controller
         if ($this->session->userdata('user')) {
             $this->load->view('snapshot');
         } else {
-            $this->load->view('login_page');
+            $data['error'] = '';
+            $this->load->view('login_page', $data);
         }
     }
 
@@ -65,8 +66,9 @@ class User extends CI_Controller
             $this->load->view('dashboard_staff');
         }
         else {
-            header('location:' . base_url() . $this->index());
-            $this->session->set_flashdata('error', 'Invalid login. User not found');
+            $data['error'] = 'Invalid login. User not found';
+            $this->load->view('login_page',$data);
+            // $this->session->set_flashdata('error', 'Invalid login. User not found');
         }
     }
 
