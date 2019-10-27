@@ -98,7 +98,9 @@ class User extends CI_Controller
     public function dashboardHrIndex()
 		{
 			$this->load->view('dashboard_HR');
-		}
+        }
+        
+    
 
     public function userDetails()
     {

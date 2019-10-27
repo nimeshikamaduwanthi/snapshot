@@ -1,9 +1,3 @@
-
-<?php
-$user = $this->session->userdata('user');
-// extract($user);
-?>
-
 <title>ADD SNAPSHOT</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
@@ -13,8 +7,7 @@ $user = $this->session->userdata('user');
 
 
 <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-
-<!-- <script>
+<script>
     "use strict";function IterarCamposEdit(t,n){
         function i(t){if(null==colsEdi)
             return!0;
@@ -117,8 +110,7 @@ $user = $this->session->userdata('user');
     null!=params.columnsEd&&(colsEdi=params.columnsEd.split(","))
     };
 
-</script> -->
-
+</script>
 <style>
     .pt-3-half {
         padding-top: 1.4rem;
@@ -280,12 +272,11 @@ $user = $this->session->userdata('user');
   			border: 1px solid black;
 		}
 </style>
-
 <body style="background: #FEF9E7;">
 <div class="card">
 	<div class="navbar">
 		<div class="topnav">
-				<h3>ADD SNAPSHOT</h3>
+				<h3>Edit Snapshot</h3>
 				<div class="topnav-right">
 					<!-- <h6><?php echo $first_name; ?></h6> -->
 					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
@@ -294,27 +285,15 @@ $user = $this->session->userdata('user');
 
     <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
-
-		<form action="addSnapshot" method='POST'>
-			<!-- <table id="week" style="width:30%; margin: auto; height: 20%;">
-				<th> <h4>Select the Week</h4>
-					<label class="start" for="start">Start date</label>
-					<input type="date" name="start_date">
-
-					 <label class="end" for="end">End date</label>
-					<input type="date" name="weekEnd">
-				</th>
-			</table> -->
     </div>
-
-    <br><br><br>
+		<form action="<?php echo base_url(); ?>index.php/snapshot/updateSnapShot" method='POST'>
     <div style="width:96.5%;">
     <table class="table table-bordered" id="makeEditable" style=" float: left; margin-left: 15px; margin-top: 1px;" >
 			<thead>
 				<tr>
 					<th rowspan="3" class="text-center">Week Start Date</th>
-					<th rowspan="3" class="text-center">Project</th>
-					<th rowspan="3" class="text-center">Task</th>
+					<!-- <th rowspan="3" class="text-center">Project</th>
+					<th rowspan="3" class="text-center">Task</th> -->
 					<th rowspan="3" class="text-center">Planned Effort</th>
 					<th rowspan="3" class="text-center">Planned start date</th>
 					<th rowspan="3" class="text-center">Planned end date</th>
@@ -325,14 +304,16 @@ $user = $this->session->userdata('user');
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<th rowspan="3" class="text-center">Total Planned hrs</th>
-					<th rowspan="3" class="text-center">Total Actual hrs</th>
-					<div class = "savebtn">
-						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
+					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
+					<div class = "deletebtn">
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/snapshot/deleteSnapshot'" value="Delete Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
 					</div>
-				</tr>
-
-				<tr>
+					<div class = "savebtn">
+						<input type="submit" name="save" value="Update Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+					</div>
+        </tr>
+        <tr>
 					<th>P</th>
 					<th>A</th>
 					<th>P</th>
@@ -347,87 +328,36 @@ $user = $this->session->userdata('user');
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
-				</tr>
+				</tr> 
 			</thead>
 
 			<tbody>
-				<tr >
-					<td><input type="text" placeholder="YYYY-MM-DD" name="start_date"  class="form-control input-sm"></td>
-					<td >
-						<select name="project" id="projects">
-							<?php foreach ($projects as $project): ?>
-								<option value=<?php echo $project['id']; ?>>
-									<?php echo $project['project_name']; ?>
-								</option>
-							<?php endforeach?>
-						</select>
-					</td>
-					<td>
-						<select name="task_name" id="task_names">
-							<?php foreach ($task_names as $task_name): ?>
-								<option value=<?php echo $task_name['id']; ?>>
-									<?php echo $task_name['task']; ?>
-								</option>
-							<?php endforeach?>
-						</select>
-					</td>
-					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
-					<td><input type="text" name="id"  class="form-control input-sm"></td>
-					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
-					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
-					<td><input type="text" name="mon_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="mon_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="tue_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="tue_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="wen_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="wen_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="thu_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="thu_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="fri_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="fri_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="sat_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="sat_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="sun_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="sun_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="total_planned"  class="form-control input-sm"></td>
-					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td>
+      	<tr>
+      		<td><input type="text" value=<?php echo $snapshot['start_date'] ?> name="week_start_date" class="form-control input-sm"></td>
+					<!-- <td><input type="text" value=<?php echo $snapshot['project_name'] ?> name="project" class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['task'] ?> name="task" class="form-control input-sm"></td> -->
+					<td><input type="text" value=<?php echo $snapshot['planned_effort'] ?> name="planned_effort" class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['planned_start_date'] ?> placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['planned_end_date'] ?> placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['mon_p'] ?> name="mon_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['mon_a'] ?> name="mon_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['tue_p'] ?> name="tue_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['tue_a'] ?> name="tue_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['wen_p'] ?> name="wen_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['wen_a'] ?> name="wen_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['thu_p'] ?> name="thu_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['thu_a'] ?> name="thu_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['fri_p'] ?> name="fri_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['fri_a'] ?> name="fri_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['sat_p'] ?> name="sat_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['sat_a'] ?> name="sat_a"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['sun_p'] ?> name="sun_p"  class="form-control input-sm"></td>
+					<td><input type="text" value=<?php echo $snapshot['sun_a'] ?> name="sun_a"  class="form-control input-sm"></td> 
+					<input type="hidden" value=<?php echo $snapshot['id'] ?> name="id"  class="form-control input-sm">
 				</tr>
-
-				<?php foreach ($snapshots as $snapshot): ?>
-					<tr>
-						<td><?php echo $snapshot['start_date']; ?></td>
-						<td><?php echo $snapshot['project_name']; ?></td>
-						<td><?php echo $snapshot['task']; ?></td>
-						<td><?php echo $snapshot['planned_effort']; ?></td>
-						<td><?php echo $snapshot['planned_start_date']; ?></td>
-						<td><?php echo $snapshot['planned_end_date']; ?></td>
-						<td><?php echo $snapshot['mon_p']; ?></td>
-						<td><?php echo $snapshot['mon_a']; ?></td>
-						<td><?php echo $snapshot['tue_p']; ?></td>
-						<td><?php echo $snapshot['tue_a']; ?></td>
-						<td><?php echo $snapshot['wen_p']; ?></td>
-						<td><?php echo $snapshot['wen_a']; ?></td>
-						<td><?php echo $snapshot['thu_p']; ?></td>
-						<td><?php echo $snapshot['thu_a']; ?></td>
-						<td><?php echo $snapshot['fri_p']; ?></td>
-						<td><?php echo $snapshot['fri_a']; ?></td>
-						<td><?php echo $snapshot['sat_p']; ?></td>
-						<td><?php echo $snapshot['sat_a']; ?></td>
-						<td><?php echo $snapshot['sun_p']; ?></td>
-						<td><?php echo $snapshot['sun_a']; ?></td>
-						<td><?php echo $snapshot['total_planned']; ?></td>
-						<td><?php echo $snapshot['total_actual']; ?></td>
-						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
-                        <a href="<?php echo base_url(); ?>index.php/snapshot/snapEditIndex/<?php echo $snapshot['id']; ?>">Edit</a></button></td>
-					</tr>
-				<?php endforeach?>
-		</tbody>
-	</table>
-
-
-</form>
-
-<script>
+      </tbody>
+			</table>
+			</form>
+ <script>
 	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
 </script>
-
