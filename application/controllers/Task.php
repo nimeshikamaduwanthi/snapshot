@@ -42,15 +42,21 @@ public function updateTask()
 				'task' => $this->input->post('task_name'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
-				
 		);
 
 				$this->Task_Model->updateTask($task, $task_id);
 				$this->Task_Model->getTask();
 				redirect('task/index');
-    } 
+		} 
 		
-public function taskEditIndex($id) {
+public function deleteTask($id) 
+		{       
+			$this->Task_Model->deleteTask($id);
+			redirect('task/index');
+		}	
+
+public function taskEditIndex($id) 
+{
 			$data['task'] = $this->Task_Model->getSelectedTask($id);
       $this->load->view('task_edit', $data);
 }

@@ -316,6 +316,9 @@ $user = $this->session->userdata('user');
 						<td><input type="text" value="<?php echo $task['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text"  value="<?php echo $task['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
             <input type="hidden" value="<?php echo $task['id']; ?>"  name="id"  class="form-control input-sm">
+						<div class = "deletebtn">
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/task/deleteTask/<?php echo $task['id'] ?>'" value="Delete Project" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+					</div>
 						<div style="padding-right: 100px;">
 							<input type="submit" name="save" value="Update Task" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>

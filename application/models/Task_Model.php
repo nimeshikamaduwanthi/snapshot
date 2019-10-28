@@ -25,9 +25,10 @@ class Task_Model extends CI_Model
         $query = $this->db->query(
 					'SELECT P.project_name, T.task, T.start_date, T.end_date, T.id
 					FROM projects P, tasks T 
-					WHERE T.project_id = P.id'
+					WHERE T.project_id = P.id
+					AND T.status=1'
 				);
-        return $query->result_array();
+				return $query->result_array();
 		}
 		
 		public function getSelectedTask($task_id)
@@ -41,11 +42,11 @@ class Task_Model extends CI_Model
 			return $query->row_array();
   	}
 		
-		public function deleteProject($project_id) 
+		public function deleteTask($task_id) 
 		{
 			$data = array('status' => 0);  
 		
-			$this->db->where('id', $project_id);
+			$this->db->where('id', $task_id);
 			$this->db->update('tasks', $data); 
 			return;
 		}
