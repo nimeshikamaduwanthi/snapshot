@@ -10,7 +10,7 @@ public function __construct()
 		$this->load->helper('url');
 		$this->load->model('Project_Model');
 		$this->load->model('Task_Model');
-}
+} 
 
 public function Index() 
 {
@@ -22,6 +22,7 @@ public function Index()
 public function addTask()
 {
 		$newTask = array(
+			  'id' => $this->input->post('id'),
 				'task' => $this->input->post('task_name'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
@@ -31,6 +32,12 @@ public function addTask()
 		$this->Task_Model->saveTask($newTask);
 
 		redirect('task/index');
+}
+ 
+public function taskEditIndex($id) {
+			$data['task'] = $this->Task_Model->getSelectedTask($id);
+			print_r($data);
+      $this->load->view('task_edit', $data);
 }
 }
 ?>

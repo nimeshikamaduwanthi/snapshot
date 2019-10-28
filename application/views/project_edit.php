@@ -3,7 +3,7 @@ $user = $this->session->userdata('user');
 // extract($user);
 ?>
 
-<title>TASK</title>
+<title>PROJECT</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 
@@ -12,7 +12,6 @@ $user = $this->session->userdata('user');
 
 
 <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-
 <style>
     .pt-3-half {
         padding-top: 1.4rem;
@@ -173,12 +172,11 @@ $user = $this->session->userdata('user');
     }
 
 </style>
-
 <body style="background: #FEF9E7;">
 <div class="card">
 <div class="navbar">
         <div class="topnav">
-            <h3>TASK</h3>
+            <h3>EDIT PROJECTS</h3>
             <div class="topnav-right">
                 <!-- <h6><?php echo $first_name; ?></h6> -->
                 <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
@@ -186,56 +184,38 @@ $user = $this->session->userdata('user');
     		</div>
 
     <div class="cal">
-		<!-- <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" > -->
 				<button style="background:#D68910;"><a href="javascript:window.history.go(-1);" style="color: #fff; text-decoration: none;">Back</a></button>
-				<!-- if(isadmin) dashbordhrindex -->
         <br><br><br>
-				<form action="addTask" method='POST'>
+				<form action="<?php echo base_url(); ?>index.php/project/updateProject" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
-            <th rowspan="3" class="text-center">Project Name</th>
-            <th rowspan="3" class="text-center">Task Name</th>
+            <th rowspan="3" class="text-center">Code</th>
+            <th rowspan="3" class="text-center">Project Name</th> 
+            <th rowspan="3" class="text-center">Project Description</th>
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th>
 
         </tr>
-        </thead>
+        </thead> 
         <tbody>
         <tr>
-        <td >
-						<select name="project" id="projects">
-							<?php foreach ($projects as $project): ?>
-								<option value=<?php echo $project['id']; ?>>
-									<?php echo $project['project_name']; ?>
-								</option>
-							<?php endforeach?>
-						</select>
-					</td>
-						<td><input type="text" name="task_name" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+						<td><input type="text" value="<?php echo $project['code']; ?>" name="code" class="form-control input-sm"></td>
+						<td><input type="text" value="<?php echo $project['project_name']; ?>" name="project_name" class="form-control input-sm"></td>
+						<td><input type="text" value="<?php echo $project['project_description']; ?>" name="project_description" class="form-control input-sm"></td>
+						<td><input type="text" value="<?php echo $project['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
+						<td><input type="text" value="<?php echo $project['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+            <input type="hidden" value=<?php echo $project['id'] ?> name="id"  class="form-control input-sm">
+						<div class = "deletebtn">
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/project/deleteProject/<?php echo $project['id'] ?>'" value="Delete Project" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+					</div>
 						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
+							<input type="submit" name="save" value="Update Project" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>
         </tr>
-				<?php foreach ($task_names as $newTask): ?>
-					<tr>
-            <td><?php echo $newTask['project_name']; ?></td>
-						<td><?php echo $newTask['task']; ?></td>
-						<td><?php echo $newTask['start_date']; ?></td>
-						<td><?php echo $newTask['end_date']; ?></td>
-						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
-              <a href="<?php echo base_url(); ?>index.php/task/taskEditIndex/<?php echo $newTask['id']; ?>">Edit</a></button></td>
-						</tr>
-				<?php endforeach?>
 				</tbody>
 				</table>
 		</div>
 		</div>
 	</div>
 			</form>
-
-		<script>
-    	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-		</script>

@@ -16,12 +16,23 @@ class Task_Model extends CI_Model
     public function getTask()
     {
         $query = $this->db->query(
-					'SELECT P.project_name, T.task, T.start_date, T.end_date 
+					'SELECT P.project_name, T.task, T.start_date, T.end_date, T.id
 					FROM projects P, tasks T 
 					WHERE T.project_id = P.id'
 				);
         return $query->result_array();
-    }
+		}
+		
+		public function getSelectedTask($task_id)
+  {
+		$query = $this->db->query(
+			"SELECT P.project_name, T.task, T.start_date, T.end_date, T.id
+			FROM projects P, tasks T 
+			WHERE T.project_id = P.id
+			AND T.id='$task_id'"
+		);
+    return $query->row_array();
+  }
 		
     public function getTaskNames()
     {

@@ -18,7 +18,13 @@ class Snapshot_Model extends CI_Model
       $this->db->where('id', $snap_id);
       $this->db->update('snapshots', $data);
       return;
-		}
+    }
+    
+    public function deleteSnapshot($snap_id)
+    {
+      $this->db->delete('snapshots', array('id' => $snap_id)); 
+      
+    }
 		
     public function mySnapshots($user_id) 
     { 
@@ -29,10 +35,12 @@ class Snapshot_Model extends CI_Model
 					FROM projects P, snapshots S, tasks TN
 					WHERE P.id = S.project_id
           AND TN.id = S.task_id
+          /* AND P.status = '1' */
           AND S.user_id='$user_id'"
         );
         return $query->result_array();
-    }
+
+    } 
 
     public function getSelectedSnapshot($snap_id) {
       $query = $this->db->query(

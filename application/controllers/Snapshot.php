@@ -222,14 +222,16 @@ class Snapshot extends CI_Controller
 		  
     public function getAllSnapshots()
     {
-        $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
+        $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots(); 
         $this->load->view('view_snapshot', $data);
 
     }		
 
-    public function deleteSnapshot()
-    {
-       echo 'DELETING...';
+    public function deleteSnapshot($id) 
+    {       
+      //echo  $id;
+       $this->Snapshot_Model->deleteSnapshot($id);
+       redirect('snapshot/index');
     }		
 
     public function snapEditIndex($id) {

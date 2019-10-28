@@ -12,7 +12,7 @@ $user = $this->session->userdata('user');
 
 
 <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-<script>
+<!-- <script>
     "use strict";function IterarCamposEdit(t,n){
         function i(t){if(null==colsEdi)
             return!0;
@@ -111,7 +111,7 @@ $user = $this->session->userdata('user');
     null!=params.columnsEd&&(colsEdi=params.columnsEd.split(","))
     };
 
-</script>
+</script> -->
 
 <style>
     .pt-3-half {
@@ -299,7 +299,7 @@ $user = $this->session->userdata('user');
 						<th rowspan="3" class="text-center">End Date</th>
 
         </tr>
-        </thead>
+        </thead> 
         <tbody>
         <tr>
 						<td><input type="text" name="code" class="form-control input-sm"></td>
@@ -313,11 +313,13 @@ $user = $this->session->userdata('user');
         </tr>
 				<?php foreach ($projects as $project): ?>
 					<tr>
-						<td><?php echo $project['code']; ?></td>
+						<td><?php echo $project['code']; ?></td> 
 						<td><?php echo $project['project_name']; ?></td>
 						<td><?php echo $project['project_description']; ?></td>
 						<td><?php echo $project['start_date']; ?></td>
 						<td><?php echo $project['end_date']; ?></td>
+						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
+						<a href="<?php echo base_url(); ?>index.php/project/projectEditIndex/<?php echo $project['id']; ?>">Edit</a></button></td>
 						</tr>
 				<?php endforeach?>
 				</tbody>

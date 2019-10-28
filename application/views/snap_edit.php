@@ -275,14 +275,14 @@
 <body style="background: #FEF9E7;">
 <div class="card">
 	<div class="navbar">
-		<div class="topnav">
+		<div class="topnav"> 
 				<h3>Edit Snapshot</h3>
 				<div class="topnav-right">
 					<!-- <h6><?php echo $first_name; ?></h6> -->
 					<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
 				</div>
 		</div>
-
+ 
     <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
     </div>
@@ -307,7 +307,7 @@
 					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
 					<div class = "deletebtn">
-						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/snapshot/deleteSnapshot'" value="Delete Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/snapshot/deleteSnapshot/<?php echo $snapshot['id'] ?>'" value="Delete Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
 					</div>
 					<div class = "savebtn">
 						<input type="submit" name="save" value="Update Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >

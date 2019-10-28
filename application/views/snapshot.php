@@ -410,7 +410,7 @@ $user = $this->session->userdata('user');
 						<td><?php echo $snapshot['thu_p']; ?></td>
 						<td><?php echo $snapshot['thu_a']; ?></td>
 						<td><?php echo $snapshot['fri_p']; ?></td>
-						<td><?php echo $snapshot['fri_a']; ?></td>
+						<td><?php echo $snapshot['fri_a']; ?></td> 
 						<td><?php echo $snapshot['sat_p']; ?></td>
 						<td><?php echo $snapshot['sat_a']; ?></td>
 						<td><?php echo $snapshot['sun_p']; ?></td>
