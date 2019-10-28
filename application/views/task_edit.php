@@ -290,7 +290,7 @@ $user = $this->session->userdata('user');
 				<button style="background:#D68910;"><a href="javascript:window.history.go(-1);" style="color: #fff; text-decoration: none;">Back</a></button>
 				<!-- if(isadmin) dashbordhrindex -->
         <br><br><br>
-				<form action="addTask" method='POST'>
+				<form action="<?php echo base_url(); ?>index.php/task/updateTask" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
@@ -315,9 +315,9 @@ $user = $this->session->userdata('user');
 						<td><input type="text" value="<?php echo $task['task']; ?>" name="task_name" class="form-control input-sm"></td>
 						<td><input type="text" value="<?php echo $task['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text"  value="<?php echo $task['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
-            <input type="hidden"  name="id"  class="form-control input-sm">
+            <input type="hidden" value="<?php echo $task['id']; ?>"  name="id"  class="form-control input-sm">
 						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
+							<input type="submit" name="save" value="Update Task" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
 						</div>
         </tr>
 				</tbody>
