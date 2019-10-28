@@ -15,36 +15,36 @@ class Project_Model extends CI_Model
 
   public function getProjects()
   {
+    $this->db->where('status', 1);
     $query = $this->db->get('projects');
     return $query->result_array();
   }
 
   public function updateProject($data, $project_id)
-    {      
-      $this->db->where('id', $project_id);
-      $this->db->update('projects', $data);
-      return;
-    }
-
-
-    public function deleteProject($project_id) 
-    {
-    $project = array('status' => 1);    
+  {      
     $this->db->where('id', $project_id);
-    $this->db->update('projects', $project); 
-      
-    }
+    $this->db->update('projects', $data);
+    return;
+  }
 
-
-  public function getSelectedProjects($project_id)
+  public function deleteProject($project_id) 
   {
-   $this->db->select('id, code, project_name, project_description, start_date, end_date');
+    $data = array('status' => 0);  
+  
+    $this->db->where('id', $project_id);
+    $this->db->update('projects', $data); 
+    return;
+  }
+ 
+  public function getSelectedProject($project_id)
+  {
+    $this->db->select('id, code, project_name, project_description, start_date, end_date');
     $this->db->from('projects');
+    $this->db->where('id', $project_id);
     $query = $this->db->get();
     return $query->row_array();
   }
 
-    
   public function getProjectNames()
   {
     $this->db->select('id, project_name');

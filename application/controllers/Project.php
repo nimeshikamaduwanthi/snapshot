@@ -49,18 +49,17 @@ class Project extends CI_Controller
 				$this->Project_Model->updateProject($project, $project_id);
 				$this->Project_Model->getProjects();
 				redirect('project/index');
-    }
+    } 
 		
 		public function deleteProject($id) 
     {       
-      //echo  $id;
-       $this->Project_Model->deleteProject($id);
+      $this->Project_Model->deleteProject($id);
        redirect('project/index');
 		}	
 		
     public function projectEditIndex($id) 
     {
-      $data['project'] = $this->Project_Model->getSelectedProjects($id);
+      $data['project'] = $this->Project_Model->getSelectedProject($id);
       $this->load->view('project_edit', $data);
     }
 }

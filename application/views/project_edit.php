@@ -194,8 +194,7 @@ $user = $this->session->userdata('user');
             <th rowspan="3" class="text-center">Project Name</th> 
             <th rowspan="3" class="text-center">Project Description</th>
             <th rowspan="3" class="text-center">Start Date</th>
-						<th rowspan="3" class="text-center">End Date</th>
-
+						<th rowspan="3" class="text-center">End Date</th> 
         </tr>
         </thead> 
         <tbody>
