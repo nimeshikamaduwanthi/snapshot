@@ -7,7 +7,7 @@
 
 
 <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-<script>
+<!-- <script>
     "use strict";function IterarCamposEdit(t,n){
         function i(t){if(null==colsEdi)
             return!0;
@@ -110,7 +110,7 @@
     null!=params.columnsEd&&(colsEdi=params.columnsEd.split(","))
     };
 
-</script>
+</script> -->
 <style>
     .pt-3-half {
         padding-top: 1.4rem;
@@ -307,10 +307,10 @@
 					<!-- <th rowspan="3" class="text-center">Total Planned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th> -->
 					<div class = "deletebtn">
-						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/snapshot/deleteSnapshot/<?php echo $snapshot['id'] ?>'" value="Delete Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/snapshot/deleteSnapshot/<?php echo $snapshot['id'] ?>'" value="Delete Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-left: 7px; margin-top: 5px;" >
 					</div>
 					<div class = "savebtn">
-						<input type="submit" name="save" value="Update Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+						<input type="submit" name="save" value="Update Snapshot" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 5px;" >
 					</div>
         </tr>
         <tr>

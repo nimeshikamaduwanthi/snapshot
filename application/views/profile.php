@@ -265,6 +265,7 @@ $user = $this->session->userdata('user');
 
       <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
+            <button type="submit" class="btn btn-primary" style="float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none; margin-right:10px;">Update</button>
       <br><br><br>
       </div>
 			<div class="container" style="text-align:center; float: center; width:40%; " >
@@ -281,5 +282,5 @@ $user = $this->session->userdata('user');
 				</div>
 			</div>
 			
-			<button type="submit" class="btn btn-primary" style="float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;">Update</button>
+			
         	

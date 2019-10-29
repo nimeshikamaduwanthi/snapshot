@@ -279,6 +279,13 @@ $user = $this->session->userdata('user');
 		table, th, td {
   			border: 1px solid black;
 		}
+
+		#scroll 
+		{
+     width: 1350px;
+    height: 450px;
+    overflow:scroll;
+}
 </style>
 
 <body style="background: #FEF9E7;">
@@ -294,7 +301,9 @@ $user = $this->session->userdata('user');
 
     <div class="cal">
 			<button style="background:#D68910;" > <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" style="color: #fff; text-decoration: none;"> Back</a></button>
-
+			<div class = "savebtn">
+						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 8px; margin-right: 10px;" >
+					</div>
 		<form action="addSnapshot" method='POST'>
 			<!-- <table id="week" style="width:30%; margin: auto; height: 20%;">
 				<th> <h4>Select the Week</h4>
@@ -308,7 +317,8 @@ $user = $this->session->userdata('user');
     </div>
 
     <br><br><br>
-    <div style="width:96.5%;">
+		<div>
+    <div id="scroll" style="overflow-y:scroll;">
     <table class="table table-bordered" id="makeEditable" style=" float: left; margin-left: 15px; margin-top: 1px;" >
 			<thead>
 				<tr>
@@ -327,9 +337,8 @@ $user = $this->session->userdata('user');
 					<th colspan="2" class="text-center">Sun</th>
 					<th rowspan="3" class="text-center">Total Planned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th>
-					<div class = "savebtn">
-						<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
-					</div>
+					<th rowspan="3" class="text-center">#</th>
+					
 				</tr>
 
 				<tr>
@@ -372,23 +381,23 @@ $user = $this->session->userdata('user');
 						</select>
 					</td>
 					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
-					<td><input type="text" name="id"  class="form-control input-sm"></td>
+					<!-- <td><input type="text" name="id"  class="form-control input-sm"></td> -->
 					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
 					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
-					<td><input type="text" name="mon_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="mon_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="tue_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="tue_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="wen_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="wen_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="thu_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="thu_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="fri_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="fri_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="sat_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="sat_a"  class="form-control input-sm"></td>
-					<td><input type="text" name="sun_p"  class="form-control input-sm"></td>
-					<td><input type="text" name="sun_a"  class="form-control input-sm"></td>
+					<td><input type="text" name="mon_p"  style="width: 30px;"></td>
+					<td><input type="text" name="mon_a"  style="width: 30px;"></td>
+					<td><input type="text" name="tue_p"  style="width: 30px;"></td>
+					<td><input type="text" name="tue_a"  style="width: 30px;"></td>
+					<td><input type="text" name="wen_p"  style="width: 30px;"></td>
+					<td><input type="text" name="wen_a"  style="width: 30px;"></td>
+					<td><input type="text" name="thu_p"  style="width: 30px;"></td>
+					<td><input type="text" name="thu_a"  style="width: 30px;"></td>
+					<td><input type="text" name="fri_p"  style="width: 30px;"></td>
+					<td><input type="text" name="fri_a"  style="width: 30px;"></td>
+					<td><input type="text" name="sat_p"  style="width: 30px;"></td>
+					<td><input type="text" name="sat_a"  style="width: 30px;"></td>
+					<td><input type="text" name="sun_p"  style="width: 30px;"></td>
+					<td><input type="text" name="sun_a"  style="width: 30px;"></td>
 					<td><input type="text" name="total_planned"  class="form-control input-sm"></td>
 					<td><input type="text" name="tatal_actual"  class="form-control input-sm"></td>
 				</tr>
@@ -417,15 +426,16 @@ $user = $this->session->userdata('user');
 						<td><?php echo $snapshot['sun_a']; ?></td>
 						<td><?php echo $snapshot['total_planned']; ?></td>
 						<td><?php echo $snapshot['total_actual']; ?></td>
-						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
-                        <a href="<?php echo base_url(); ?>index.php/snapshot/snapEditIndex/<?php echo $snapshot['id']; ?>">Edit</a></button></td>
+						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" style="background:#D68910; color: #fff; border-radius: 5px; border: none; " onclick="rowEdit(this);">
+                        <a style=" text-decoration: none; color: #fff;" href="<?php echo base_url(); ?>index.php/snapshot/snapEditIndex/<?php echo $snapshot['id']; ?>">Edit</a></button></td>
 					</tr>
 				<?php endforeach?>
+				</form>
 		</tbody>
 	</table>
+</div>
+</div>
 
-
-</form>
 
 <script>
 	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});

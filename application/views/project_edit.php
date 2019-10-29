@@ -196,7 +196,7 @@ $user = $this->session->userdata('user');
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th> 
         </tr>
-        </thead> 
+        </thead>  
         <tbody>
         <tr>
 						<td><input type="text" value="<?php echo $project['code']; ?>" name="code" class="form-control input-sm"></td>
@@ -206,10 +206,10 @@ $user = $this->session->userdata('user');
 						<td><input type="text" value="<?php echo $project['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
             <input type="hidden" value=<?php echo $project['id'] ?> name="id"  class="form-control input-sm">
 						<div class = "deletebtn">
-						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/project/deleteProject/<?php echo $project['id'] ?>'" value="Delete Project" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 0.1px;" >
+						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/project/deleteProject/<?php echo $project['id'] ?>'" value="Delete Project" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-right: 25px; margin-top: 35px;" >
 					</div>
 						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Update Project" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
+							<input type="submit" name="save" value="Update Project" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  margin-top: 35px; margin-right: 10px; " >
 						</div>
         </tr>
 				</tbody>

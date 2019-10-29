@@ -189,6 +189,9 @@ $user = $this->session->userdata('user');
 		<!-- <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" > -->
 				<button style="background:#D68910;"><a href="javascript:window.history.go(-1);" style="color: #fff; text-decoration: none;">Back</a></button>
 				<!-- if(isadmin) dashbordhrindex -->
+				<div style="padding-right: 100px;">
+							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none; margin-top:10px; " >
+						</div>
         <br><br><br>
 				<form action="addTask" method='POST'>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
@@ -198,6 +201,7 @@ $user = $this->session->userdata('user');
             <th rowspan="3" class="text-center">Task Name</th>
             <th rowspan="3" class="text-center">Start Date</th>
 						<th rowspan="3" class="text-center">End Date</th>
+						<th rowspan="3" class="text-center">#</th>
 
         </tr>
         </thead>
@@ -215,9 +219,7 @@ $user = $this->session->userdata('user');
 						<td><input type="text" name="task_name" class="form-control input-sm"></td>
 						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
 						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
-						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Save" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  " >
-						</div>
+						<td></td>
         </tr>
 				<?php foreach ($task_names as $newTask): ?>
 					<tr>
@@ -225,8 +227,8 @@ $user = $this->session->userdata('user');
 						<td><?php echo $newTask['task']; ?></td>
 						<td><?php echo $newTask['start_date']; ?></td>
 						<td><?php echo $newTask['end_date']; ?></td>
-						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
-              <a href="<?php echo base_url(); ?>index.php/task/taskEditIndex/<?php echo $newTask['id']; ?>">Edit</a></button></td>
+						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" style="background:#D68910; color: #fff; border-radius: 5px; border: none; " onclick="rowEdit(this);">
+              <a style=" text-decoration: none; color: #fff;" href="<?php echo base_url(); ?>index.php/task/taskEditIndex/<?php echo $newTask['id']; ?>">Edit</a></button></td>
 						</tr>
 				<?php endforeach?>
 				</tbody>
@@ -236,6 +238,4 @@ $user = $this->session->userdata('user');
 	</div>
 			</form>
 
-		<script>
-    	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-		</script>
+		
