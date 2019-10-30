@@ -20,7 +20,7 @@ class Project_Model extends CI_Model
     return $query->result_array();
   }
 
-  public function  updateTask($data, $project_id)
+  public function  updateProject($data, $project_id)
   {      
     $this->db->where('id', $project_id);
     $this->db->update('projects', $data);

@@ -25,52 +25,11 @@ $user = $this->session->userdata('user');
 
     }
 
-    .topnav {
-        /*overflow: hidden;*/
-        background-color: #333;
-        padding:5px;
-
-    }
-    .topnav h3{
-        color:#fff;
-        text-align: center;
-        padding-top: 10px;
+		.topnav {
+			  background-color: #333;
+        height:8rem;
     }
 
-    .topnav h6{
-        color: #fff;
-        margin-top: -20px;
-        float: right;
-        margin-right:120px;
-        font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
-        font-size:20px;
-        margin-top: -35px;
-    }
-    .topnav .topnav-right a {
-        /* padding: 53px; */
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: -40px;
-        margin-right: 25px;
-    }
-
-    /*.topnav button:hover{*/
-
-    /*color: #000;*/
-
-    /*}*/
-    .topnav a:hover {
-        background-color: #aa0000;
-        color: #fff;
-    }
-
-
-
-    }
     @media screen and (max-height: 650px) {
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 18px;}
@@ -83,15 +42,7 @@ $user = $this->session->userdata('user');
         margin-left: 30px;
         font-size: 20px;
     }
-    /* .cal table{
-        border-color: #0b0c0f;
-        border: 2px solid black;
-        margin-top: 40px;
-        margin-left: 30px;
-
-
-        /*border-collapse: collapse;*/
-    /* } */
+    
     .cal th  .start{
         margin-top:50px ;
         color: #000;
@@ -132,20 +83,7 @@ $user = $this->session->userdata('user');
         color:#000;
 
     }
-    /* .submit a{
-        padding:10px;
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: 5px;
-        margin-right: 160px;
-
-
-    } */
-
+   
     .submit a:hover{
         background: #d58512;
         color: #fff;
@@ -173,64 +111,75 @@ $user = $this->session->userdata('user');
 
     }
 
+		ul {
+    list-style-type: none;
+    text-decoration: none;
+    float: left;
+  	}
+
+    li a {
+		list-style-type: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    padding-top: 30px;
+    text-decoration: none;
+  }
+
+	li {
+		float: left;
+	}
+
+	li a:hover {
+    background-color: orange;
+    height: 8rem;
+    color: white;
+    text-decoration: none;
+  }
+
 </style>
 
 <body style="background: #FEF9E7;">
-<div class="card">
-<div class="navbar">
-        <div class="topnav">
-            <h3>EDIT TASK</h3>
-            <div class="topnav-right">
-                <!-- <h6><?php echo $first_name; ?></h6> -->
-                <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910;">Logout</a>
-            </div>
-    		</div>
-
+<div class="topnav">
+		<div class="topnav-right">
+		  <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: 20px; margin-right:30px; "> Logout</a>
+		</div> 
+			<ul>
+			<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
+			</ul>
+</div>
+<h2 style="text-align: center; color: #D68910; ">EDIT TASK</h2>
+<form action="<?php echo base_url(); ?>index.php/task/updateTask" method='POST'>
     <div class="cal">
-		<!-- <a href="<?php echo base_url(); ?>index.php/user/dashboardIndex" > -->
-				<button style="background:#D68910;"><a href="javascript:window.history.go(-1);" style="color: #fff; text-decoration: none;">Back</a></button>
-				<!-- if(isadmin) dashbordhrindex -->
-        <br><br><br>
-				<form action="<?php echo base_url(); ?>index.php/task/updateTask" method='POST'>
+		<div class = "deletebtn">
+			<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/task/deleteTask/<?php echo $task['id'] ?>'" value="Delete Task" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;  margin-right: 25px; margin-top: 35px; ">
+		</div>
+		<div style="padding-right: 100px;">
+			<input type="submit" name="save" value="Update Task" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none; margin-top: 35px; margin-right: 10px; " >
+		</div>
+		</div> <br><br>
         <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
         <thead>
         <tr>
-            <!-- <th rowspan="3" class="text-center">Project Name</th> -->
-            <th rowspan="3" class="text-center">Task Name</th>
-            <th rowspan="3" class="text-center">Start Date</th>
-						<th rowspan="3" class="text-center">End Date</th>
-
+				<!-- <th rowspan="3" class="text-center">Project Name</th> -->
+				<th rowspan="3" class="text-center">Task Name</th>
+				<th rowspan="3" class="text-center">Start Date</th>
+				<th rowspan="3" class="text-center">End Date</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-        <!-- <td >
-						<select name="project" id="projects">
-							<?php foreach ($projects as $project): ?>
-								<option value=<?php echo $project['id']; ?>>
-									<?php echo $project['project_name']; ?>
-								</option>
-							<?php endforeach?>
-						</select>
-					</td> -->
-						<td><input type="text" value="<?php echo $task['task']; ?>" name="task_name" class="form-control input-sm"></td>
-						<td><input type="text" value="<?php echo $task['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text"  value="<?php echo $task['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
-            <input type="hidden" value="<?php echo $task['id']; ?>"  name="id"  class="form-control input-sm">
-						<div class = "deletebtn">
-						<input type="button" name="delete" onclick="window.location='<?php echo base_url(); ?>index.php/task/deleteTask/<?php echo $task['id'] ?>'" value="Delete Task" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right;  margin-right: 25px; margin-top: 35px; ">
-					</div>
-						<div style="padding-right: 100px;">
-							<input type="submit" name="save" value="Update Task" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none; margin-top: 35px; margin-right: 10px; " >
-						</div>
+				<td><input type="text" value="<?php echo $task['task']; ?>" name="task_name" class="form-control input-sm"></td>
+				<td><input type="text" value="<?php echo $task['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
+				<td><input type="text"  value="<?php echo $task['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+				<input type="hidden" value="<?php echo $task['id']; ?>"  name="id"  class="form-control input-sm">
         </tr>
 				</tbody>
 				</table>
-		</div>
-		</div>
-	</div>
-			</form>
+</form>
 
-		<script>
-    	$('#makeEditable').SetEditable({ $addButton: $('#but_add')});
-		</script>
+	

@@ -29,11 +29,10 @@ class Project extends CI_Controller
         );
 
         $this->Project_Model->saveProject($project);
-
         $data['projects'] = $this->Project_Model->getProjects();
-        redirect('project/index');
+        $this->index();
     }
-        
+         
     public function updateProject()
     {   
 			$project_id = $_POST['id'];
@@ -47,14 +46,16 @@ class Project extends CI_Controller
 		);
 
 				$this->Project_Model->updateProject($project, $project_id);
-				$this->Project_Model->getProjects();
-				redirect('project/index');
+        $this->Project_Model->getProjects();
+        $this->index();
+				// redirect('project/index');
     } 
 		
 		public function deleteProject($id) 
     {       
       $this->Project_Model->deleteProject($id);
-       redirect('project/index');
+      $this->index();
+      //  redirect('project/index');
 		}	
 		
     public function projectEditIndex($id) 

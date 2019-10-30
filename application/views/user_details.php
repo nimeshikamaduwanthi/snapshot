@@ -18,10 +18,9 @@ $user = $this->session->userdata('user');
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    nav {
-        overflow: hidden;
-        background-color: #333;
-       
+		.topnav {
+			  background-color: #333;
+        height:5rem;
     }
 
 		h3{
@@ -49,20 +48,49 @@ $user = $this->session->userdata('user');
   		text-align: center;
 		}
 
+		ul {
+    list-style-type: none;
+    text-decoration: none;
+    float: left;
+  	}
+
+    li a {
+		list-style-type: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    padding-top: 30px;
+    text-decoration: none;
+  }
+
+	li {
+		float: left;
+	}
+
+	li a:hover {
+    background-color: orange;
+    height: 8rem;
+    color: white;
+    text-decoration: none;
+  }
+
+
 </style>
 <body style="background: #FEF9E7;">
-<nav style="height:5rem;">
-<div class="navtop">
-<h3 style="color: white; text-align: center; padding-top:15px;">All Users</h3>
-<!-- <div class="topnav-right"> -->
-<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none; margin-top: -40px; margin-right: 20px;"> Logout</a>
+<div class="topnav">
+		<div class="topnav-right">
+		  <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: 20px; margin-right:30px; "> Logout</a>
+		</div> 
+			<ul>
+			<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
+			</ul>
 </div>
-</div>
-</nav>
-
-				<button style="background:#D68910;  padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
-		
-				<br><br><br>
+<h2 style="text-align: center; color: #D68910; ">Users View</h2>
+				
 				<table style="width:50%; margin-left:auto; margin-right:auto;" >
         <thead>
         <tr>

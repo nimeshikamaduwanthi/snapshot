@@ -13,82 +13,14 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    .topnav {
+		.topnav {
         overflow: hidden;
         background-color: #333;
-        padding:0px;
-    }
+        /* padding: 0px; */
+        height:5rem;
 
-    .topnav a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
+				}
 
-    .topnav h6{
-        color: #fff;
-        margin-top: -20px;
-        float: right;
-        margin-right: 120px;
-        font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
-        font-size:20px;
-        margin-top: -2px;
-    }
-
-    .topnav .topnav-right a {
-        padding:8px;
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: -6px;
-        margin-right: -155px;
-    }
-
-    .topnav a:hover {
-        background-color: #aa0000;
-        color: #fff;
-    }
-
-    /* .topnav-right {
-        float: right;
-    } */
-
-    .sidenav {
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #333;
-        overflow-x: hidden;
-        /*padding-top: 20px;*/
-        padding-top: 140px;
-    }
-
-    .sidenav a {
-        /*padding: 85px 8px 0px 16px;*/
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        /*padding-top: 80px;*/
-        margin-top: 30px;
-        margin-left: 25px;
-    }
-
-    .main {
-        margin-left: 160px;
-        font-size: 28px;
-        width: 50px;
-        height: 20px;
-    }
 
     @media screen and (max-height: 450px) {
         .sidenav {padding-top: 15px;}
@@ -111,20 +43,49 @@
 		table, th, td {
   			border: 1px solid black;
 		}
+
+		ul {
+    list-style-type: none;
+    text-decoration: none;
+    float: left;
+  	}
+
+    li a {
+		list-style-type: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    padding-top: 30px;
+    text-decoration: none;
+  }
+
+	li {
+		float: left;
+	}
+
+	li a:hover {
+    background-color: orange;
+    height: 8rem;
+    color: white;
+    text-decoration: none;
+  }
+
+
 </style>
 <body style="background: #FEF9E7;">
-<nav>
-<div class="navtop" style="overflow: hidden; background-color: #333; padding:0px; height:5rem;">
-<h3 style="color: white; text-align: center; padding-top:15px;">View Snapshots</h3>
-<div class="topnav-right">
-<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: -40px; margin-right: 20px; "> Logout</a>
+<div class="topnav">
+	<ul style="list-style-type: none;">
+		<li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
+		<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
+		<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
+		<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+	</ul>
+	<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border:none; border-radius: 5px; text-decoration: none; margin-top: 10px; margin-right: 20px;"> Logout</a>
 </div>
-</div>
-</nav>
-		<div class="cal">
-				<button style="background:#D68910; padding:8px; border-radius: 5px; "> <a href="<?php echo base_url(); ?>index.php/user/dashboardHrIndex" style="color: #fff; text-decoration: none;">Back</a></button>
-		
-      <div style="width:90%; margin: auto;">
+
+<h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
+    <div style="width:90%; margin: auto;">
     <table>
 			<thead>
 				<tr>

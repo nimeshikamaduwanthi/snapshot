@@ -125,9 +125,10 @@ class Snapshot extends CI_Controller
 						'user_id' => $user_id ,	
         );
 				
+        $this->Snapshot_Model->saveSnapshot($task);
+        $this->index();
 
-				$this->Snapshot_Model->saveSnapshot($task);
-				redirect('snapshot/index');
+				// redirect('/snapshot/index');
     }
     
     public function updateSnapshot()
@@ -216,8 +217,9 @@ class Snapshot extends CI_Controller
         );
 
 				$this->Snapshot_Model->updateSnapshot($task, $snap_id);
-				$this->Snapshot_Model->getAllSnapshots();
-				redirect('snapshot/index');
+        $this->Snapshot_Model->getAllSnapshots();
+        $this->index();
+				// redirect('snapshot/index');
 		}
 		  
     public function getAllSnapshots()
@@ -231,7 +233,8 @@ class Snapshot extends CI_Controller
     {       
       //echo  $id;
        $this->Snapshot_Model->deleteSnapshot($id);
-       redirect('snapshot/index');
+       $this->index();
+      //  redirect('snapshot/index');
     }		
 
     public function snapEditIndex($id) {

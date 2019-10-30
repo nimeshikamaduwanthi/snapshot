@@ -13,9 +13,9 @@ public function __construct()
 } 
 
 public function Index() 
-{
+{ 
     $data['projects'] = $this->Project_Model->getProjectNames();
-    $data['task_names'] = $this->Task_Model->getTask();
+		$data['task_names'] = $this->Task_Model->getTask();
     $this->load->view('Task', $data);
 }
 
@@ -27,11 +27,12 @@ public function addTask()
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
 				'project_id' => $this->input->post('project'),
+				'status'=>  '1'
 		);
 
 		$this->Task_Model->saveTask($newTask);
+		$this->index();
 
-		redirect('task/index');
 }
  
 public function updateTask()
@@ -46,13 +47,16 @@ public function updateTask()
 
 				$this->Task_Model->updateTask($task, $task_id);
 				$this->Task_Model->getTask();
-				redirect('task/index');
+				$this->index();
+
 		} 
 		
 public function deleteTask($id) 
 		{       
 			$this->Task_Model->deleteTask($id);
-			redirect('task/index');
+			$this->index();
+
+			// redirect('task/index');
 		}	
 
 public function taskEditIndex($id) 
