@@ -51,7 +51,7 @@ class User extends CI_Controller
             );
             $this->session->set_userdata($userData);
 
-            $this->load->view('dashboard_HR');
+            $this->load->view('dashboard_HR', $data);
         } 
         else if ($data && $data['user_type_id'] == 2) {
             $userData = array(
@@ -63,11 +63,12 @@ class User extends CI_Controller
             );
             $this->session->set_userdata($userData);
 
-            $this->load->view('dashboard_staff');
+            $this->load->view('dashboard_staff',$data);
         }
         else {
             $data['error'] = 'Invalid login. User not found';
             $this->load->view('login_page',$data);
+
             // $this->session->set_flashdata('error', 'Invalid login. User not found');
         }
     }

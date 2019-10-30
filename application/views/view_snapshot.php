@@ -13,15 +13,6 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-		.topnav {
-        overflow: hidden;
-        background-color: #333;
-        /* padding: 0px; */
-        height:5rem;
-
-				}
-
-
     @media screen and (max-height: 450px) {
         .sidenav {padding-top: 15px;}
         .sidenav a {font-size: 18px;}
@@ -44,45 +35,14 @@
   			border: 1px solid black;
 		}
 
-		ul {
-    list-style-type: none;
-    text-decoration: none;
-    float: left;
-  	}
-
-    li a {
-		list-style-type: none;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 10px 12px;
-    padding-top: 30px;
-    text-decoration: none;
-  }
-
-	li {
-		float: left;
-	}
-
-	li a:hover {
-    background-color: orange;
-    height: 8rem;
-    color: white;
-    text-decoration: none;
-  }
-
-
+		
 </style>
+<?php if ($_SESSION['user_type_id'] == '2') {
+    include "header_user.php";
+} else {
+     include "header_admin.php";
+}?>
 <body style="background: #FEF9E7;">
-<div class="topnav">
-	<ul style="list-style-type: none;">
-		<li><a href="<?php echo base_url(); ?>index.php/user/userdetails">All Users</a></li>
-		<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
-		<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
-		<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
-	</ul>
-	<a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border:none; border-radius: 5px; text-decoration: none; margin-top: 10px; margin-right: 20px;"> Logout</a>
-</div>
 
 <h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
     <div style="width:90%; margin: auto;">

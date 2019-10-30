@@ -19,11 +19,6 @@
 
     }
 
-		.topnav {
-			  background-color: #333;
-        height:8rem;
-    }
-
     .cal th h4{
         margin-top:5px ;
         color: #000;
@@ -82,47 +77,6 @@
 
     }
 
-    .submit a{
-        padding:10px;
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: right;
-        margin-top: 5px;
-        margin-right: 160px;
-
-
-    }
-
-    .submit a:hover{
-        background: #d58512;
-        color: #fff;
-
-    }
-
-    .topnav-right {
-        float: right;
-    }
-
-    .back button{
-        padding:8px;
-        font-size: 15px;
-        background:forestgreen;
-        color: #fff;
-        border-radius: 5px;
-        border: none;
-        float: left;
-        margin-top:-50px;
-        margin-left: 10px;
-
-    }
-
-    .back button:hover{
-        color:#000;
-
-    }
     table{
   			border-collapse: collapse;
 		}
@@ -131,47 +85,14 @@
   			border: 1px solid black;
 		}
 
-		ul {
-    list-style-type: none;
-    text-decoration: none;
-    float: left;
-  	}
-
-    li a {
-		list-style-type: none;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 10px 12px;
-    padding-top: 30px;
-    text-decoration: none;
-  }
-
-	li {
-		float: left;
-	}
-
-	li a:hover {
-    background-color: orange;
-    height: 8rem;
-    color: white;
-    text-decoration: none;
-  }
-
+		
 </style>
+<?php if ($_SESSION['user_type_id'] == '2') {
+    include "header_user.php";
+} else {
+     include "header_admin.php";
+}?>
 <body style="background: #FEF9E7;">
-<div class="topnav">
-		<div class="topnav-right">
-		  <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; padding:8px; color: #fff; border-radius: 5px; text-decoration: none;  margin-top: 20px; margin-right:30px; "> Logout</a>
-		</div> 
-					<ul>
-					<li><a href="<?php echo base_url(); ?>index.php/snapshot/index">Snapshots</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
-					<li><a href="<?php echo base_url(); ?>index.php/user/profileIndex">Profile</a></li>
-					</ul>
-</div>
-
 <h2 style="text-align: center; color: #D68910; ">EDIT SNAPSHOT</h2>
 <form action="<?php echo base_url(); ?>index.php/snapshot/updateSnapShot" method='POST'>
     <div class="cal">
