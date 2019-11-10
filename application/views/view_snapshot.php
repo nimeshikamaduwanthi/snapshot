@@ -96,7 +96,7 @@
 					<input type="text" id="idlist" name="idlist" value="">
 				<?php foreach ($users as $user): ?>
         <ul class="items">
-            <li><?php echo $user['first_name'] . ' ' .$user['last_name'].''.$user['id']; ?><input type="checkbox" value="<?php echo $user['id']?>" name="user"  class="checkedbox" onclick="getSelectedIds(<?php echo $user['id']?>)" /></li>
+            <li><?php echo $user['id'] . ' ' . $user['first_name'] . ' ' .$user['last_name'] . ' '; ?><input type="checkbox" value="<?php echo $user['id']?>" name="user"  class="checkedbox" onclick="getSelectedIds(<?php echo $user['id']?>)" /></li>
         </ul>
 				<?php endforeach?>
         <span id="clickSpan" class="anchor"><input type="submit" value="Select Date"></span>
@@ -127,19 +127,17 @@
         }
 
 				function getSelectedIds(name) {
-  			// alert(value);
-				var checkedValue = null; 
-				var inputElements = document.getElementsByClassName('checkedbox');
-				let check = '';
-				for(var i=0; inputElements[i]; ++i){
-      	if(inputElements[i].checked){
-           checkedValue = inputElements[i].value;
-				check = check + ',' + checkedValue;
-				// alert(chck);
-      	}
-				}
+					var checkedValue = null; 
+					var inputElements = document.getElementsByClassName('checkedbox');
+					let check = [];
 
-				document.getElementById('idlist').value=check;
+					for(var i=0; inputElements[i]; ++i) {
+						if(inputElements[i].checked) {
+							check.push(inputElements[i].value);
+						}
+					}
+					
+					document.getElementById('idlist').value=check;
 				}
 
 			

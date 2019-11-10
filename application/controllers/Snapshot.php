@@ -226,31 +226,23 @@ class Snapshot extends CI_Controller
 
     public function getAllSnapshots()
     {
-
-      // $checkedId = $_POST;
-      if(isset($_POST['idlist']) && ($_POST['date']) ){
-        $data['snapshot'] = $this->Snapshot_Model->getUserSnapshots();
-      
-       }else {
+      if(isset($_POST['idlist'])) {
+        $idlist = $_POST['idlist'];
+        $data['snapshots'] = $this->Snapshot_Model->getUserSnapshots($idlist);
+      } else {
         $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
-      
-       }
+      }
         
-        
-        $data['users'] = $this->User_Model->getUserDetails();
-        // // $data['first_name'] = $this->session->userdata('first_name');
-        // print_r($_POST['date']);
+      $data['users'] = $this->User_Model->getUserDetails();
 
-        $this->load->view('view_snapshot', $data);
-        
+
+      $this->load->view('view_snapshot', $data);
     }		
 
     public function deleteSnapshot($id) 
     {       
-      //echo  $id;
        $this->Snapshot_Model->deleteSnapshot($id);
        $this->index();
-      //  redirect('snapshot/index');
     }		
 
     public function snapEditIndex($id) {

@@ -76,17 +76,19 @@ class Snapshot_Model extends CI_Model
           return $query->result_array();
       }
  
-    public function getUserSnapshots($user_id)
+    public function getUserSnapshots($idlist)
     {
       $query = $this->db->query(
-        "SELECT S.start_date, P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+        "SELECT U.first_name, S.start_date, P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
         S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-        S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.id
-        FROM projects P, snapshots S, tasks TN
+        S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+        FROM projects P, snapshots S, tasks TN , users U
         WHERE P.id = S.project_id
         AND TN.id = S.task_id
-        AND S.id='$user_id'"
+        AND U.id = S.user_id
+        AND U.id IN ($idlist)"
       );
+
       return $query->result_array();
-      }
+    }
   }		
