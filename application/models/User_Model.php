@@ -38,7 +38,7 @@ class User_Model extends CI_Model
 
     public function getUserDetails()
     {
-        $this->db->select('id, first_name, email');
+        $this->db->select('id, first_name, last_name, email');
         $this->db->from('users');
         $query = $this->db->get();
         return $query->result_array();

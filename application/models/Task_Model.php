@@ -37,7 +37,7 @@ class Task_Model extends CI_Model
 				"SELECT P.project_name, T.task, T.start_date, T.end_date, T.id
 				FROM projects P, tasks T 
 				WHERE T.project_id = P.id
-				AND T.id='$task_id'"
+				AND T.id='$task_id'" 
 			);
 			return $query->row_array();
   	}

@@ -9,14 +9,14 @@ public function __construct()
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Project_Model');
-		$this->load->model('Task_Model');
+		$this->load->model('Task_Model'); 
 } 
 
 public function Index() 
 { 
     $data['projects'] = $this->Project_Model->getProjectNames();
 		$data['task_names'] = $this->Task_Model->getTask();
-    $this->load->view('Task', $data);
+    $this->load->view('task', $data);
 }
 
 public function addTask()

@@ -35,6 +35,51 @@
   			border: 1px solid black;
 		}
 
+		.dropdown-check-list {
+  display: inline-block;
+}
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+  border: 1px solid #ccc;
+}
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+.dropdown-check-list.visible .anchor {
+  color: #0094ff;
+}
+.dropdown-check-list.visible .items {
+  display: block;
+}
+
 		
 </style>
 <?php if ($_SESSION['user_type_id'] == '2') {
@@ -44,7 +89,71 @@
 }?>
 <body style="background: #FEF9E7;">
 
+
+    <div id="list1" class="dropdown-check-list " tabindex="100">
+		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
+        <span id="clickSpan" class="anchor"><input type="submit" value="Select Users"></span>
+					<input type="text" id="idlist" name="idlist" value="">
+				<?php foreach ($users as $user): ?>
+        <ul class="items">
+            <li><?php echo $user['first_name'] . ' ' .$user['last_name'].''.$user['id']; ?><input type="checkbox" value="<?php echo $user['id']?>" name="user"  class="checkedbox" onclick="getSelectedIds(<?php echo $user['id']?>)" /></li>
+        </ul>
+				<?php endforeach?>
+        <span id="clickSpan" class="anchor"><input type="submit" value="Select Date"></span>
+					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
+				<!-- <?php foreach ($users as $user): ?> -->
+        <ul class="items">
+            <li><input type="checkbox"  name="date"  class="checkedbox"  /></li>
+        </ul>
+				<!-- <?php endforeach?> -->
+				</form>
+    </div>
+
+    <script type="text/javascript">
+
+        var checkList = document.getElementById('list1');
+        var span = document.getElementById('clickSpan');
+        span.onclick = function (evt) {
+            
+					if (checkList.classList.contains('visible'))
+                checkList.classList.remove('visible');
+            else
+                checkList.classList.add('visible');
+        }
+
+        span.onblur = function(evt) {
+            checkList.classList.remove('visible');
+
+        }
+
+				function getSelectedIds(name) {
+  			// alert(value);
+				var checkedValue = null; 
+				var inputElements = document.getElementsByClassName('checkedbox');
+				let check = '';
+				for(var i=0; inputElements[i]; ++i){
+      	if(inputElements[i].checked){
+           checkedValue = inputElements[i].value;
+				check = check + ',' + checkedValue;
+				// alert(chck);
+      	}
+				}
+
+				document.getElementById('idlist').value=check;
+				}
+
+			
+    </script>
+
+
+
 <h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
+<!-- <form class="example" action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" style="margin:auto;max-width:300px;">
+  <input type="text" placeholder="Search User" name="search1">
+  <button type="submit"><i class="fa fa-search"></i></button>
+  <input type="text" placeholder="Search Date" name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form> -->
     <div style="width:90%; margin: auto;">
     <table>
 			<thead>

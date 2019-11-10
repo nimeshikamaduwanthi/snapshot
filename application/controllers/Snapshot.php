@@ -146,7 +146,7 @@ class Snapshot extends CI_Controller
         }
 
         if (!empty($_POST['wen_p'])) {
-          $total_planned_hours += $_POST['wen_p'];
+          $total_planned_hours += $_POST['wen_p']; 
         }
 
         if (!empty($_POST['thu_p'])) {
@@ -186,7 +186,7 @@ class Snapshot extends CI_Controller
         }
 
         if (!empty($_POST['sat_a'])) {
-          $total_actual_hours += $_POST['sat_a'];
+          $total_actual_hours += $_POST['sat_a']; 
         } 
 
         if (!empty($_POST['sun_a'])) {
@@ -204,7 +204,7 @@ class Snapshot extends CI_Controller
             'tue_a' => $this->input->post('tue_a'),
             'wen_p' => $this->input->post('wen_p'),
             'wen_a' => $this->input->post('wen_a'),
-            'thu_p' => $this->input->post('thu_p'),
+            'thu_p' => $this->input->post('thu_p'), 
             'thu_a' => $this->input->post('thu_a'),
             'fri_p' => $this->input->post('fri_p'),
             'fri_a' => $this->input->post('fri_a'),
@@ -216,17 +216,33 @@ class Snapshot extends CI_Controller
             'total_actual' => $total_actual_hours,
         );
 
-				$this->Snapshot_Model->updateSnapshot($task, $snap_id);
+        $this->Snapshot_Model->updateSnapshot($task, $snap_id);
         $this->Snapshot_Model->getAllSnapshots();
         $this->index();
 				// redirect('snapshot/index');
 		}
-		  
+      
+   
+
     public function getAllSnapshots()
     {
-        $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots(); 
-        $this->load->view('view_snapshot', $data);
 
+      // $checkedId = $_POST;
+      if(isset($_POST['idlist']) && ($_POST['date']) ){
+        $data['snapshot'] = $this->Snapshot_Model->getUserSnapshots();
+      
+       }else {
+        $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
+      
+       }
+        
+        
+        $data['users'] = $this->User_Model->getUserDetails();
+        // // $data['first_name'] = $this->session->userdata('first_name');
+        // print_r($_POST['date']);
+
+        $this->load->view('view_snapshot', $data);
+        
     }		
 
     public function deleteSnapshot($id) 

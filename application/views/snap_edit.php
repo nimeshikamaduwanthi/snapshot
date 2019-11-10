@@ -141,10 +141,10 @@
 					<th>A</th>
 				</tr> 
 			</thead>
-
+ 
 			<tbody>
       	<tr>
-      		<td><input type="text" value=<?php echo $snapshot['start_date'] ?> name="week_start_date" class="form-control input-sm"></td>
+      		<td><input type="text" value=<?php echo $snapshot['start_date'] ?> placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
 					<!-- <td><input type="text" value=<?php echo $snapshot['project_name'] ?> name="project" class="form-control input-sm"></td>
 					<td><input type="text" value=<?php echo $snapshot['task'] ?> name="task" class="form-control input-sm"></td> -->
 					<td><input type="text" value=<?php echo $snapshot['planned_effort'] ?> name="planned_effort" class="form-control input-sm"></td>
