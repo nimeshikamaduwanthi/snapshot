@@ -43,9 +43,7 @@ class Snapshot extends CI_Controller
         }
 
         if (!empty($_POST['wen_p'])) {
-          echo $_POST['wen_p'] . 'wen_p_value';
-          print_r($_POST);
-          $total_planned_hours += $_POST['wen_p'];
+          $total_planned_hours += $_POST['wen_p']; 
         }
 
         if (!empty($_POST['thu_p'])) {
@@ -137,7 +135,7 @@ class Snapshot extends CI_Controller
         $total_actual_hours = 0;
         $snap_id = $_POST['id'];
 
-        if (!empty($_POST['mon_p'])) {
+        if (!empty($_POST['mon_p'])) { 
           $total_planned_hours += $_POST['mon_p'];
         } 
 
@@ -225,16 +223,20 @@ class Snapshot extends CI_Controller
    
 
     public function getAllSnapshots()
-    {
+    { 
       if(isset($_POST['idlist'])) {
         $idlist = $_POST['idlist'];
         $data['snapshots'] = $this->Snapshot_Model->getUserSnapshots($idlist);
-      } else {
+      } 
+      elseif(isset($_POST['date'])) {
+        $date = $_POST['date'];
+        $data['snapshots'] = $this->Snapshot_Model->getDateSnapshots($date);
+      }
+      else {
         $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
       }
         
       $data['users'] = $this->User_Model->getUserDetails();
-
 
       $this->load->view('view_snapshot', $data);
     }		

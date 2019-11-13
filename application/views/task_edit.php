@@ -103,7 +103,7 @@ $user = $this->session->userdata('user');
 			<input type="submit" name="save" value="Update Task" style=" float:right; padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none; margin-top: 35px; margin-right: 10px; " >
 		</div>
 		</div> <br><br>
-        <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;" >
+        <table  class="table table-bordered" id="makeEditable" style="width:70%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto;  " >
         <thead>
         <tr>
 				<!-- <th rowspan="3" class="text-center">Project Name</th> -->

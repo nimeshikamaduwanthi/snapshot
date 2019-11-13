@@ -25,7 +25,7 @@
         text-transform: uppercase;
         font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
 
-    } 
+    }
 
     table{
   			border-collapse: collapse;
@@ -68,7 +68,11 @@
   display: none;
   margin: 0;
   border: 1px solid #ccc;
-  border-top: none;
+	border-top: none;
+	float: none !important;
+	position: absolute;
+	z-index: 1000;
+	background-color:#f5deb3;
 }
 .dropdown-check-list ul.items li {
   list-style: none;
@@ -80,41 +84,45 @@
   display: block;
 }
 
-		
+
 </style>
 <?php if ($_SESSION['user_type_id'] == '2') {
     include "header_user.php";
 } else {
-     include "header_admin.php";
+    include "header_admin.php";
 }?>
 <body style="background: #FEF9E7;">
 
-
-    <div id="list1" class="dropdown-check-list " tabindex="100">
-		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
-        <span id="clickSpan" class="anchor"><input type="submit" value="Select Users"></span>
-					<input type="text" id="idlist" name="idlist" value="">
-				<?php foreach ($users as $user): ?>
+<h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
+    <div id="list1" class="dropdown-check-list " tabindex="100" style="margin-left: 5%; margin-bottom: 10px;" >
+		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST" >
+		<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
+        <span id="clickSpan" class="anchor"><input type="submit" value="Select Users" style="width:100%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></span>
+					<input type="hidden" id="idlist" name="idlist" value="">
+					
         <ul class="items">
-            <li><?php echo $user['id'] . ' ' . $user['first_name'] . ' ' .$user['last_name'] . ' '; ?><input type="checkbox" value="<?php echo $user['id']?>" name="user"  class="checkedbox" onclick="getSelectedIds(<?php echo $user['id']?>)" /></li>
+						<?php foreach ($users as $user): ?>
+            <li style="float:none !important;">
+						<?php echo $user['id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . ' '; ?>
+						<input type="checkbox" value="<?php echo $user['id'] ?> " name="user"  class="checkedbox" onclick="getSelectedIds(<?php echo $user['id'] ?>)"  />
+						</li>
+						<?php endforeach?>
         </ul>
-				<?php endforeach?>
-        <span id="clickSpan" class="anchor"><input type="submit" value="Select Date"></span>
-					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
-				<!-- <?php foreach ($users as $user): ?> -->
-        <ul class="items">
-            <li><input type="checkbox"  name="date"  class="checkedbox"  /></li>
-        </ul>
-				<!-- <?php endforeach?> -->
+				
 				</form>
-    </div>
+    
 
+		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
+		<input type="submit" value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">
+					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
+		</form>
+		</div>
     <script type="text/javascript">
 
         var checkList = document.getElementById('list1');
         var span = document.getElementById('clickSpan');
         span.onclick = function (evt) {
-            
+
 					if (checkList.classList.contains('visible'))
                 checkList.classList.remove('visible');
             else
@@ -127,7 +135,7 @@
         }
 
 				function getSelectedIds(name) {
-					var checkedValue = null; 
+					var checkedValue = null;
 					var inputElements = document.getElementsByClassName('checkedbox');
 					let check = [];
 
@@ -136,16 +144,16 @@
 							check.push(inputElements[i].value);
 						}
 					}
-					
+
 					document.getElementById('idlist').value=check;
 				}
 
-			
+
     </script>
 
 
 
-<h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
+
 <!-- <form class="example" action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" style="margin:auto;max-width:300px;">
   <input type="text" placeholder="Search User" name="search1">
   <button type="submit"><i class="fa fa-search"></i></button>
@@ -172,25 +180,25 @@
 					<th colspan="2" class="text-center">Sun</th>
 					<th rowspan="3" class="text-center">Total Plnned hrs</th>
 					<th rowspan="3" class="text-center">Total Actual hrs</th>
-					
+
 				</tr>
 
 				<tr>
 					<th>P</th>
 					<th>A</th>
-					<th>P</th> 
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
+					<th>A</th>
+					<th>P</th>
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
 					<th>P</th>
 					<th>A</th>
 					<th>P</th>
-					<th>A</th> 
-					<th>P</th> 
 					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					
+
 				</tr>
 			</thead>
       <tbody>
