@@ -161,6 +161,7 @@
   <button type="submit"><i class="fa fa-search"></i></button>
 </form> -->
     <div style="width:90%; margin: auto;">
+		
     <table>
 			<thead>
 				<tr>
@@ -232,4 +233,8 @@
 				<?php endforeach?>
 		</tbody>
 	</table>
+	<form action="convertCsvIndex" method="POST">
+	<input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>">
+	<button type="submit" name="submit">CSV</button>
+	</form>
 	</div>

@@ -226,10 +226,12 @@ class Snapshot extends CI_Controller
     { 
       if(isset($_POST['idlist'])) {
         $idlist = $_POST['idlist'];
+        $_SESSION["idlist"]=  $idlist;
         $data['snapshots'] = $this->Snapshot_Model->getUserSnapshots($idlist);
       } 
       elseif(isset($_POST['date'])) {
         $date = $_POST['date'];
+        $_SESSION["date"]=  $date;
         $data['snapshots'] = $this->Snapshot_Model->getDateSnapshots($date);
       }
       else {
@@ -247,8 +249,29 @@ class Snapshot extends CI_Controller
        $this->index();
     }		
 
+    public function convertCsvIndex() {
+
+      header('Content-Type: text/csv');
+      header('Content-Disposition: attachment; filename="file.csv"');
+     
+      $idlist = $_SESSION["idlist"];
+
+      $data['convert'] = $this->Snapshot_Model->getUserSnapshots($idlist);
+    
+      $file = fopen('php://output', 'wb');
+      foreach ($data['convert'] as $fields) {
+        if( is_object($fields) )
+        $fields = (array) $fields;
+        fputcsv($file, $fields);      
+        }
+
+      fclose($file);
+    } 
+
     public function snapEditIndex($id) {
       $data['snapshot'] = $this->Snapshot_Model->getSelectedSnapshot($id);
       $this->load->view('snap_edit', $data);
     }
   } 
+?>
+ 
