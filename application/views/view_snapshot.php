@@ -233,8 +233,9 @@
 				<?php endforeach?>
 		</tbody>
 	</table>
+	<br>
 	<form action="convertCsvIndex" method="POST">
 	<input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>">
-	<button type="submit" name="submit">CSV</button>
+	<button type="submit" name="submit" style="width:5%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">CSV</button>
 	</form>
 	</div>
