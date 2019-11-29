@@ -122,7 +122,8 @@ class Snapshot extends CI_Controller
 						'project_id' => $this->input->post('project'),
 						'user_id' => $user_id ,	
         );
-				
+        
+       
         $this->Snapshot_Model->saveSnapshot($task);
         $this->index();
 
@@ -231,15 +232,21 @@ class Snapshot extends CI_Controller
       } 
       elseif(isset($_POST['date'])) {
         $date = $_POST['date'];
+        print_r($date);
         $_SESSION["date"]=  $date;
         $data['snapshots'] = $this->Snapshot_Model->getDateSnapshots($date);
+      }
+      elseif(isset($_POST['idlist']) && isset($_POST['date'])){
+        $idlist = $_POST['idlist'];
+        $date = $_POST['date'];
+        $data['snapshots'] = $this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
       }
       else {
         $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
       }
         
       $data['users'] = $this->User_Model->getUserDetails();
-
+      
       $this->load->view('view_snapshot', $data);
     }		
 
@@ -253,12 +260,35 @@ class Snapshot extends CI_Controller
 
       header('Content-Type: text/csv');
       header('Content-Disposition: attachment; filename="file.csv"');
-     
-      $idlist = $_SESSION["idlist"];
+      
 
+      if(isset($_SESSION['idlist'])) { 
+       
+      $idlist = $_SESSION["idlist"];
+     
       $data['convert'] = $this->Snapshot_Model->getUserSnapshots($idlist);
-    
-      $file = fopen('php://output', 'wb');
+      
+      $_SESSION["idlist"] = null;
+      session_destroy();
+      }
+
+      elseif(isset($_SESSION['date'])) {
+
+      $date = $_SESSION["date"];
+
+      $data['convert'] = $this->Snapshot_Model->getDateSnapshots($date);
+      $_SESSION["date"] = null;
+      session_destroy();
+      }
+
+      else {
+        $data['convert'] = $this->Snapshot_Model->getAllSnapshots();
+        $_SESSION["date"] = null;
+        $_SESSION["idlist"] = null;
+        session_destroy();
+      }
+
+    $file = fopen('php://output', 'wb');
       foreach ($data['convert'] as $fields) {
         if( is_object($fields) )
         $fields = (array) $fields;
@@ -266,8 +296,7 @@ class Snapshot extends CI_Controller
         }
 
       fclose($file);
-    } 
-
+  }
     public function snapEditIndex($id) {
       $data['snapshot'] = $this->Snapshot_Model->getSelectedSnapshot($id);
       $this->load->view('snap_edit', $data);

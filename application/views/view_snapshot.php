@@ -99,6 +99,7 @@
 		<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
         <span id="clickSpan" class="anchor"><input type="submit" value="Select Users" style="width:100%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></span>
 					<input type="hidden" id="idlist" name="idlist" value="">
+					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
 					
         <ul class="items">
 						<?php foreach ($users as $user): ?>
@@ -108,14 +109,15 @@
 						</li>
 						<?php endforeach?>
         </ul>
-				
+				<!-- <button value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></button> -->
+				<!-- <input type="submit" value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"> -->
+					<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
 				</form>
     
 
-		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
-		<input type="submit" value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">
-					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
-		</form>
+		<!-- <form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
+		
+		</form> -->
 		</div>
     <script type="text/javascript">
 
@@ -169,7 +171,7 @@
 					<th rowspan="3" class="text-center">User Name</th>
 					<th rowspan="3" class="text-center">Project</th>
 					<th rowspan="3" class="text-center">Task</th>
-					<th rowspan="3" class="text-center">Planned Effort</th>
+					<th rowspan="2" class="text-center">Planned <br> Effort</th>
 					<th rowspan="3" class="text-center">Planned start date</th>
 					<th rowspan="3" class="text-center">Planned end date</th>
 					<th colspan="2" class="text-center">Mon</th>
@@ -179,30 +181,54 @@
 					<th colspan="2" class="text-center">Fri</th>
 					<th colspan="2" class="text-center">Sat</th>
 					<th colspan="2" class="text-center">Sun</th>
-					<th rowspan="3" class="text-center">Total Plnned hrs</th>
-					<th rowspan="3" class="text-center">Total Actual hrs</th>
+					<th rowspan="3" class="text-center">Total <br>planned <br>ours </th>
+					<th rowspan="3"class="text-center">Total <br>actual <br> ours </th>
 
 				</tr>
 
 				<tr>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-					<th>P</th>
-					<th>A</th>
-
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					<th>p.o</th>
+					<th style="color: blue;">a.o</th>
+					
 				</tr>
 			</thead>
       <tbody>
+
+			<?php
+				$total_p_hours_m = 0;
+				$total_a_hours_m = 0;
+
+				$total_p_hours_t=0;
+				$total_a_hours_t=0;
+
+				$total_p_hours_w=0;
+				$total_a_hours_w=0;
+
+				$total_p_hours_th=0;
+				$total_a_hours_th=0;
+
+				$total_p_hours_f=0;
+				$total_a_hours_f=0;
+
+				$total_p_hours_s=0;
+				$total_a_hours_s=0;
+
+				$total_p_hours_su=0;
+				$total_a_hours_su=0;
+			?>
+
 
       <?php foreach ($snapshots as $snapshot): ?>
 					<tr>
@@ -214,25 +240,75 @@
 						<td><?php echo $snapshot['planned_start_date']; ?></td>
 						<td><?php echo $snapshot['planned_end_date']; ?></td>
 						<td><?php echo $snapshot['mon_p']; ?></td>
-						<td><?php echo $snapshot['mon_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['mon_a']; ?></td>
 						<td><?php echo $snapshot['tue_p']; ?></td>
-						<td><?php echo $snapshot['tue_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['tue_a']; ?></td>
 						<td><?php echo $snapshot['wen_p']; ?></td>
-						<td><?php echo $snapshot['wen_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['wen_a']; ?></td>
 						<td><?php echo $snapshot['thu_p']; ?></td>
-						<td><?php echo $snapshot['thu_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['thu_a']; ?></td>
 						<td><?php echo $snapshot['fri_p']; ?></td>
-						<td><?php echo $snapshot['fri_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['fri_a']; ?></td>
 						<td><?php echo $snapshot['sat_p']; ?></td>
-						<td><?php echo $snapshot['sat_a']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['sat_p']; ?></td>
 						<td><?php echo $snapshot['sun_p']; ?></td>
-						<td><?php echo $snapshot['sun_a']; ?></td>
-            <td><?php echo $snapshot['total_planned']; ?></td>
-						<td><?php echo $snapshot['total_actual']; ?></td>
+						<td style="color: blue;"><?php echo $snapshot['sun_a']; ?></td>
+            <td ><?php echo $snapshot['total_planned']; ?></td>
+						<td ><?php echo $snapshot['total_actual']; ?></td>
 					</tr>
-				<?php endforeach?>
+			
 		</tbody>
+		<tfoot>
+		<?php	
+		$total_p_hours_m = $total_p_hours_m + (int)$snapshot['mon_p'];
+		$total_a_hours_m = 	$total_a_hours_m + (int)$snapshot['mon_a'];
+		$total_p_hours_t = 	$total_p_hours_t + (int)$snapshot['tue_p'];
+		$total_a_hours_t = 	$total_a_hours_t + (int)$snapshot['tue_a'];
+		$total_p_hours_w = 	$total_p_hours_w + (int)$snapshot['wen_p'];
+		$total_a_hours_w = 	$total_a_hours_w + (int)$snapshot['wen_a'];
+		$total_p_hours_th = 	$total_p_hours_th + (int)$snapshot['thu_p'];
+		$total_a_hours_th = 	$total_a_hours_th + (int)$snapshot['thu_a'];
+		$total_p_hours_f = 	$total_p_hours_f + (int)$snapshot['fri_p'];
+		$total_a_hours_f = 	$total_a_hours_f + (int)$snapshot['fri_a'];
+		$total_p_hours_s = 	$total_p_hours_s + (int)$snapshot['sat_p'];
+		$total_a_hours_s = 	$total_a_hours_s + (int)$snapshot['sat_a'];
+		$total_p_hours_su= 	$total_p_hours_su + (int)$snapshot['sat_p'];
+		$total_a_hours_su = 	$total_a_hours_su + (int)$snapshot['sat_a'];
+		?>
+		
+		
+		
+		
+		</tfoot>
+		<?php endforeach?>
+		<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><?php echo $total_p_hours_m;?></td>
+		<td><?php echo $total_a_hours_m;?></td> 
+		<td><?php echo $total_p_hours_t;?></td>
+		<td><?php echo $total_a_hours_t;?></td>
+		<td><?php echo $total_p_hours_w;?></td>
+		<td><?php echo $total_a_hours_w;?></td>
+		<td><?php echo $total_p_hours_th;?></td>
+		<td><?php echo $total_a_hours_th;?></td>
+		<td><?php echo $total_p_hours_f;?></td>
+		<td><?php echo $total_a_hours_f;?></td>
+		<td><?php echo $total_p_hours_s;?></td>
+		<td><?php echo $total_a_hours_s;?></td>
+		<td><?php echo $total_p_hours_su;?></td>
+		<td><?php echo $total_a_hours_su;?></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		</tr>
 	</table>
+	
 	<br>
 	<form action="convertCsvIndex" method="POST">
 	<input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>">
