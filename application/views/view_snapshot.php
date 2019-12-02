@@ -99,7 +99,7 @@
 		<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
         <span id="clickSpan" class="anchor"><input type="submit" value="Select Users" style="width:100%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></span>
 					<input type="hidden" id="idlist" name="idlist" value="">
-					<input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value="">
+					<input type="text" id="date" name="date" placeholder="YYYY-MM-DD" value="">
 					
         <ul class="items">
 						<?php foreach ($users as $user): ?>
@@ -112,7 +112,7 @@
 				<!-- <button value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></button> -->
 				<!-- <input type="submit" value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"> -->
 					<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
-				</form>
+				</form> 
     
 
 		<!-- <form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
@@ -290,19 +290,19 @@
 		<td></td>
 		<td></td>
 		<td><?php echo $total_p_hours_m;?></td>
-		<td><?php echo $total_a_hours_m;?></td> 
+		<td style="color: blue;"><?php echo $total_a_hours_m;?></td> 
 		<td><?php echo $total_p_hours_t;?></td>
-		<td><?php echo $total_a_hours_t;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_t;?></td>
 		<td><?php echo $total_p_hours_w;?></td>
-		<td><?php echo $total_a_hours_w;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_w;?></td>
 		<td><?php echo $total_p_hours_th;?></td>
-		<td><?php echo $total_a_hours_th;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_th;?></td>
 		<td><?php echo $total_p_hours_f;?></td>
-		<td><?php echo $total_a_hours_f;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_f;?></td>
 		<td><?php echo $total_p_hours_s;?></td>
-		<td><?php echo $total_a_hours_s;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_s;?></td>
 		<td><?php echo $total_p_hours_su;?></td>
-		<td><?php echo $total_a_hours_su;?></td>
+		<td style="color: blue;"><?php echo $total_a_hours_su;?></td>
 		<td></td>
 		<td></td>
 		<td></td>

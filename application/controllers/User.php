@@ -31,8 +31,19 @@ class User extends CI_Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $this->User_Model->signup($firstName, $lastName, $email, $password);
-        header('location:' . base_url() . $this->index());
+        $user = $this->User_Model->getUserByEmail($email);
+      
+        if ($user) {
+            $data['error'] = 'user is already in';
+            $this->load->view('login_page',$data);
+        } 
+        else {
+             $this->User_Model->signup($firstName, $email, $lastName,  $password);
+             header('location:' . base_url() . $this->index());
+        }
+
+       
+        // header('location:' . base_url() . $this->index());
 
     }
 
@@ -43,7 +54,7 @@ class User extends CI_Controller
 
         $data = $this->User_Model->login($email, $password);
 
-        if ($data && $data['user_type_id'] == 1) {
+        if ($data && $data['user_type_id'] == 1) { 
             $userData = array(
                 'user_id'  =>  $data['id'],
                 'first_name'  =>  $data['first_name'], 

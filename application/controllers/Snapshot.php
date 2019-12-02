@@ -220,26 +220,25 @@ class Snapshot extends CI_Controller
         $this->index();
 				// redirect('snapshot/index');
 		}
-      
-   
-
+  
     public function getAllSnapshots()
     { 
-      if(isset($_POST['idlist'])) {
+      if(!empty($_POST['idlist']) && !empty($_POST['date'])) {
+        $idlist = $_POST['idlist'];
+        $date = $_POST['date'];
+        $_SESSION["idlist"]=  $idlist;
+        $_SESSION["date"]=  $date;
+        $data['snapshots'] = $this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
+      }
+      elseif(!empty($_POST['idlist'])) {
         $idlist = $_POST['idlist'];
         $_SESSION["idlist"]=  $idlist;
         $data['snapshots'] = $this->Snapshot_Model->getUserSnapshots($idlist);
       } 
-      elseif(isset($_POST['date'])) {
+      elseif(!empty($_POST['date'])) {
         $date = $_POST['date'];
-        print_r($date);
         $_SESSION["date"]=  $date;
         $data['snapshots'] = $this->Snapshot_Model->getDateSnapshots($date);
-      }
-      elseif(isset($_POST['idlist']) && isset($_POST['date'])){
-        $idlist = $_POST['idlist'];
-        $date = $_POST['date'];
-        $data['snapshots'] = $this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
       }
       else {
         $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
@@ -261,8 +260,19 @@ class Snapshot extends CI_Controller
       header('Content-Type: text/csv');
       header('Content-Disposition: attachment; filename="file.csv"');
       
+      if(!empty($_POST['idlist']) && !empty($_POST['date'])) {
 
-      if(isset($_SESSION['idlist'])) { 
+        $idlist = $_SESSION["idlist"];
+        $date = $_SESSION["date"];
+       
+        $data['convert'] =$this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
+        
+        $_SESSION["idlist"] = null;
+        $_SESSION["date"] = null;
+        session_destroy();
+        }
+
+      elseif(!empty($_SESSION['idlist'])) { 
        
       $idlist = $_SESSION["idlist"];
      
@@ -272,7 +282,7 @@ class Snapshot extends CI_Controller
       session_destroy();
       }
 
-      elseif(isset($_SESSION['date'])) {
+      elseif(!empty($_SESSION['date'])) {
 
       $date = $_SESSION["date"];
 

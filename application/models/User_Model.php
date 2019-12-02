@@ -33,15 +33,24 @@ class User_Model extends CI_Model
             'active_status' => true
         );
 
-        $this->db->insert('users', $userData);
+        $this->db->insert('users', $userData); 
     }
 
     public function getUserDetails()
     {
-        $this->db->select('id, first_name, last_name, email');
+        $this->db->select('id, first_name, last_name, email, password');
         $this->db->from('users');
         $query = $this->db->get();
         return $query->result_array();
     } 
+
+    public function getUserByEmail($email)
+    {
+        $sql = "SELECT  email
+         FROM users WHERE email='$email'";
+        
+         $query = $this->db->query($sql);
+        return $query->row_array();
+    }
 
 }

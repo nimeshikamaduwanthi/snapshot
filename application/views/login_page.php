@@ -8,7 +8,7 @@
 <body style="background: #FEF9E7;"> 
 
 <div class="wrapper"> 
-<div class="container" style="float:left; width:50%; margin-top: 100px;" >
+<div class="container" style="float:left; width:50%; margin-top: 50px;" >
 	<div class="row">
 		<div class="col-md-6 col-sm-offset-4">
 
@@ -27,7 +27,7 @@
 		                	</div>
 		                	<button type="submit" class="btn btn-lg btn-warning btn-block" style="background: orange; border-color: #B2BABB;"><span class="glyphicon glyphicon-log-in"></span> Login</button>
 									</fieldset>
-									<a href="#" id="signup" class=signup>Already have an account? Sign in here!</a>
+									<p href="#" id="signup" class=signup>Already have an account? Sign in here!</p>
 		        	</form>
 					</div>
 			</div>
@@ -55,7 +55,7 @@
 </div>
 		
 					
-<div class="container2" style="float:right; width:50%; margin-top: 100px;" >
+<div class="container2" style="float:right; width:50%; margin-top: 50px;" >
 <div class="row">
 <div class="col-md-6 col-sm-offset-0">
 
@@ -85,10 +85,31 @@
                     <button type="submit" class="btn btn-lg btn-warning btn-block" style="background: orange; border-color: #B2BABB;"><span class="glyphicon glyphicon-pencil"></span> Sign up </button>
                     <br>
                    
-                    <a href="#" id="signin" class=signin>Need an account? Register here!</a>
+                    <p href="#" id="signin" class=signin>Need an account? Register here!</p>
                 </form> 
                 </div>
 </div>
+
+<?php
+					if($this->session->flashdata('error')){
+						?>
+						<div class="alert alert-danger text-center" style="margin-top:20px;">
+							<?php echo $this->session->flashdata('error'); ?>
+						</div>
+						<?php
+					}
+					
+					if($error && $error !=''){
+			?>
+			<div class="alert alert-danger text-center" style="margin-top:20px;">
+						<?php echo $error; ?>
+					</div>
+			<?php
+				}
+				?>
+			</div>
+					
+			
 </div>
 </div>
 </div>

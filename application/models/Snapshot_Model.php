@@ -88,7 +88,7 @@ class Snapshot_Model extends CI_Model
         AND U.id = S.user_id
         AND U.id IN ($idlist)"
       );
-
+ 
       return $query->result_array();
     }
 
