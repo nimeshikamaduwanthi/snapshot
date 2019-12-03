@@ -91,18 +91,18 @@
 </div>
 
 <?php
-					if($this->session->flashdata('error')){
+					if($this->session->flashdata('error_signup')){
 						?>
 						<div class="alert alert-danger text-center" style="margin-top:20px;">
-							<?php echo $this->session->flashdata('error'); ?>
+							<?php echo $this->session->flashdata('error_signup'); ?>
 						</div>
 						<?php
 					}
 					
-					if($error && $error !=''){
+					if($error_signup && $error_signup !=''){
 			?>
 			<div class="alert alert-danger text-center" style="margin-top:20px;">
-						<?php echo $error; ?>
+						<?php echo $error_signup; ?>
 					</div>
 			<?php
 				}

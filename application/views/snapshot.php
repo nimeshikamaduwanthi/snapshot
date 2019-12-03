@@ -137,7 +137,23 @@ $user = $this->session->userdata('user');
 				<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 8px; margin-right: 10px;" >
 	</div>
 </div>
-
+<?php
+					if($this->session->flashdata('error')){
+						?>
+						<div class="alert alert-danger text-center" style="margin-top:20px;">
+							<?php echo $this->session->flashdata('error'); ?>
+						</div>
+						<?php
+					}
+					
+					if($error && $error !=""){
+			?>
+			<div class="alert alert-danger text-center" style="margin-top:2px; width:25%; margin-left:500px;">
+						<?php echo $error; ?>
+					</div>
+			<?php
+				}
+				?>
 <div id="scroll" style="overflow-y:scroll;">
     <table class="table table-bordered" id="makeEditable" style=" float: left; margin-left: 15px; margin-top: 1px;" >
 			<thead>
@@ -245,11 +261,13 @@ $user = $this->session->userdata('user');
 						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" style="background:#D68910; color: #fff; border-radius: 5px; border: none; " onclick="rowEdit(this);">
                 <a style=" text-decoration: none; color: #fff;" href="<?php echo base_url(); ?>index.php/snapshot/snapEditIndex/<?php echo $snapshot['id']; ?>">Edit</a>
 								</button></td>
+								
 					</tr>
 				<?php endforeach?>
 				</form>
 		</tbody>
 	</table>
+	
 </div>
 </div>
 

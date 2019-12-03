@@ -20,6 +20,7 @@ class User extends CI_Controller
             $this->load->view('snapshot');
         } else {
             $data['error'] = '';
+            $data['error_signup'] = '';
             $this->load->view('login_page', $data);
         }
     }
@@ -34,7 +35,8 @@ class User extends CI_Controller
         $user = $this->User_Model->getUserByEmail($email);
       
         if ($user) {
-            $data['error'] = 'user is already in';
+            $data['error_signup'] = 'user is already in';
+            $data['error'] = '';
             $this->load->view('login_page',$data);
         } 
         else {
@@ -78,6 +80,7 @@ class User extends CI_Controller
         }
         else {
             $data['error'] = 'Invalid login. User not found';
+            $data['error_signup'] = '';
             $this->load->view('login_page',$data);
 
             // $this->session->set_flashdata('error', 'Invalid login. User not found');

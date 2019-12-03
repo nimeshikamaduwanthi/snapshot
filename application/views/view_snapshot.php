@@ -86,7 +86,7 @@
 
 
 </style>
-<?php if ($_SESSION['user_type_id'] == '2') {
+<?php if (isset($_SESSION['user_type_id']) && $_SESSION['user_type_id'] == '2') {
     include "header_user.php";
 } else {
     include "header_admin.php";
@@ -96,10 +96,9 @@
 <h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
     <div id="list1" class="dropdown-check-list " tabindex="100" style="margin-left: 5%; margin-bottom: 10px;" >
 		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST" >
-		<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
         <span id="clickSpan" class="anchor"><input type="submit" value="Select Users" style="width:100%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></span>
 					<input type="hidden" id="idlist" name="idlist" value="">
-					<input type="text" id="date" name="date" placeholder="YYYY-MM-DD" value="">
+					<input type="text" id="date" name="date" placeholder="YYYY-MM-DD" value="" style="width:30%;">
 					
         <ul class="items">
 						<?php foreach ($users as $user): ?>
@@ -109,15 +108,10 @@
 						</li>
 						<?php endforeach?>
         </ul>
-				<!-- <button value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></button> -->
-				<!-- <input type="submit" value="Select Date" style="width:40%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"> -->
-					<!-- <input type="text" id="date" name="date"  placeholder="YYYY-MM-DD" value=""> -->
+				
 				</form> 
     
 
-		<!-- <form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST">
-		
-		</form> -->
 		</div>
     <script type="text/javascript">
 
@@ -154,16 +148,8 @@
     </script>
 
 
-
-
-<!-- <form class="example" action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" style="margin:auto;max-width:300px;">
-  <input type="text" placeholder="Search User" name="search1">
-  <button type="submit"><i class="fa fa-search"></i></button>
-  <input type="text" placeholder="Search Date" name="search2">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form> -->
     <div style="width:90%; margin: auto;">
-		
+	
     <table>
 			<thead>
 				<tr>
@@ -232,10 +218,11 @@
 
       <?php foreach ($snapshots as $snapshot): ?>
 					<tr>
+
 						<td><?php echo $snapshot['start_date']; ?></td>
 						<td><?php echo $snapshot['first_name']; ?></td>
 						<td><?php echo $snapshot['project_name']; ?></td>
-						<td><?php echo $snapshot['task']; ?></td>
+						<td><?php echo $snapshot['id']. $snapshot['task']; ?></td>
 						<td><?php echo $snapshot['planned_effort']; ?></td>
 						<td><?php echo $snapshot['planned_start_date']; ?></td>
 						<td><?php echo $snapshot['planned_end_date']; ?></td>
@@ -255,6 +242,9 @@
 						<td style="color: blue;"><?php echo $snapshot['sun_a']; ?></td>
             <td ><?php echo $snapshot['total_planned']; ?></td>
 						<td ><?php echo $snapshot['total_actual']; ?></td>
+						<td><button id="bEdit" type="button" class="btn btn-sm btn-default" style="background:#D68910; color: #fff; border-radius: 5px; border: none; " onclick="rowEdit(this);">
+                <a style=" text-decoration: none; color: #fff;" href="<?php echo base_url(); ?>index.php/snapshot/deleteSnapshotAdmin/<?php echo $snapshot['id']; ?>">Delete</a>
+								</button></td>
 					</tr>
 			
 		</tbody>
@@ -311,7 +301,7 @@
 	
 	<br>
 	<form action="convertCsvIndex" method="POST">
-	<input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>">
+	<!-- <input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>"> -->
 	<button type="submit" name="submit" style="width:5%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">CSV</button>
 	</form>
-	</div>
+	</div> 

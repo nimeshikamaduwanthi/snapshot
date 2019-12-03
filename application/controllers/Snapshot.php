@@ -13,22 +13,37 @@ class Snapshot extends CI_Controller
         $this->load->model('Task_Model');
         $this->load->model('Project_Model');
         $this->load->model('Snapshot_Model');
+        
     } 
   
-    public function index()
+    public function index($message = "")
     {
      
         $user_id =  $_SESSION['user_id'];
- 
+        $data['error'] = "";
         $data['projects'] = $this->Project_Model->getProjectNames();
         $data['task_names'] = $this->Task_Model->getTaskNames();
         $data['snapshots'] = $this->Snapshot_Model->mySnapshots($user_id);
+        
+        if($message){
+          $data['error'] = $message;
+        }
+
         $this->load->view('snapshot', $data);
     }
 
     public function addSnapshot()
     {
-      
+      // print_r($this->input->post('start_date'));
+      // print_r($this->input->post('planned_start_date'));
+      // print_r($this->input->post('planned_end_date'));
+      if(empty($this->input->post('start_date')) || empty($this->input->post('planned_start_date')) || empty($this->input->post('planned_end_date'))){
+        
+        $this->index('Empty Date');
+       
+      }
+      else{
+ 
         $user_id =  $_SESSION['user_id'];
 
         $total_planned_hours = 0;
@@ -125,8 +140,9 @@ class Snapshot extends CI_Controller
         
        
         $this->Snapshot_Model->saveSnapshot($task);
-        $this->index();
-
+        $this->index("");
+       
+      }
 				// redirect('/snapshot/index');
     }
     
@@ -250,17 +266,49 @@ class Snapshot extends CI_Controller
     }		
 
     public function deleteSnapshot($id) 
-    {       
+    {     
        $this->Snapshot_Model->deleteSnapshot($id);
        $this->index();
     }		
 
+    public function deleteSnapshotAdmin($id) 
+    {     
+      $data['snapshots'] = $this->Snapshot_Model->deleteSnapshot($id);
+      
+      if(!empty($_POST['idlist']) && !empty($_POST['date'])) {
+        $idlist = $_POST['idlist'];
+        $date = $_POST['date'];
+        $_SESSION["idlist"]=  $idlist;
+        $_SESSION["date"]=  $date;
+        $data['snapshots'] = $this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
+      }
+      elseif(!empty($_POST['idlist'])) {
+        $idlist = $_POST['idlist'];
+        $_SESSION["idlist"]=  $idlist;
+        $data['snapshots'] = $this->Snapshot_Model->getUserSnapshots($idlist);
+      } 
+      elseif(!empty($_POST['date'])) {
+        $date = $_POST['date'];
+        $_SESSION["date"]=  $date;
+        $data['snapshots'] = $this->Snapshot_Model->getDateSnapshots($date);
+      }
+      else {
+        $data['snapshots'] = $this->Snapshot_Model->getAllSnapshots();
+      }
+        
+      $data['users'] = $this->User_Model->getUserDetails();
+      
+       $this->load->view('view_snapshot',$data );
+    }		
+
+    
+  
     public function convertCsvIndex() {
 
       header('Content-Type: text/csv');
       header('Content-Disposition: attachment; filename="file.csv"');
       
-      if(!empty($_POST['idlist']) && !empty($_POST['date'])) {
+      if(!empty($_SESSION['idlist']) && !empty($_SESSION['date'])) {
 
         $idlist = $_SESSION["idlist"];
         $date = $_SESSION["date"];
@@ -297,15 +345,33 @@ class Snapshot extends CI_Controller
         $_SESSION["idlist"] = null;
         session_destroy();
       }
-
+      $c =0;
     $file = fopen('php://output', 'wb');
+   
+    fputcsv($file, array(''));
+
+    
+
+if($file){
+    while(!feof($file)){
+          $content = fgets($file);
+      if($content)    $c++;
+    }
+}
+    
+    $headers = ("weekStartDate,userName,project,task,plannedEffort,plannedStartDate,plannedEndDate,Mon.p,Mon.a,Tue.p,Tue.a,Wen.p,Wen.a,Thu.p,Thu.a,Fri.p,Fri.a,Sat.p,Sat.a,Sun.p,Sun.a,totalPlannedOurs,totalActualOurs\n");
+    fwrite($file,  $headers);
+    //fputcsv($file, $headers);  
       foreach ($data['convert'] as $fields) {
         if( is_object($fields) )
         $fields = (array) $fields;
         fputcsv($file, $fields);      
         }
 
+        
       fclose($file);
+      echo $c;
+
   }
     public function snapEditIndex($id) {
       $data['snapshot'] = $this->Snapshot_Model->getSelectedSnapshot($id);
