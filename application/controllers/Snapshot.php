@@ -345,32 +345,65 @@ class Snapshot extends CI_Controller
         $_SESSION["idlist"] = null;
         session_destroy();
       }
-      $c =0;
+      
+      
+				$total_p_hours_m = 0;
+				$total_a_hours_m = 0;
+
+				$total_p_hours_t=0;
+				$total_a_hours_t=0;
+
+				$total_p_hours_w=0;
+				$total_a_hours_w=0;
+
+				$total_p_hours_th=0;
+				$total_a_hours_th=0;
+
+				$total_p_hours_f=0;
+				$total_a_hours_f=0;
+
+				$total_p_hours_s=0;
+				$total_a_hours_s=0;
+
+				$total_p_hours_su=0;
+				$total_a_hours_su=0;
+      
+        
     $file = fopen('php://output', 'wb');
    
     fputcsv($file, array(''));
 
     
-
-if($file){
-    while(!feof($file)){
-          $content = fgets($file);
-      if($content)    $c++;
-    }
-}
-    
-    $headers = ("weekStartDate,userName,project,task,plannedEffort,plannedStartDate,plannedEndDate,Mon.p,Mon.a,Tue.p,Tue.a,Wen.p,Wen.a,Thu.p,Thu.a,Fri.p,Fri.a,Sat.p,Sat.a,Sun.p,Sun.a,totalPlannedOurs,totalActualOurs\n");
+    $headers = ("id,weekStartDate,userName,project,task,plannedEffort,plannedStartDate,plannedEndDate,Mon.p,Mon.a,Tue.p,Tue.a,Wen.p,Wen.a,Thu.p,Thu.a,Fri.p,Fri.a,Sat.p,Sat.a,Sun.p,Sun.a,totalPlannedOurs,totalActualOurs\n");
     fwrite($file,  $headers);
-    //fputcsv($file, $headers);  
+    // fputcsv($file, $headers);  
       foreach ($data['convert'] as $fields) {
+        
         if( is_object($fields) )
         $fields = (array) $fields;
-        fputcsv($file, $fields);      
+        fputcsv($file, $fields);  
+        
+        $total_p_hours_m = $total_p_hours_m + (int)$fields['mon_p'];
+        $total_a_hours_m = 	$total_a_hours_m + (int)$fields['mon_a'];
+        $total_p_hours_t = 	$total_p_hours_t + (int)$fields['tue_p'];
+        $total_a_hours_t = 	$total_a_hours_t + (int)$fields['tue_a'];
+        $total_p_hours_w = 	$total_p_hours_w + (int)$fields['wen_p'];
+        $total_a_hours_w = 	$total_a_hours_w + (int)$fields['wen_a'];
+        $total_p_hours_th = 	$total_p_hours_th + (int)$fields['thu_p'];
+        $total_a_hours_th = 	$total_a_hours_th + (int)$fields['thu_a'];
+        $total_p_hours_f = 	$total_p_hours_f + (int)$fields['fri_p'];
+        $total_a_hours_f = 	$total_a_hours_f + (int)$fields['fri_a'];
+        $total_p_hours_s = 	$total_p_hours_s + (int)$fields['sat_p'];
+        $total_a_hours_s = 	$total_a_hours_s + (int)$fields['sat_a'];
+        $total_p_hours_su= 	$total_p_hours_su + (int)$fields['sat_p'];
+        $total_a_hours_su = 	$total_a_hours_su + (int)$fields['sat_a'];
         }
 
+       $total = array("-", "-","-","-","-","-","-","-","$total_p_hours_m","$total_a_hours_m","$total_p_hours_t","$total_a_hours_t","$total_p_hours_w","$total_a_hours_w","$total_p_hours_th","$total_a_hours_th","$total_p_hours_f","$total_a_hours_f","$total_p_hours_s","$total_a_hours_s","$total_p_hours_su","$total_a_hours_su","-","-");
+       fputcsv($file, $total);
         
       fclose($file);
-      echo $c;
+     
 
   }
     public function snapEditIndex($id) {
