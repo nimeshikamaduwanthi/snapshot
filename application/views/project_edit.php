@@ -112,8 +112,8 @@ $user = $this->session->userdata('user');
 						<td><input type="text" value="<?php echo $project['code']; ?>" name="code" class="form-control input-sm"></td>
 						<td><input type="text" value="<?php echo $project['project_name']; ?>" name="project_name" class="form-control input-sm"></td>
 						<td><input type="text" value="<?php echo $project['project_description']; ?>" name="project_description" class="form-control input-sm"></td>
-						<td><input type="text" value="<?php echo $project['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" value="<?php echo $project['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+						<td><input type="date" value="<?php echo $project['start_date']; ?>" name="start_date" class="form-control input-sm"></td>
+						<td><input type="date" value="<?php echo $project['end_date']; ?>" name="end_date" class="form-control input-sm"></td>
             <input type="hidden" value=<?php echo $project['id'] ?> name="id"  class="form-control input-sm">
 						
         </tr>

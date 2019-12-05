@@ -144,12 +144,12 @@
  
 			<tbody>
       	<tr>
-      		<td><input type="text" value=<?php echo $snapshot['start_date'] ?> placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
+      		<td><input type="date" value=<?php echo $snapshot['start_date'] ?> name="start_date" class="form-control input-sm"></td>
 					<!-- <td><input type="text" value=<?php echo $snapshot['project_name'] ?> name="project" class="form-control input-sm"></td>
 					<td><input type="text" value=<?php echo $snapshot['task'] ?> name="task" class="form-control input-sm"></td> -->
 					<td><input type="text" value=<?php echo $snapshot['planned_effort'] ?> name="planned_effort" class="form-control input-sm"></td>
-					<td><input type="text" value=<?php echo $snapshot['planned_start_date'] ?> placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
-					<td><input type="text" value=<?php echo $snapshot['planned_end_date'] ?> placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
+					<td><input type="date" value=<?php echo $snapshot['planned_start_date'] ?>  name="planned_start_date"  class="form-control input-sm"></td>
+					<td><input type="date" value=<?php echo $snapshot['planned_end_date'] ?>  name="planned_end_date"  class="form-control input-sm"></td>
 					<td><input type="text" value=<?php echo $snapshot['mon_p'] ?> name="mon_p"  class="form-control input-sm"></td>
 					<td><input type="text" value=<?php echo $snapshot['mon_a'] ?> name="mon_a"  class="form-control input-sm"></td>
 					<td><input type="text" value=<?php echo $snapshot['tue_p'] ?> name="tue_p"  class="form-control input-sm"></td>

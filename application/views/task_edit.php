@@ -115,8 +115,8 @@ $user = $this->session->userdata('user');
         <tbody>
         <tr>
 				<td><input type="text" value="<?php echo $task['task']; ?>" name="task_name" class="form-control input-sm"></td>
-				<td><input type="text" value="<?php echo $task['start_date']; ?>" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-				<td><input type="text"  value="<?php echo $task['end_date']; ?>" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+				<td><input type="date" value="<?php echo $task['start_date']; ?>" name="start_date" class="form-control input-sm"></td>
+				<td><input type="date"  value="<?php echo $task['end_date']; ?>" name="end_date" class="form-control input-sm"></td>
 				<input type="hidden" value="<?php echo $task['id']; ?>"  name="id"  class="form-control input-sm">
         </tr>
 				</tbody>

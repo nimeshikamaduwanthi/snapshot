@@ -95,12 +95,10 @@
 
 <h2 style="text-align: center; color: #D68910; ">User Snapshots</h2>
     <div id="list1" class="dropdown-check-list " tabindex="100" style="margin-left: 5%; margin-bottom: 10px;" >
-		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots" method="POST" >
-        <span id="clickSpan" class="anchor"><input type="submit" value="Select Users" style="width:100%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;"></span>
-					<input type="hidden" id="idlist" name="idlist" value="">
-					<input type="text" id="date" name="date" placeholder="YYYY-MM-DD" value="" style="width:30%;">
+		<form action="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots/" method="POST" >
+        <span id="clickSpan" class="anchor">select users</span>
 					
-        <ul class="items">
+        <ul class="items" style="">
 						<?php foreach ($users as $user): ?>
             <li style="float:none !important;">
 						<?php echo $user['id'] . ' ' . $user['first_name'] . ' ' . $user['last_name'] . ' '; ?>
@@ -108,7 +106,11 @@
 						</li>
 						<?php endforeach?>
         </ul>
-				
+				<input type="hidden" id="idlist" name="idlist" value="">
+					<input type="date" id="date" name="date" placeholder="YYYY-MM-DD" value="" style="width:38%;">
+					<input type="submit" value="Search" style="border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">
+
+					
 				</form> 
     
 
@@ -173,20 +175,20 @@
 				</tr>
 
 				<tr>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
-					<th>p.o</th>
-					<th style="color: blue;">a.o</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
+					<th style="padding: 8px;">P</th>
+					<th style="color: blue; padding: 8px;">A</th>
 					
 				</tr>
 			</thead>
@@ -222,7 +224,7 @@
 						<td><?php echo $snapshot['start_date']; ?></td>
 						<td><?php echo $snapshot['first_name']; ?></td>
 						<td><?php echo $snapshot['project_name']; ?></td>
-						<td><?php echo $snapshot['id']. $snapshot['task']; ?></td>
+						<td><?php echo $snapshot['task']; ?></td>
 						<td><?php echo $snapshot['planned_effort']; ?></td>
 						<td><?php echo $snapshot['planned_start_date']; ?></td>
 						<td><?php echo $snapshot['planned_end_date']; ?></td>

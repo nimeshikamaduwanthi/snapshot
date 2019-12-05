@@ -135,7 +135,8 @@ class Snapshot extends CI_Controller
             'total_planned' => $total_planned_hours, 
             'total_actual' => $total_actual_hours,
 						'project_id' => $this->input->post('project'),
-						'user_id' => $user_id ,	
+            'user_id' => $user_id ,
+            'archived' => 1,
         );
         
        
@@ -239,6 +240,7 @@ class Snapshot extends CI_Controller
   
     public function getAllSnapshots()
     { 
+      
       if(!empty($_POST['idlist']) && !empty($_POST['date'])) {
         $idlist = $_POST['idlist'];
         $date = $_POST['date'];

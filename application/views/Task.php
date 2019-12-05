@@ -125,8 +125,8 @@ $user = $this->session->userdata('user');
 						</select>
 					</td>
 						<td><input type="text" name="task_name" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+						<td><input type="date" name="start_date" class="form-control input-sm"></td>
+						<td><input type="date" name="end_date" class="form-control input-sm"></td>
 						<td></td>
         </tr>
 				<?php foreach ($task_names as $newTask): ?>

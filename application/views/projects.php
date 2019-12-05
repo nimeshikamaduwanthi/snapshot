@@ -119,8 +119,8 @@ $user = $this->session->userdata('user');
 						<td><input type="text" name="code" class="form-control input-sm"></td>
 						<td><input type="text" name="project_name" class="form-control input-sm"></td>
 						<td><input type="text" name="project_description" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="start_date" class="form-control input-sm"></td>
-						<td><input type="text" placeholder="YYYY-MM-DD" name="end_date" class="form-control input-sm"></td>
+						<td><input type="date" name="start_date" class="form-control input-sm" ></td>
+						<td><input type="date" name="end_date" class="form-control input-sm"></td>
 						<td></td>
 						
         </tr>

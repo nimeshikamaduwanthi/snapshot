@@ -194,7 +194,7 @@ $user = $this->session->userdata('user');
 			</thead>
 			<tbody>
 				<tr >
-					<td><input type="text" placeholder="YYYY-MM-DD" name="start_date"  class="form-control input-sm"></td>
+					<td><input type="date"  name="start_date"  class="form-control input-sm"></td>
 					<td >
 						<select name="project" id="projects">
 							<?php foreach ($projects as $project): ?>
@@ -213,9 +213,10 @@ $user = $this->session->userdata('user');
 							<?php endforeach?>
 						</select>
 					</td>
+					
 					<td><input type="text" name="planned_effort"  class="form-control input-sm"></td>
-					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_start_date"  class="form-control input-sm"></td>
-					<td><input type="text" placeholder="YYYY-MM-DD" name="planned_end_date"  class="form-control input-sm"></td>
+					<td><input type="date" name="planned_start_date"  class="form-control input-sm"></td>
+					<td><input type="date" name="planned_end_date"  class="form-control input-sm"></td>
 					<td><input type="text" name="mon_p"  style="width: 30px;"></td>
 					<td><input type="text" name="mon_a"  style="width: 30px;"></td>
 					<td><input type="text" name="tue_p"  style="width: 30px;"></td>
