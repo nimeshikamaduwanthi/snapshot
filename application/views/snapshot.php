@@ -125,13 +125,13 @@ $user = $this->session->userdata('user');
 </style>
 <?php if ($_SESSION['user_type_id'] == '2') {
     include "header_user.php";
-} else {
+} elseif($_SESSION['user_type_id'] == '1') {
      include "header_admin.php";
 }?>
 <body style="background: #FEF9E7;">
 
 <h2 style="text-align: center; color: #D68910; ">ADD SNAPSHOT</h2>
-<form action="addSnapshot" method='POST'><br>
+<form action="<?php echo base_url(); ?>index.php/snapshot/addSnapshot/" method='POST'><br>
 <div class="cal">
 	<div class = "savebtn">
 				<input type="submit" name="save" value="Save" style=" padding:8px; font-size: 15px; background:#D68910; color: #fff; border-radius: 5px; border: none;  float: right; margin-top: 8px; margin-right: 10px;" >

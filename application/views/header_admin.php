@@ -68,7 +68,7 @@
     text-decoration: none;
   }
 </style>
-
+ 
 
 
         <div class="topnav">
@@ -78,6 +78,7 @@
 					<li><a href="<?php echo base_url(); ?>index.php/snapshot/getAllSnapshots">View Snapshot</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/task/index">Task</a></li>
 					<li><a href="<?php echo base_url(); ?>index.php/project/index">Projects</a></li>
+					<li><a href="<?php echo base_url(); ?>index.php/snapshot/dailySnap">Daily Snapshot</a></li>
 				</ul>
         <a href="<?php echo base_url(); ?>index.php/user/logout" class="btn btn-danger" style="background:#D68910; float: right; padding:8px; color: #fff; border:none; border-radius: 5px; text-decoration: none; margin-top: 10px; margin-right: 20px;"> Logout</a>
         </div>

@@ -1,6 +1,8 @@
  <?php
-// $user = $this->session->userdata('userData');
-// extract($user);
+if(empty($_SESSION)) {
+    header("Location: http://localhost/snapshot/index.php/");
+}
+
 ?>
 
 <!doctype html>
@@ -26,11 +28,13 @@
     }
 
 </style>
-<?php if ($_SESSION['user_type_id'] == '2') {
+<?php
+if ($_SESSION['user_type_id'] == '2') {
     include "header_user.php";
-} else {
+} elseif($_SESSION['user_type_id'] == '1') {
      include "header_admin.php";
-}?>
+}
+?>
 <body >
 
 

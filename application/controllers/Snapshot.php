@@ -109,7 +109,57 @@ class Snapshot extends CI_Controller
         // if($this->input->post('id')){
         //   $id = $this->input->post('id');
         // }
-         
+        if($this->input->post('mon_p') > 0) {
+          $mon_date = date('Y-m-d', strtotime($this->input->post('start_date')));
+        }
+        else {
+          $mon_date = '0000-00-00';
+        }
+
+        if($this->input->post('tue_p') > 0) {
+          $tue_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 1 days'));
+        }
+        else {
+          $tue_date = '0000-00-00';
+        }
+       
+        if($this->input->post('wen_p') > 0) {
+          $wen_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 2 days'));
+        }
+        else {
+          $wen_date = '0000-00-00';
+        }
+
+        if($this->input->post('thu_p') > 0) {
+          $thu_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 3 days'));
+        }
+        else {
+          $thu_date = '0000-00-00';
+        }
+
+        if($this->input->post('fri_p') > 0) {
+          $fri_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 4 days'));
+        }
+        else {
+          $fri_date = '0000-00-00';
+        }
+        
+        if($this->input->post('sat_p') > 0) {
+          $sat_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 5 days'));
+        }
+        else {
+          $sat_date = '0000-00-00';
+        }
+        
+        if($this->input->post('sun_p') > 0) {
+          $sun_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 6 days'));
+        }
+        else {
+          $sun_date = '0000-00-00';
+        }
+       
+    
+        
         
         $task = array(
             'id' => $this->input->post('id'),
@@ -137,11 +187,18 @@ class Snapshot extends CI_Controller
 						'project_id' => $this->input->post('project'),
             'user_id' => $user_id ,
             'archived' => 1,
+            'mon_date' => $mon_date,
+            'tue_date' => $tue_date,
+            'wen_date' => $wen_date,
+            'thu_date' => $thu_date,
+            'fri_date' => $fri_date,
+            'sat_date' => $sat_date,
+            'sun_date' => $sun_date,
         );
         
        
         $this->Snapshot_Model->saveSnapshot($task);
-        $this->index("");
+        $this->index();
        
       }
 				// redirect('/snapshot/index');
@@ -208,7 +265,9 @@ class Snapshot extends CI_Controller
         if (!empty($_POST['sun_a'])) {
           $total_actual_hours += $_POST['sun_a'];
         }
+
         
+       
         $task = array(
             'start_date' => $this->input->post('start_date'),
             'planned_effort' => $this->input->post('planned_effort'),
@@ -230,8 +289,11 @@ class Snapshot extends CI_Controller
             'sun_a' => $this->input->post('sun_a'),
             'total_planned' => $total_planned_hours, 
             'total_actual' => $total_actual_hours,
+           
+            // 'mon_date' => 
         );
 
+        
         $this->Snapshot_Model->updateSnapshot($task, $snap_id);
         $this->Snapshot_Model->getAllSnapshots();
         $this->index();
@@ -314,7 +376,6 @@ class Snapshot extends CI_Controller
 
         $idlist = $_SESSION["idlist"];
         $date = $_SESSION["date"];
-       
         $data['convert'] =$this->Snapshot_Model->getUserDateSnapshots($idlist, $date);
         
         $_SESSION["idlist"] = null;
@@ -325,7 +386,7 @@ class Snapshot extends CI_Controller
       elseif(!empty($_SESSION['idlist'])) { 
        
       $idlist = $_SESSION["idlist"];
-     
+       
       $data['convert'] = $this->Snapshot_Model->getUserSnapshots($idlist);
       
       $_SESSION["idlist"] = null;
@@ -335,13 +396,14 @@ class Snapshot extends CI_Controller
       elseif(!empty($_SESSION['date'])) {
 
       $date = $_SESSION["date"];
-
+        
       $data['convert'] = $this->Snapshot_Model->getDateSnapshots($date);
       $_SESSION["date"] = null;
       session_destroy();
       }
 
       else {
+        
         $data['convert'] = $this->Snapshot_Model->getAllSnapshots();
         $_SESSION["date"] = null;
         $_SESSION["idlist"] = null;
@@ -412,6 +474,21 @@ class Snapshot extends CI_Controller
       $data['snapshot'] = $this->Snapshot_Model->getSelectedSnapshot($id);
       $this->load->view('snap_edit', $data);
     }
-  } 
+
+    public function dailySnap() {
+      if(!empty($_POST['date'])) {
+        $selected_date = $_POST['date'];
+      // $selected_date = $today;
+      $data['snapshot_date'] = $this->Snapshot_Model->getDailySnap($selected_date);
+      }else {
+      
+        $selected_date = date("Y-m-d");
+
+        $data['snapshot_date'] = $this->Snapshot_Model->getDailySnap($selected_date);
+      }
+
+      $this->load->view('daily_snap', $data);
+}
+}
 ?>
  

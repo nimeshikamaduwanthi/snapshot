@@ -86,10 +86,10 @@
 
 
 </style>
-<?php if (isset($_SESSION['user_type_id']) && $_SESSION['user_type_id'] == '2') {
+<?php if ($_SESSION['user_type_id'] == '2') {
     include "header_user.php";
-} else {
-    include "header_admin.php";
+} elseif($_SESSION['user_type_id'] == '1') {
+     include "header_admin.php";
 }?>
 <body style="background: #FEF9E7;">
 
@@ -302,8 +302,8 @@
 	</table>
 	
 	<br>
-	<form action="convertCsvIndex" method="POST">
-	<!-- <input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>"> -->
+	<form action="<?php echo base_url(); ?>index.php/snapshot/convertCsvIndex/" method="POST">
+	<input type="hidden" name="object" id="object" value="<?php print_r($snapshots) ; ?>">
 	<button type="submit" name="submit" style="width:5%; border:1.5px solid #dddddd; margin-left:auto;margin-right:auto; background:#D68910; color: #fff; padding:8px; border-radius: 5px;">CSV</button>
 	</form>
 	</div> 

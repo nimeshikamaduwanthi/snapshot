@@ -89,7 +89,7 @@
 </style>
 <?php if ($_SESSION['user_type_id'] == '2') {
     include "header_user.php";
-} else {
+} elseif($_SESSION['user_type_id'] == '1') {
      include "header_admin.php";
 }?>
 <body style="background: #FEF9E7;">
