@@ -252,20 +252,20 @@
 		</tbody>
 		<tfoot>
 		<?php	
-		$total_p_hours_m = $total_p_hours_m + (int)$snapshot['mon_p'];
-		$total_a_hours_m = 	$total_a_hours_m + (int)$snapshot['mon_a'];
-		$total_p_hours_t = 	$total_p_hours_t + (int)$snapshot['tue_p'];
-		$total_a_hours_t = 	$total_a_hours_t + (int)$snapshot['tue_a'];
-		$total_p_hours_w = 	$total_p_hours_w + (int)$snapshot['wen_p'];
-		$total_a_hours_w = 	$total_a_hours_w + (int)$snapshot['wen_a'];
-		$total_p_hours_th = 	$total_p_hours_th + (int)$snapshot['thu_p'];
-		$total_a_hours_th = 	$total_a_hours_th + (int)$snapshot['thu_a'];
-		$total_p_hours_f = 	$total_p_hours_f + (int)$snapshot['fri_p'];
-		$total_a_hours_f = 	$total_a_hours_f + (int)$snapshot['fri_a'];
-		$total_p_hours_s = 	$total_p_hours_s + (int)$snapshot['sat_p'];
-		$total_a_hours_s = 	$total_a_hours_s + (int)$snapshot['sat_a'];
-		$total_p_hours_su= 	$total_p_hours_su + (int)$snapshot['sat_p'];
-		$total_a_hours_su = 	$total_a_hours_su + (int)$snapshot['sat_a'];
+		$total_p_hours_m = $total_p_hours_m + (float)$snapshot['mon_p'];
+		$total_a_hours_m = 	$total_a_hours_m + (float)$snapshot['mon_a'];
+		$total_p_hours_t = 	$total_p_hours_t + (float)$snapshot['tue_p'];
+		$total_a_hours_t = 	$total_a_hours_t + (float)$snapshot['tue_a'];
+		$total_p_hours_w = 	$total_p_hours_w + (float)$snapshot['wen_p'];
+		$total_a_hours_w = 	$total_a_hours_w + (float)$snapshot['wen_a'];
+		$total_p_hours_th = 	$total_p_hours_th + (float)$snapshot['thu_p'];
+		$total_a_hours_th = 	$total_a_hours_th + (float)$snapshot['thu_a'];
+		$total_p_hours_f = 	$total_p_hours_f + (float)$snapshot['fri_p'];
+		$total_a_hours_f = 	$total_a_hours_f + (float)$snapshot['fri_a'];
+		$total_p_hours_s = 	$total_p_hours_s + (float)$snapshot['sat_p'];
+		$total_a_hours_s = 	$total_a_hours_s + (float)$snapshot['sat_a'];
+		$total_p_hours_su= 	$total_p_hours_su + (float)$snapshot['sat_p'];
+		$total_a_hours_su = 	$total_a_hours_su + (float)$snapshot['sat_a'];
 		?>
 		
 		

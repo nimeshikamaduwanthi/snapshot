@@ -141,9 +141,9 @@ class Snapshot_Model extends CI_Model
       if($day == 'Mon'){
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,S.mon_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.mon_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.mon_p, S.mon_a, 
+          S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -158,10 +158,9 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Tue') {
       
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.tue_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.tue_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.tue_p, S.tue_a, 
+          S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -175,10 +174,9 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Wed') {
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.wen_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.wen_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.wen_p, S.wen_a, 
+          S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -192,10 +190,9 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Thu') {
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.thu_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.thu_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.thu_p, S.thu_a, 
+          S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -209,10 +206,9 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Fri') {
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.fri_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id,  S.fri_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.fri_p,S.fri_a,
+          S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -226,10 +222,8 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Sat') {
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.sat_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.sat_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.sat_p, S.sat_a, S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id
@@ -243,10 +237,8 @@ class Snapshot_Model extends CI_Model
       else if($day == 'Sun') {
        
         $query = $this->db->query(
-          "SELECT S.id, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
-          S.sun_date,
-          S.mon_p, S.mon_a, S.tue_p, S.tue_a, S.wen_p, S.wen_a, S.thu_p, S.thu_a, S.fri_p,
-          S.fri_a, S.sat_p, S.sat_a, S.sun_p, S.sun_a, S.total_planned, S.total_actual
+          "SELECT S.id, S.sun_date, U.first_name,  P.project_name, TN.task, S.planned_effort, S.planned_start_date, S.planned_end_date,
+          S.sun_p, S.sun_a, S.total_planned, S.total_actual
           FROM projects P, snapshots S, tasks TN , users U
           WHERE P.id = S.project_id
           AND TN.id = S.task_id

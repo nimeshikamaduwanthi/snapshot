@@ -409,6 +409,7 @@ class Snapshot extends CI_Controller
         $_SESSION["idlist"] = null;
         session_destroy();
       }
+
       
       
 				$total_p_hours_m = 0;
@@ -470,6 +471,7 @@ class Snapshot extends CI_Controller
      
 
   }
+
     public function snapEditIndex($id) {
       $data['snapshot'] = $this->Snapshot_Model->getSelectedSnapshot($id);
       $this->load->view('snap_edit', $data);
@@ -478,17 +480,41 @@ class Snapshot extends CI_Controller
     public function dailySnap() {
       if(!empty($_POST['date'])) {
         $selected_date = $_POST['date'];
+        $_SESSION['snap_date']= $selected_date;
+        
       // $selected_date = $today;
       $data['snapshot_date'] = $this->Snapshot_Model->getDailySnap($selected_date);
       }else {
       
         $selected_date = date("Y-m-d");
-
+        $_SESSION['snap_date'] = $selected_date;
         $data['snapshot_date'] = $this->Snapshot_Model->getDailySnap($selected_date);
       }
 
       $this->load->view('daily_snap', $data);
+    }
+
+    public function csvDaily() {
+      header('Content-Type: text/csv');
+      header('Content-Disposition: attachment; filename="file.csv"');  
+      $selected_date = $_SESSION['snap_date'];
+     
+      $data['snapshot_date'] = $this->Snapshot_Model->getDailySnap($selected_date);
+      
+      $file = fopen('php://output', 'wb');
+      fputcsv($file, array(''));
+
+    
+    $headers = ("id,date,userName,project,task,plannedEffort,plannedStartDate,plannedEndDate,plannedhours,actualhours,totalPlannedOurs,totalActualOurs\n");
+    fwrite($file,  $headers);
+      foreach ( $data['snapshot_date'] as $line ) {
+          fputcsv($file, $line);
+      }
+       fclose($file);
+      
+    }
 }
-}
+
+
 ?>
  

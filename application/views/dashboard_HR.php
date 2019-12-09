@@ -1,7 +1,7 @@
  <?php
-if(empty($_SESSION)) {
-    header("Location: http://localhost/snapshot/index.php/");
-}
+// if(empty($_SESSION)) {
+//     header("Location: http://localhost/snapshot/index.php/");
+// }
 
 ?>
 
