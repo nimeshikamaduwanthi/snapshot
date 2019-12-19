@@ -266,7 +266,55 @@ class Snapshot extends CI_Controller
           $total_actual_hours += $_POST['sun_a'];
         }
 
+        if($this->input->post('mon_p') > 0) {
+          $mon_date = date('Y-m-d', strtotime($this->input->post('start_date')));
+        }
+        else {
+          $mon_date = '0000-00-00';
+        }
+
+        if($this->input->post('tue_p') > 0) {
+          $tue_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 1 days'));
+        }
+        else {
+          $tue_date = '0000-00-00';
+        }
+       
+        if($this->input->post('wen_p') > 0) {
+          $wen_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 2 days'));
+        }
+        else {
+          $wen_date = '0000-00-00';
+        }
+
+        if($this->input->post('thu_p') > 0) {
+          $thu_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 3 days'));
+        }
+        else {
+          $thu_date = '0000-00-00';
+        }
+
+        if($this->input->post('fri_p') > 0) {
+          $fri_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 4 days'));
+        }
+        else {
+          $fri_date = '0000-00-00';
+        }
         
+        if($this->input->post('sat_p') > 0) {
+          $sat_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 5 days'));
+        }
+        else {
+          $sat_date = '0000-00-00';
+        }
+        
+        if($this->input->post('sun_p') > 0) {
+          $sun_date = date('Y-m-d', strtotime($this->input->post('start_date'). ' + 6 days'));
+        }
+        else {
+          $sun_date = '0000-00-00';
+        }
+       
        
         $task = array(
             'start_date' => $this->input->post('start_date'),
@@ -289,6 +337,15 @@ class Snapshot extends CI_Controller
             'sun_a' => $this->input->post('sun_a'),
             'total_planned' => $total_planned_hours, 
             'total_actual' => $total_actual_hours,
+            'archived' => 1,
+            // 'user_id' => $user_id ,
+            'mon_date' => $mon_date,
+            'tue_date' => $tue_date,
+            'wen_date' => $wen_date,
+            'thu_date' => $thu_date,
+            'fri_date' => $fri_date,
+            'sat_date' => $sat_date,
+            'sun_date' => $sun_date,
            
             // 'mon_date' => 
         );
